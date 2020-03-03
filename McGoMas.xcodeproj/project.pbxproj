@@ -1,0 +1,474 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8027849C240EC76000AFD8E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8027849B240EC76000AFD8E8 /* AppDelegate.swift */; };
+		8027849E240EC76000AFD8E8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8027849D240EC76000AFD8E8 /* SceneDelegate.swift */; };
+		802784A0240EC76000AFD8E8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8027849F240EC76000AFD8E8 /* ContentView.swift */; };
+		802784A2240EC76500AFD8E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 802784A1240EC76500AFD8E8 /* Assets.xcassets */; };
+		802784A5240EC76500AFD8E8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 802784A4240EC76500AFD8E8 /* Preview Assets.xcassets */; };
+		802784A8240EC76500AFD8E8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 802784A6240EC76500AFD8E8 /* LaunchScreen.storyboard */; };
+		802784B3240EC76500AFD8E8 /* McGoMasTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802784B2240EC76500AFD8E8 /* McGoMasTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		802784AF240EC76500AFD8E8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80278490240EC76000AFD8E8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 80278497240EC76000AFD8E8;
+			remoteInfo = McGoMas;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		80278498240EC76000AFD8E8 /* McGoMas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = McGoMas.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8027849B240EC76000AFD8E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8027849D240EC76000AFD8E8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		8027849F240EC76000AFD8E8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		802784A1240EC76500AFD8E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		802784A4240EC76500AFD8E8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		802784A7240EC76500AFD8E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		802784A9240EC76500AFD8E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		802784AE240EC76500AFD8E8 /* McGoMasTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = McGoMasTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		802784B2240EC76500AFD8E8 /* McGoMasTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = McGoMasTests.swift; sourceTree = "<group>"; };
+		802784B4240EC76500AFD8E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		80278495240EC76000AFD8E8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		802784AB240EC76500AFD8E8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8027848F240EC76000AFD8E8 = {
+			isa = PBXGroup;
+			children = (
+				8027849A240EC76000AFD8E8 /* McGoMas */,
+				802784B1240EC76500AFD8E8 /* McGoMasTests */,
+				80278499240EC76000AFD8E8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		80278499240EC76000AFD8E8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				80278498240EC76000AFD8E8 /* McGoMas.app */,
+				802784AE240EC76500AFD8E8 /* McGoMasTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8027849A240EC76000AFD8E8 /* McGoMas */ = {
+			isa = PBXGroup;
+			children = (
+				8027849B240EC76000AFD8E8 /* AppDelegate.swift */,
+				8027849D240EC76000AFD8E8 /* SceneDelegate.swift */,
+				8027849F240EC76000AFD8E8 /* ContentView.swift */,
+				802784A1240EC76500AFD8E8 /* Assets.xcassets */,
+				802784A6240EC76500AFD8E8 /* LaunchScreen.storyboard */,
+				802784A9240EC76500AFD8E8 /* Info.plist */,
+				802784A3240EC76500AFD8E8 /* Preview Content */,
+			);
+			path = McGoMas;
+			sourceTree = "<group>";
+		};
+		802784A3240EC76500AFD8E8 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				802784A4240EC76500AFD8E8 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		802784B1240EC76500AFD8E8 /* McGoMasTests */ = {
+			isa = PBXGroup;
+			children = (
+				802784B2240EC76500AFD8E8 /* McGoMasTests.swift */,
+				802784B4240EC76500AFD8E8 /* Info.plist */,
+			);
+			path = McGoMasTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		80278497240EC76000AFD8E8 /* McGoMas */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 802784B7240EC76500AFD8E8 /* Build configuration list for PBXNativeTarget "McGoMas" */;
+			buildPhases = (
+				80278494240EC76000AFD8E8 /* Sources */,
+				80278495240EC76000AFD8E8 /* Frameworks */,
+				80278496240EC76000AFD8E8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = McGoMas;
+			productName = McGoMas;
+			productReference = 80278498240EC76000AFD8E8 /* McGoMas.app */;
+			productType = "com.apple.product-type.application";
+		};
+		802784AD240EC76500AFD8E8 /* McGoMasTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 802784BA240EC76500AFD8E8 /* Build configuration list for PBXNativeTarget "McGoMasTests" */;
+			buildPhases = (
+				802784AA240EC76500AFD8E8 /* Sources */,
+				802784AB240EC76500AFD8E8 /* Frameworks */,
+				802784AC240EC76500AFD8E8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				802784B0240EC76500AFD8E8 /* PBXTargetDependency */,
+			);
+			name = McGoMasTests;
+			productName = McGoMasTests;
+			productReference = 802784AE240EC76500AFD8E8 /* McGoMasTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		80278490240EC76000AFD8E8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = Capstone;
+				TargetAttributes = {
+					80278497240EC76000AFD8E8 = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
+					802784AD240EC76500AFD8E8 = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = 80278497240EC76000AFD8E8;
+					};
+				};
+			};
+			buildConfigurationList = 80278493240EC76000AFD8E8 /* Build configuration list for PBXProject "McGoMas" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8027848F240EC76000AFD8E8;
+			productRefGroup = 80278499240EC76000AFD8E8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				80278497240EC76000AFD8E8 /* McGoMas */,
+				802784AD240EC76500AFD8E8 /* McGoMasTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		80278496240EC76000AFD8E8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				802784A8240EC76500AFD8E8 /* LaunchScreen.storyboard in Resources */,
+				802784A5240EC76500AFD8E8 /* Preview Assets.xcassets in Resources */,
+				802784A2240EC76500AFD8E8 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		802784AC240EC76500AFD8E8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		80278494240EC76000AFD8E8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8027849C240EC76000AFD8E8 /* AppDelegate.swift in Sources */,
+				8027849E240EC76000AFD8E8 /* SceneDelegate.swift in Sources */,
+				802784A0240EC76000AFD8E8 /* ContentView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		802784AA240EC76500AFD8E8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				802784B3240EC76500AFD8E8 /* McGoMasTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		802784B0240EC76500AFD8E8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 80278497240EC76000AFD8E8 /* McGoMas */;
+			targetProxy = 802784AF240EC76500AFD8E8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		802784A6240EC76500AFD8E8 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				802784A7240EC76500AFD8E8 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		802784B5240EC76500AFD8E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		802784B6240EC76500AFD8E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		802784B8240EC76500AFD8E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"McGoMas/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = McGoMas/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Capstone.McGoMas;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		802784B9240EC76500AFD8E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"McGoMas/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = McGoMas/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Capstone.McGoMas;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		802784BB240EC76500AFD8E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = McGoMasTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Capstone.McGoMasTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/McGoMas.app/McGoMas";
+			};
+			name = Debug;
+		};
+		802784BC240EC76500AFD8E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = McGoMasTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Capstone.McGoMasTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/McGoMas.app/McGoMas";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		80278493240EC76000AFD8E8 /* Build configuration list for PBXProject "McGoMas" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				802784B5240EC76500AFD8E8 /* Debug */,
+				802784B6240EC76500AFD8E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		802784B7240EC76500AFD8E8 /* Build configuration list for PBXNativeTarget "McGoMas" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				802784B8240EC76500AFD8E8 /* Debug */,
+				802784B9240EC76500AFD8E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		802784BA240EC76500AFD8E8 /* Build configuration list for PBXNativeTarget "McGoMasTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				802784BB240EC76500AFD8E8 /* Debug */,
+				802784BC240EC76500AFD8E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 80278490240EC76000AFD8E8 /* Project object */;
+}
