@@ -14,6 +14,10 @@
 		802784A5240EC76500AFD8E8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 802784A4240EC76500AFD8E8 /* Preview Assets.xcassets */; };
 		802784A8240EC76500AFD8E8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 802784A6240EC76500AFD8E8 /* LaunchScreen.storyboard */; };
 		802784B3240EC76500AFD8E8 /* McGoMasTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802784B2240EC76500AFD8E8 /* McGoMasTests.swift */; };
+		802784BE240ED0F200AFD8E8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 802784BD240ED0F200AFD8E8 /* GoogleService-Info.plist */; };
+		802784BF240ED0F200AFD8E8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 802784BD240ED0F200AFD8E8 /* GoogleService-Info.plist */; };
+		BB33E4D1186D10D817E09DC1 /* Pods_McGoMas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 532037967455B767F9F12BDD /* Pods_McGoMas.framework */; };
+		CF37F6789CCE5C871F4AE5DC /* Pods_McGoMasTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C0C1B0490042C16437727EE /* Pods_McGoMasTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +31,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		01A083C2BADE8E3BC719F6A3 /* Pods-McGoMasTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-McGoMasTests.release.xcconfig"; path = "Target Support Files/Pods-McGoMasTests/Pods-McGoMasTests.release.xcconfig"; sourceTree = "<group>"; };
+		0C0C1B0490042C16437727EE /* Pods_McGoMasTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_McGoMasTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		532037967455B767F9F12BDD /* Pods_McGoMas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_McGoMas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80278498240EC76000AFD8E8 /* McGoMas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = McGoMas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8027849B240EC76000AFD8E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8027849D240EC76000AFD8E8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -38,6 +45,10 @@
 		802784AE240EC76500AFD8E8 /* McGoMasTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = McGoMasTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		802784B2240EC76500AFD8E8 /* McGoMasTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = McGoMasTests.swift; sourceTree = "<group>"; };
 		802784B4240EC76500AFD8E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		802784BD240ED0F200AFD8E8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9EC3563F716A47E3524DA60F /* Pods-McGoMasTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-McGoMasTests.debug.xcconfig"; path = "Target Support Files/Pods-McGoMasTests/Pods-McGoMasTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C1325CC57C7D801103A10A01 /* Pods-McGoMas.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-McGoMas.release.xcconfig"; path = "Target Support Files/Pods-McGoMas/Pods-McGoMas.release.xcconfig"; sourceTree = "<group>"; };
+		C51FE35065A89619E58039E7 /* Pods-McGoMas.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-McGoMas.debug.xcconfig"; path = "Target Support Files/Pods-McGoMas/Pods-McGoMas.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB33E4D1186D10D817E09DC1 /* Pods_McGoMas.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,18 +64,33 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF37F6789CCE5C871F4AE5DC /* Pods_McGoMasTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		591204DE2D5EDA139CD65BBF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C51FE35065A89619E58039E7 /* Pods-McGoMas.debug.xcconfig */,
+				C1325CC57C7D801103A10A01 /* Pods-McGoMas.release.xcconfig */,
+				9EC3563F716A47E3524DA60F /* Pods-McGoMasTests.debug.xcconfig */,
+				01A083C2BADE8E3BC719F6A3 /* Pods-McGoMasTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		8027848F240EC76000AFD8E8 = {
 			isa = PBXGroup;
 			children = (
 				8027849A240EC76000AFD8E8 /* McGoMas */,
 				802784B1240EC76500AFD8E8 /* McGoMasTests */,
 				80278499240EC76000AFD8E8 /* Products */,
+				591204DE2D5EDA139CD65BBF /* Pods */,
+				E9D14026EF59732B083CD920 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -84,6 +111,7 @@
 				8027849F240EC76000AFD8E8 /* ContentView.swift */,
 				802784A1240EC76500AFD8E8 /* Assets.xcassets */,
 				802784A6240EC76500AFD8E8 /* LaunchScreen.storyboard */,
+				802784BD240ED0F200AFD8E8 /* GoogleService-Info.plist */,
 				802784A9240EC76500AFD8E8 /* Info.plist */,
 				802784A3240EC76500AFD8E8 /* Preview Content */,
 			);
@@ -107,6 +135,15 @@
 			path = McGoMasTests;
 			sourceTree = "<group>";
 		};
+		E9D14026EF59732B083CD920 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				532037967455B767F9F12BDD /* Pods_McGoMas.framework */,
+				0C0C1B0490042C16437727EE /* Pods_McGoMasTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -114,9 +151,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 802784B7240EC76500AFD8E8 /* Build configuration list for PBXNativeTarget "McGoMas" */;
 			buildPhases = (
+				B0D0FA3D31B88046B846765C /* [CP] Check Pods Manifest.lock */,
 				80278494240EC76000AFD8E8 /* Sources */,
 				80278495240EC76000AFD8E8 /* Frameworks */,
 				80278496240EC76000AFD8E8 /* Resources */,
+				DFBB26962E2DF55A23BB977C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -131,6 +170,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 802784BA240EC76500AFD8E8 /* Build configuration list for PBXNativeTarget "McGoMasTests" */;
 			buildPhases = (
+				C48D15AC2BCDAE9D3E46C3CD /* [CP] Check Pods Manifest.lock */,
 				802784AA240EC76500AFD8E8 /* Sources */,
 				802784AB240EC76500AFD8E8 /* Frameworks */,
 				802784AC240EC76500AFD8E8 /* Resources */,
@@ -189,6 +229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				802784A8240EC76500AFD8E8 /* LaunchScreen.storyboard in Resources */,
+				802784BE240ED0F200AFD8E8 /* GoogleService-Info.plist in Resources */,
 				802784A5240EC76500AFD8E8 /* Preview Assets.xcassets in Resources */,
 				802784A2240EC76500AFD8E8 /* Assets.xcassets in Resources */,
 			);
@@ -198,10 +239,75 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				802784BF240ED0F200AFD8E8 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B0D0FA3D31B88046B846765C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-McGoMas-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C48D15AC2BCDAE9D3E46C3CD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-McGoMasTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DFBB26962E2DF55A23BB977C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-McGoMas/Pods-McGoMas-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-McGoMas/Pods-McGoMas-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-McGoMas/Pods-McGoMas-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		80278494240EC76000AFD8E8 /* Sources */ = {
@@ -360,6 +466,7 @@
 		};
 		802784B8240EC76500AFD8E8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C51FE35065A89619E58039E7 /* Pods-McGoMas.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -379,6 +486,7 @@
 		};
 		802784B9240EC76500AFD8E8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C1325CC57C7D801103A10A01 /* Pods-McGoMas.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -398,6 +506,7 @@
 		};
 		802784BB240EC76500AFD8E8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9EC3563F716A47E3524DA60F /* Pods-McGoMasTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -419,6 +528,7 @@
 		};
 		802784BC240EC76500AFD8E8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 01A083C2BADE8E3BC719F6A3 /* Pods-McGoMasTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

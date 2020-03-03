@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>969641137879-rj22dgb1in52ict1a5uo3kpujr3rbodu.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.969641137879-rj22dgb1in52ict1a5uo3kpujr3rbodu</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCY4N4MQlkNAYWSYrul6H9idFC-2HUSjPM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>969641137879</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.Capstone.McGoMas</string>
+	<key>PROJECT_ID</key>
+	<string>mcgomas</string>
+	<key>STORAGE_BUCKET</key>
+	<string>mcgomas.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:969641137879:ios:8a0111dcc824a78f6c8292</string>
+	<key>DATABASE_URL</key>
+	<string>https://mcgomas.firebaseio.com</string>
+</dict>
+</plist>
