@@ -10,7 +10,14 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, World!")
+        NavigationView{
+            NavigationLink(destination: LoginView()) {
+                Text("Take me to login page")
+                    .buttonStyle(GradientButtonStyle())
+            }
+            .navigationBarTitle("Hello World")
+        }
+        
     }
 }
 

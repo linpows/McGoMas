@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8020C2B92410138A0097BD5E /* GradientButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8020C2B82410138A0097BD5E /* GradientButtonStyle.swift */; };
+		8020C2BD241023C00097BD5E /* CustomTextEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8020C2BC241023C00097BD5E /* CustomTextEntry.swift */; };
 		8027849C240EC76000AFD8E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8027849B240EC76000AFD8E8 /* AppDelegate.swift */; };
 		8027849E240EC76000AFD8E8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8027849D240EC76000AFD8E8 /* SceneDelegate.swift */; };
 		802784A0240EC76000AFD8E8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8027849F240EC76000AFD8E8 /* ContentView.swift */; };
@@ -35,6 +37,8 @@
 		01A083C2BADE8E3BC719F6A3 /* Pods-McGoMasTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-McGoMasTests.release.xcconfig"; path = "Target Support Files/Pods-McGoMasTests/Pods-McGoMasTests.release.xcconfig"; sourceTree = "<group>"; };
 		0C0C1B0490042C16437727EE /* Pods_McGoMasTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_McGoMasTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		532037967455B767F9F12BDD /* Pods_McGoMas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_McGoMas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8020C2B82410138A0097BD5E /* GradientButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButtonStyle.swift; sourceTree = "<group>"; };
+		8020C2BC241023C00097BD5E /* CustomTextEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextEntry.swift; sourceTree = "<group>"; };
 		80278498240EC76000AFD8E8 /* McGoMas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = McGoMas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8027849B240EC76000AFD8E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8027849D240EC76000AFD8E8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -111,6 +115,8 @@
 				8027849D240EC76000AFD8E8 /* SceneDelegate.swift */,
 				8027849F240EC76000AFD8E8 /* ContentView.swift */,
 				802784C0240EE1F200AFD8E8 /* LoginView.swift */,
+				8020C2BC241023C00097BD5E /* CustomTextEntry.swift */,
+				8020C2B82410138A0097BD5E /* GradientButtonStyle.swift */,
 				802784A1240EC76500AFD8E8 /* Assets.xcassets */,
 				802784A6240EC76500AFD8E8 /* LaunchScreen.storyboard */,
 				802784BD240ED0F200AFD8E8 /* GoogleService-Info.plist */,
@@ -317,8 +323,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8027849C240EC76000AFD8E8 /* AppDelegate.swift in Sources */,
+				8020C2B92410138A0097BD5E /* GradientButtonStyle.swift in Sources */,
 				8027849E240EC76000AFD8E8 /* SceneDelegate.swift in Sources */,
 				802784C1240EE1F200AFD8E8 /* LoginView.swift in Sources */,
+				8020C2BD241023C00097BD5E /* CustomTextEntry.swift in Sources */,
 				802784A0240EC76000AFD8E8 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
