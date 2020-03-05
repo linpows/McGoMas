@@ -11,10 +11,6 @@ import FirebaseAuth
 import Firebase
 
 
-class SignInAttempt: ObservableObject {
-    @Published var attemptMessage = ""
-}
-
 struct LoginView: View {
     @State private var password: String = ""
     @State private var email: String = ""
@@ -23,6 +19,9 @@ struct LoginView: View {
     @State private var errorTxt: String = ""
     @State private var successTxt: String = ""
     @State private var attempt = false
+    @State private var isSignedIn = false
+    @State private var handler: AuthStateDidChangeListenerHandle?
+    @State private var currUser: User?
     
     var body: some View {
         VStack(alignment: .center) {
@@ -47,14 +46,15 @@ struct LoginView: View {
                 action: {
                     self.attemptSignIn(email: self.email, password: self.password) {
                         (authUser: Firebase.User?) in
-                        if let user = authUser {
-                            self.successAlert = true //Success in signin
+                        if let user = authUser { //Success in signin, have a user
+                            self.successAlert = true
                             let doubleCheckEmail: String! = user.email
                             self.successTxt = "User with email " + doubleCheckEmail + " signed in."
                         }
-                        else {
+                        else { //No user was signed in
                             self.errAlert = true
                         }
+                        //Either way, signal that there was an attempt
                         self.attempt = true
                     }
                 },
@@ -66,6 +66,7 @@ struct LoginView: View {
             )
             .buttonStyle(GradientButtonStyle())
             .alert(isPresented: $attempt) {
+                //Different alerts appear based on if signed in or not
                 if successAlert {
                     return Alert(title: Text("Success!"), message: Text(self.successTxt), dismissButton: .default(Text("Ok")))
                 }
@@ -77,7 +78,9 @@ struct LoginView: View {
     }
     
 
+    //Will execute the given callback function with a valid user object or nil
     func attemptSignIn(email: String, password: String, callback: @escaping (Firebase.User?) -> ()) {
+        //Have Firebase attempt to retrieve a user with the given password/email
         Auth.auth().signIn(withEmail: email, password: password) { user, error in
             
             if let error = error { //Error encountered in signin
