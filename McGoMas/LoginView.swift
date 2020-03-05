@@ -14,14 +14,9 @@ import Firebase
 struct LoginView: View {
     @State private var password: String = ""
     @State private var email: String = ""
-    @State private var successAlert = false
     @State private var errAlert = false
     @State private var errorTxt: String = ""
-    @State private var successTxt: String = ""
-    @State private var attempt = false
-    @State private var isSignedIn = false
-    @State private var handler: AuthStateDidChangeListenerHandle?
-    @State private var currUser: User?
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         VStack(alignment: .center) {
@@ -46,16 +41,13 @@ struct LoginView: View {
                 action: {
                     self.attemptSignIn(email: self.email, password: self.password) {
                         (authUser: Firebase.User?) in
-                        if let user = authUser { //Success in signin, have a user
-                            self.successAlert = true
-                            let doubleCheckEmail: String! = user.email
-                            self.successTxt = "User with email " + doubleCheckEmail + " signed in."
+                        if authUser != nil { //Success in signin, have a user
+                            //dismiss to home screen
+                            self.presentationMode.wrappedValue.dismiss()
                         }
                         else { //No user was signed in
                             self.errAlert = true
                         }
-                        //Either way, signal that there was an attempt
-                        self.attempt = true
                     }
                 },
                 label: {
@@ -65,15 +57,11 @@ struct LoginView: View {
                 }
             )
             .buttonStyle(GradientButtonStyle())
-            .alert(isPresented: $attempt) {
-                //Different alerts appear based on if signed in or not
-                if successAlert {
-                    return Alert(title: Text("Success!"), message: Text(self.successTxt), dismissButton: .default(Text("Ok")))
-                }
-                else {
-                    return Alert(title: Text("Error!"), message: Text(self.errorTxt), dismissButton: .default(Text("Ok")))
-                }
+            .alert(isPresented: $errAlert) {
+                //Unable to sign user in, alert to issue
+                Alert(title: Text("Error!"), message: Text(self.errorTxt), dismissButton: .default(Text("Ok")))
             }
+            
         }
     }
     

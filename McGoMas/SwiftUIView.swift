@@ -7,10 +7,30 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct SwiftUIView: View {
+    @Environment(\.presentationMode) var presentationMode
+    
     var body: some View {
-        Text("You are signed in")
+        VStack() {
+            Text("You are signed in")
+            Button(
+                action: {
+                    do {
+                        try Auth.auth().signOut()
+                        self.presentationMode.wrappedValue.dismiss()
+                    } catch let signOutError as NSError {
+                      print ("Error signing out: %@", signOutError)
+                    }
+                },
+                label: {
+                    Text("Sign Out")
+                }
+            )
+            .buttonStyle(GradientButtonStyle())
+        }
+        
     }
 }
 
