@@ -9,7 +9,7 @@
 import SwiftUI
 import Firebase
 
-struct SwiftUIView: View {
+struct LogoutView: View {
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
@@ -36,6 +36,6 @@ struct SwiftUIView: View {
 
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        SwiftUIView()
+        LogoutView()
     }
 }
