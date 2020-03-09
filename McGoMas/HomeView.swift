@@ -9,56 +9,53 @@
 import SwiftUI
 import Firebase
 
+
+extension AnyTransition {
+    static var shrinkFade: AnyTransition {
+        AnyTransition.scale.combined(with: .opacity)
+    }
+}
+
 struct HomeView: View {
+    @State private var splash = true
+    
+    var body: some View {
+        ZStack {
+            Button(
+                action: {
+                    withAnimation(.easeOut(duration: 1.25)) {
+                        self.splash = false
+                    }
+                },
+                    label: {
+                        Text("toggle").hidden()
+                }
+            ).zIndex(10.0)
+            if (splash) {
+                SplashView().transition(.shrinkFade)
+            }
+            else{
+                NavView()
+            }
+        }
+    }
+}
+
+struct NavView: View {
     @State private var text: Text = Text("")
     @State private var view: AnyView?
-    @State private var showSplash = true
-    @State private var animationAmount: CGFloat = 1
-    @State private var gradientStart: UnitPoint = .leading
-    @State private var gradientEnd: UnitPoint = .trailing
-    @State private var  colorOne: Color = Color.init(Color.RGBColorSpace.sRGB, red: 99.0 / 255, green: 0, blue: 49.0 / 255, opacity: 100);
-    @State private var colorTwo: Color = Color.init(Color.RGBColorSpace.sRGB, red: 207.0 / 255, green: 69.0 / 255, blue: 32.0 / 255, opacity: 100)
     
     var body: some View {
         NavigationView {
-           VStack() {
-               NavigationLink(destination: self.view) {
-                   self.text
-               }
-           }
-           .onAppear() {
-               self.buildNavLink(user: Auth.auth().currentUser)
-           }
-       }
-        .sheet(isPresented: ($showSplash), content: {
-            VStack(alignment: .center) {
-               Button(action: {
-                    withAnimation (.easeIn(duration: 1.5)) {
-                        self.gradientEnd = UnitPoint(x: 0, y: 1)
-                        self.gradientStart = UnitPoint(x: 1, y: 0)
-                        self.animationAmount = 3
-                    }
-                
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) { // Change `2.0` to the desired number of seconds.
-                       self.showSplash = false;
-                    }
-                    
-                   },
-                   label: {
-                       RoundedRectangle(cornerRadius: 7.0)
-                        .fill(LinearGradient(gradient: Gradient(colors: [self.colorTwo, self.colorOne]), startPoint: self.gradientStart, endPoint: self.gradientEnd))
-                           .frame(width: 200, height: 256, alignment: .center)
-                            .scaleEffect(self.animationAmount)
-                           .overlay(
-                                Text("Let's Go").foregroundColor(.black)
-                                    .font(.system(size: 25.0, weight: .semibold, design: .default))
-                       )
-                   }
-               )
-               .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
-               .background(Color.gray)
+            VStack() {
+                NavigationLink(destination: self.view) {
+                    self.text
+                }
             }
-        }).transition(.scale)
+            .onAppear() {
+                self.buildNavLink(user: Auth.auth().currentUser)
+            }
+        }
     }
     
     func buildNavLink(user: User?){
@@ -71,6 +68,37 @@ struct HomeView: View {
             self.view = AnyView(LoginView())
         }
     }
+}
+
+struct SplashView: View {
+    @State private var animationAmount: CGFloat = 1
+    @State private var gradientStart: UnitPoint = .leading
+    @State private var gradientEnd: UnitPoint = .trailing
+    @State private var  colorOne: Color = Color.init(Color.RGBColorSpace.sRGB, red: 99.0 / 255, green: 0, blue: 49.0 / 255, opacity: 100);
+    @State private var colorTwo: Color = Color.init(Color.RGBColorSpace.sRGB, red: 207.0 / 255, green: 69.0 / 255, blue: 32.0 / 255, opacity: 100)
+    
+    var body: some View {
+        VStack(alignment: .center) {
+           RoundedRectangle(cornerRadius: 7.0)
+                .fill(LinearGradient(gradient: Gradient(colors: [self.colorTwo, self.colorOne]), startPoint: self.gradientStart, endPoint: self.gradientEnd))
+                   .frame(width: 200, height: 256, alignment: .center)
+                    .scaleEffect(self.animationAmount)
+                   .overlay(
+                        Text("Let's Go").foregroundColor(.black)
+                            .font(.system(size: 25.0, weight: .semibold, design: .default))
+                    
+                    )
+           }
+           .onAppear() {
+                withAnimation (.easeIn(duration: 1.5)) {
+                    self.animationAmount = 3
+                    self.gradientEnd = UnitPoint(x: 0, y: 1)
+                    self.gradientStart = UnitPoint(x: 1, y: 0)
+                }
+           }
+        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
+        .background(Color.gray)
+        }
 }
 
 struct HomeView_Previews: PreviewProvider {
