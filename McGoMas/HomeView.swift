@@ -9,8 +9,11 @@
 import SwiftUI
 import Firebase
 
+class LogInOutToggle: ObservableObject { //Allows re-rendering if a sign-in state changes
+    @Published var loggedIn = false
+}
 
-extension AnyTransition {
+extension AnyTransition { //Provides splash screen custom transition
     static var shrinkFade: AnyTransition {
         AnyTransition.scale.combined(with: .opacity)
     }
@@ -18,6 +21,8 @@ extension AnyTransition {
 
 struct HomeView: View {
     @State private var splash = true
+    @ObservedObject var toggle = LogInOutToggle()
+
     
     var body: some View {
         ZStack {
@@ -27,79 +32,91 @@ struct HomeView: View {
                         self.splash = false
                     }
                 },
-                    label: {
-                        Text("toggle").hidden()
+                    label: { //When user presses the overlayed "Let's Go", triggers animation
+                        Text("A Hidden Button").hidden()
                 }
             ).zIndex(10.0)
             if (splash) {
                 SplashView().transition(.shrinkFade)
             }
-            else{
-                NavView()
+            else { //Display either a sign-in or sign-out screen
+                NavView().environmentObject(toggle)
+            }
+        }
+        .onAppear() { //When this first loads, initialize the boolean properly
+            if Auth.auth().currentUser != nil {
+                self.toggle.loggedIn = true;
+            }
+            else {
+                self.toggle.loggedIn = false;
             }
         }
     }
 }
 
-struct NavView: View {
-    @State private var text: Text = Text("")
-    @State private var view: AnyView?
+struct NavView: View { //Navigation view wrapping around sign-in/up views
+    @EnvironmentObject var toggle: LogInOutToggle
     
     var body: some View {
         NavigationView {
             VStack() {
-                NavigationLink(destination: self.view) {
-                    self.text
+                if (toggle.loggedIn) { //Give logged in user option to log out
+                    VStack() {
+                        Text("Hello " + (Auth.auth().currentUser!.email ?? ""))
+                        NavigationLink(destination: LogoutView().environmentObject(toggle)) {
+                            Text("Logout")
+                        }
+                    }
+                }
+                else { //Give un-authenticated user option to sign in or sign up
+                    signInUp().environmentObject(toggle)
                 }
             }
-            .onAppear() {
-                self.buildNavLink(user: Auth.auth().currentUser)
-            }
+            .navigationBarTitle("Welcome")
         }
-    }
-    
-    func buildNavLink(user: User?){
-        if let user = Auth.auth().currentUser {
-            self.text = Text("Hello " + (user.email ?? ""))
-            self.view = AnyView(LogoutView())
-        }
-        else {
-            self.text = Text("Sign In Now.")
-            self.view = AnyView(LoginView())
-        }
+        
     }
 }
 
-struct SplashView: View {
-    @State private var animationAmount: CGFloat = 1
-    @State private var gradientStart: UnitPoint = .leading
-    @State private var gradientEnd: UnitPoint = .trailing
-    @State private var  colorOne: Color = Color.init(Color.RGBColorSpace.sRGB, red: 99.0 / 255, green: 0, blue: 49.0 / 255, opacity: 100);
-    @State private var colorTwo: Color = Color.init(Color.RGBColorSpace.sRGB, red: 207.0 / 255, green: 69.0 / 255, blue: 32.0 / 255, opacity: 100)
+struct signInUp: View {
+    @State private var signup: Int? = 0
+    @State private var login: Int? = 0
+    @EnvironmentObject var toggle: LogInOutToggle
     
     var body: some View {
-        VStack(alignment: .center) {
-           RoundedRectangle(cornerRadius: 7.0)
-                .fill(LinearGradient(gradient: Gradient(colors: [self.colorTwo, self.colorOne]), startPoint: self.gradientStart, endPoint: self.gradientEnd))
-                   .frame(width: 200, height: 256, alignment: .center)
-                    .scaleEffect(self.animationAmount)
-                   .overlay(
-                        Text("Let's Go").foregroundColor(.black)
-                            .font(.system(size: 25.0, weight: .semibold, design: .default))
-                    
-                    )
-           }
-           .onAppear() {
-                withAnimation (.easeIn(duration: 1.5)) {
-                    self.animationAmount = 3
-                    self.gradientEnd = UnitPoint(x: 0, y: 1)
-                    self.gradientStart = UnitPoint(x: 1, y: 0)
+            VStack() {
+                //Navigation links will listen/navigate based on button clicks and not their view body
+                NavigationLink(destination: SignupView(), tag: 1, selection: $signup) {
+                    EmptyView()
                 }
-           }
-        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
-        .background(Color.gray)
+                NavigationLink(destination: LoginView().environmentObject(toggle), tag: 1, selection: $login) {
+                    EmptyView()
+                }
+                Button(
+                    action: { //If pressed, trigger navigation to Login Page
+                        self.signup = 0
+                        self.login = 1
+                    },
+                    label: {
+                        Text("Login")
+                    }
+                ).buttonStyle(GradientButtonStyle())
+                
+                Divider()
+                
+                Button(
+                   action: { //If pressed, trigger navigation to Signup Page
+                        self.signup = 1
+                        self.login = 0
+                   },
+                   label: {
+                       Text("Signup")
+                   }
+                ).buttonStyle(GradientButtonStyle())
+            }
         }
 }
+
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {

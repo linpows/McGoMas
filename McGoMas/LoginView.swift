@@ -17,6 +17,7 @@ struct LoginView: View {
     @State private var errAlert = false
     @State private var errorTxt: String = ""
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var toggle: LogInOutToggle;
     
     var body: some View {
         VStack(alignment: .center) {
@@ -43,9 +44,11 @@ struct LoginView: View {
                         (authUser: Firebase.User?) in
                         if authUser != nil { //Success in signin, have a user
                             //dismiss to home screen
+                            self.toggle.loggedIn = true
                             self.presentationMode.wrappedValue.dismiss()
                         }
                         else { //No user was signed in
+                            self.toggle.loggedIn = false
                             self.errAlert = true
                         }
                     }
@@ -61,6 +64,7 @@ struct LoginView: View {
                 //Unable to sign user in, alert to issue
                 Alert(title: Text("Error!"), message: Text(self.errorTxt), dismissButton: .default(Text("Ok")))
             }
+            .padding(.bottom, 50.0)
             
         }
     }

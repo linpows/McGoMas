@@ -1,7 +1,8 @@
 //
 //  CustomTextEntry.swift
 //  McGoMas
-//
+//  Provides styling for TextFields. Supports both normal and secure text fields
+
 //  Created by Mikayla Richardson on 3/4/20.
 //  Copyright © 2020 Capstone. All rights reserved.
 //
@@ -15,28 +16,33 @@ struct CustomTextEntry: View {
     var label: String
     var entryPrompt: String
     var isSecure: Bool
+    let bigFont = Font.system(size: 25.0, weight: .semibold, design: .default)
     @Binding var enteredText: String
     
+    
     var body: some View {
-        HStack {
+        VStack(alignment: .leading) {
             Text(self.label)
-                .font(.system(size: 25.0, weight: .semibold, design: .default))
-                .padding(.horizontal, 10)
+                .font(bigFont)
                 
-            VStack {
+            HStack() {
                 if self.isSecure {
                     SecureField(self.entryPrompt, text: $enteredText)
                         .textFieldStyle(TextEntryStyle())
+                        .background(Color.init(UIColor.lightGray).opacity(0.5))
+                        .cornerRadius(5.0)
 
                 }
                 else {
                     TextField(self.entryPrompt, text: $enteredText)
                         .textFieldStyle(TextEntryStyle())
+                        .background(Color.init(UIColor.lightGray).opacity(0.5))
+                    .cornerRadius(5.0)
                 }
 
-            }.padding(.trailing, 10)
+            }
             
-        }
+        }.padding(.horizontal, 15)
     }
     
     
@@ -46,6 +52,6 @@ struct CustomTextEntry: View {
 struct TextEntryStyle: TextFieldStyle {
     public func _body(configuration: TextField<Self._Label>) -> some View {
             configuration
-                .padding(.vertical, 10)
+                .padding(.all)
         }
 }
