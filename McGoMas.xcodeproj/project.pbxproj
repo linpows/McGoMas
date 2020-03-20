@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		800557CC2425579300FE11DA /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800557CB2425579300FE11DA /* AuthView.swift */; };
 		8020C2B92410138A0097BD5E /* GradientButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8020C2B82410138A0097BD5E /* GradientButtonStyle.swift */; };
 		8020C2BD241023C00097BD5E /* CustomTextEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8020C2BC241023C00097BD5E /* CustomTextEntry.swift */; };
 		8027849C240EC76000AFD8E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8027849B240EC76000AFD8E8 /* AppDelegate.swift */; };
@@ -19,8 +20,9 @@
 		802784BF240ED0F200AFD8E8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 802784BD240ED0F200AFD8E8 /* GoogleService-Info.plist */; };
 		802784C1240EE1F200AFD8E8 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802784C0240EE1F200AFD8E8 /* LoginView.swift */; };
 		8058CE14241D27D600559552 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8058CE13241D27D600559552 /* SplashView.swift */; };
-		8087364624156CF100DFE94E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8087364524156CF100DFE94E /* HomeView.swift */; };
 		808736482416A4E000DFE94E /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808736472416A4E000DFE94E /* SignupView.swift */; };
+		80A7C9D2242507B900C21FC6 /* PredictionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A7C9D1242507B900C21FC6 /* PredictionView.swift */; };
+		80A7C9D42425095600C21FC6 /* LandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A7C9D32425095600C21FC6 /* LandingView.swift */; };
 		80C4846D2411727700BD7EAE /* LogoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C4846C2411727700BD7EAE /* LogoutView.swift */; };
 		80F7A1D924213B6400061ED0 /* AddEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F7A1D824213B6400061ED0 /* AddEntryView.swift */; };
 		80F7A1DB24213F5000061ED0 /* LoggingHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F7A1DA24213F5000061ED0 /* LoggingHomeView.swift */; };
@@ -42,6 +44,7 @@
 		01A083C2BADE8E3BC719F6A3 /* Pods-McGoMasTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-McGoMasTests.release.xcconfig"; path = "Target Support Files/Pods-McGoMasTests/Pods-McGoMasTests.release.xcconfig"; sourceTree = "<group>"; };
 		0C0C1B0490042C16437727EE /* Pods_McGoMasTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_McGoMasTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		532037967455B767F9F12BDD /* Pods_McGoMas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_McGoMas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		800557CB2425579300FE11DA /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		8020C2B82410138A0097BD5E /* GradientButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButtonStyle.swift; sourceTree = "<group>"; };
 		8020C2BC241023C00097BD5E /* CustomTextEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextEntry.swift; sourceTree = "<group>"; };
 		80278498240EC76000AFD8E8 /* McGoMas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = McGoMas.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,8 +60,9 @@
 		802784BD240ED0F200AFD8E8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		802784C0240EE1F200AFD8E8 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		8058CE13241D27D600559552 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
-		8087364524156CF100DFE94E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		808736472416A4E000DFE94E /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
+		80A7C9D1242507B900C21FC6 /* PredictionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictionView.swift; sourceTree = "<group>"; };
+		80A7C9D32425095600C21FC6 /* LandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingView.swift; sourceTree = "<group>"; };
 		80C4846C2411727700BD7EAE /* LogoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutView.swift; sourceTree = "<group>"; };
 		80F7A1D824213B6400061ED0 /* AddEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEntryView.swift; sourceTree = "<group>"; };
 		80F7A1DA24213F5000061ED0 /* LoggingHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingHomeView.swift; sourceTree = "<group>"; };
@@ -123,15 +127,16 @@
 			children = (
 				8027849B240EC76000AFD8E8 /* AppDelegate.swift */,
 				8027849D240EC76000AFD8E8 /* SceneDelegate.swift */,
-				8087364524156CF100DFE94E /* HomeView.swift */,
+				80A7C9D32425095600C21FC6 /* LandingView.swift */,
 				8058CE13241D27D600559552 /* SplashView.swift */,
+				80A7C9D02425079500C21FC6 /* Traffic Prediction */,
 				8058CE19241D2A2500559552 /* Authentication */,
-				8058CE17241D29E800559552 /* Styling */,
 				80F7A1D524213B3500061ED0 /* Logging */,
 				802784A1240EC76500AFD8E8 /* Assets.xcassets */,
 				802784A6240EC76500AFD8E8 /* LaunchScreen.storyboard */,
 				802784BD240ED0F200AFD8E8 /* GoogleService-Info.plist */,
 				802784A9240EC76500AFD8E8 /* Info.plist */,
+				8058CE17241D29E800559552 /* Styling */,
 				802784A3240EC76500AFD8E8 /* Preview Content */,
 			);
 			path = McGoMas;
@@ -169,8 +174,17 @@
 				808736472416A4E000DFE94E /* SignupView.swift */,
 				80C4846C2411727700BD7EAE /* LogoutView.swift */,
 				802784C0240EE1F200AFD8E8 /* LoginView.swift */,
+				800557CB2425579300FE11DA /* AuthView.swift */,
 			);
 			name = Authentication;
+			sourceTree = "<group>";
+		};
+		80A7C9D02425079500C21FC6 /* Traffic Prediction */ = {
+			isa = PBXGroup;
+			children = (
+				80A7C9D1242507B900C21FC6 /* PredictionView.swift */,
+			);
+			name = "Traffic Prediction";
 			sourceTree = "<group>";
 		};
 		80F7A1D524213B3500061ED0 /* Logging */ = {
@@ -361,9 +375,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8087364624156CF100DFE94E /* HomeView.swift in Sources */,
 				80F7A1D924213B6400061ED0 /* AddEntryView.swift in Sources */,
 				8027849C240EC76000AFD8E8 /* AppDelegate.swift in Sources */,
+				80A7C9D2242507B900C21FC6 /* PredictionView.swift in Sources */,
+				800557CC2425579300FE11DA /* AuthView.swift in Sources */,
+				80A7C9D42425095600C21FC6 /* LandingView.swift in Sources */,
 				80C4846D2411727700BD7EAE /* LogoutView.swift in Sources */,
 				8020C2B92410138A0097BD5E /* GradientButtonStyle.swift in Sources */,
 				808736482416A4E000DFE94E /* SignupView.swift in Sources */,

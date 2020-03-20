@@ -11,6 +11,7 @@ import Firebase
 
 struct SignupView: View {
     @State private var password: String = ""
+    @State private var confirmpassword: String = ""
     @State private var email: String = ""
     @State private var errorMsg: String = ""
     @State private var errAlert: Bool = false
@@ -30,20 +31,27 @@ struct SignupView: View {
             CustomTextEntry(label: "Email", entryPrompt: "Enter your email", isSecure: false, enteredText: $email)
             Divider().padding(.bottom, 20)
             CustomTextEntry(label: "Password", entryPrompt: "Enter your password", isSecure: true, enteredText: $password)
+            CustomTextEntry(label: "Confirm Password", entryPrompt: "Enter your password", isSecure: true, enteredText: $confirmpassword)
             
             //Push the login credentials to the top
             Spacer()
             
             Button(
                 action: {
-                    self.attemptSignUp(email: self.email, password: self.password) {
-                        (authUser: Firebase.User?) in
-                        if authUser != nil { //Success in signup, have a user
-                            //dismiss to home screen
-                            self.presentationMode.wrappedValue.dismiss()
-                        }
-                        else { //No user was created
-                            self.errAlert = true
+                    if (self.password != self.confirmpassword) {
+                        self.errAlert = true
+                        self.errorMsg = "Passwords do not match."
+                    }
+                    else {
+                        self.attemptSignUp(email: self.email, password: self.password) {
+                            (authUser: Firebase.User?) in
+                            if authUser != nil { //Success in signup, have a user
+                                //dismiss to home screen
+                                self.presentationMode.wrappedValue.dismiss()
+                            }
+                            else { //No user was created
+                                self.errAlert = true
+                            }
                         }
                     }
                 },
@@ -59,6 +67,15 @@ struct SignupView: View {
                 //Unable to sign user in, alert to issue
                 Alert(title: Text("Error!"), message: Text(self.errorMsg), dismissButton: .default(Text("Ok")))
             }
+            
+            Button (
+                action: {
+                    self.presentationMode.wrappedValue.dismiss()
+                },
+                label: {
+                  Text("Cancel")
+                }
+            )
         }
     }
     
