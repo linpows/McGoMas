@@ -11,24 +11,52 @@ import Firebase
 
 struct LogoutView: View {
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var toggle: Toggle
+    @EnvironmentObject var userSession: UserSession
+    @State private var firstName: String = ""
+    @State private var lastName: String = ""
     
     var body: some View {
-        Button(
-            action: {
-                do {
-                    try Auth.auth().signOut()
-                    self.toggle.userAuth = false
-                    self.presentationMode.wrappedValue.dismiss()
-                } catch let signOutError as NSError {
-                  print ("Error signing out: %@", signOutError)
+        //Also show User Info here, allow them to change it
+        VStack () {
+            Form {
+                Section(header: Text("Profile Information")) {
+                    TextField("Display Name", text: $firstName)
+                        .textFieldStyle(TextEntryStyle())
+                        .background(Color.init(UIColor.lightGray).opacity(0.5))
+                    .cornerRadius(5.0)
                 }
-            },
-            label: {
-                Text("Sign Out")
             }
-        )
-        .buttonStyle(GradientButtonStyle())
+            //Button onEditingChanged
+            Button (
+                action: {
+                    //SAVE user info in firebase
+                },
+                label: {
+                  Text("Save Profile Changes")
+                }
+            )
+            Button(
+                action: {
+                    self.userSession.signOut()
+                },
+                label: {
+                    Text("Sign Out")
+                }
+            )
+            .buttonStyle(GradientButtonStyle())
+        }
+    }
+    
+    func saveChanges() {
+        var user = Auth.auth().currentUser
+        if let currUser = user {
+            
+        }
+        else {
+            //No user logged in, return
+            print("Error! No user signed in.")
+            return;
+        }
     }
         
 }

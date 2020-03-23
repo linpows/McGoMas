@@ -19,6 +19,9 @@ struct LoggingHomeView: View {
                 }
                 Text("we will show user's workouts here")
                     .navigationBarTitle("Your Log")
+                //https://firebase.google.com/docs/database/ios/lists-of-data
+                //Query, get JSON, convert to array of workout objects
+                //Display in a List UI component
             }
             .navigationBarItems(trailing:
                 Button(

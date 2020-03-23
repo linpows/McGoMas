@@ -9,10 +9,6 @@
 import SwiftUI
 import Firebase
 
-class Toggle: ObservableObject { //Allows re-rendering if a sign-in state changes
-    @Published var userAuth = false
-}
-
 extension AnyTransition { //Provides splash screen custom transition
     static var shrinkFade: AnyTransition {
         AnyTransition.scale.combined(with: .opacity)
@@ -21,7 +17,11 @@ extension AnyTransition { //Provides splash screen custom transition
 
 struct LandingView: View {
     @State private var splash = true
-    @ObservedObject var toggle = Toggle()
+    @EnvironmentObject var userSession: UserSession
+    
+    func getCurrUser () { //Subscribe to changes in user
+        userSession.listen()
+    }
     
         var body: some View {
         ZStack {
@@ -39,27 +39,20 @@ struct LandingView: View {
                 SplashView().transition(.shrinkFade)
             }
             else { //Display either a sign-in or sign-out screen
-                MainTabView().environmentObject(toggle)
+                MainTabView().environmentObject(userSession)
             }
         }
-        .onAppear() { //When this first loads, initialize the boolean properly
-            if Auth.auth().currentUser != nil {
-                self.toggle.userAuth = true;
-            }
-            else {
-                self.toggle.userAuth = false;
-            }
-        }
+        .onAppear(perform: getCurrUser)
     }
 }
 
 struct MainTabView: View {
-    @EnvironmentObject var toggle: Toggle
+    @EnvironmentObject var user: UserSession
     
     var body: some View {
         TabView {
             AuthView()
-                .environmentObject(toggle)
+                .environmentObject(user)
                 .tabItem {
                     VStack () {
                         Image(systemName: "1.circle")

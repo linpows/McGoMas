@@ -17,7 +17,7 @@ struct LoginView: View {
     @State private var errAlert = false
     @State private var errorTxt: String = ""
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var toggle: Toggle;
+    @EnvironmentObject var user: UserSession;
     
     var body: some View {
         VStack(alignment: .center) {
@@ -40,17 +40,15 @@ struct LoginView: View {
             //Interactive button to submit credentials
             Button(
                 action: {
-                    self.attemptSignIn(email: self.email, password: self.password) {
-                        (authUser: Firebase.User?) in
-                        if authUser != nil { //Success in signin, have a user
-                            //dismiss to home screen
-                            self.toggle.userAuth = true
+                    self.user.signIn(email: self.email, password: self.password) { (res, err) in
+                        if let err = err {
+                            self.errAlert = true
+                            self.errorTxt = err.localizedDescription
+                        }
+                        else {
                             self.presentationMode.wrappedValue.dismiss()
                         }
-                        else { //No user was signed in
-                            self.toggle.userAuth = false
-                            self.errAlert = true
-                        }
+                        
                     }
                 },
                 label: {

@@ -66,6 +66,9 @@ struct SpecificEntryForm: View {
         VStack () {
             Text("You selected " + (formType?.stringRep ?? "default"))
             Spacer()
+            
+            
+            
             HStack () {
                 Button(
                     action: {

@@ -10,6 +10,7 @@ import SwiftUI
 import Firebase
 
 struct SignupView: View {
+    @EnvironmentObject var userSession: UserSession
     @State private var password: String = ""
     @State private var confirmpassword: String = ""
     @State private var email: String = ""
@@ -43,15 +44,17 @@ struct SignupView: View {
                         self.errorMsg = "Passwords do not match."
                     }
                     else {
-                        self.attemptSignUp(email: self.email, password: self.password) {
-                            (authUser: Firebase.User?) in
-                            if authUser != nil { //Success in signup, have a user
-                                //dismiss to home screen
-                                self.presentationMode.wrappedValue.dismiss()
-                            }
-                            else { //No user was created
-                                self.errAlert = true
-                            }
+                        self.userSession
+                            .signUp(email: self.email, password: self.password) { (res, err) in
+                                if let res = res {
+                                    //Success
+                                    self.presentationMode.wrappedValue.dismiss()
+                                }
+                                else {
+                                    let error = err!
+                                    self.errAlert = true
+                                    self.errorMsg = error.localizedDescription
+                                }
                         }
                     }
                 },
