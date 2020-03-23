@@ -80,6 +80,13 @@ struct MainTabView: View {
                         Text("Traffic")
                     }
             }.tag(3)
+            CalendarView()
+                .tabItem {
+                    VStack () {
+                        Image(systemName: "3.circle")
+                        Text("Calendar")
+                    }
+            }.tag(4)
         }
     }
 }

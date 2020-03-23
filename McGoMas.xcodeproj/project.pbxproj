@@ -19,6 +19,8 @@
 		802784BE240ED0F200AFD8E8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 802784BD240ED0F200AFD8E8 /* GoogleService-Info.plist */; };
 		802784BF240ED0F200AFD8E8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 802784BD240ED0F200AFD8E8 /* GoogleService-Info.plist */; };
 		802784C1240EE1F200AFD8E8 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802784C0240EE1F200AFD8E8 /* LoginView.swift */; };
+		804BC0F12427A763004ED836 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804BC0F02427A763004ED836 /* CalendarView.swift */; };
+		804BC0F32427B89C004ED836 /* WorkoutForms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804BC0F22427B89C004ED836 /* WorkoutForms.swift */; };
 		8058CE14241D27D600559552 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8058CE13241D27D600559552 /* SplashView.swift */; };
 		808736482416A4E000DFE94E /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808736472416A4E000DFE94E /* SignupView.swift */; };
 		80A7C9D2242507B900C21FC6 /* PredictionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A7C9D1242507B900C21FC6 /* PredictionView.swift */; };
@@ -59,6 +61,8 @@
 		802784B4240EC76500AFD8E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		802784BD240ED0F200AFD8E8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		802784C0240EE1F200AFD8E8 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		804BC0F02427A763004ED836 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		804BC0F22427B89C004ED836 /* WorkoutForms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutForms.swift; sourceTree = "<group>"; };
 		8058CE13241D27D600559552 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		808736472416A4E000DFE94E /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		80A7C9D1242507B900C21FC6 /* PredictionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictionView.swift; sourceTree = "<group>"; };
@@ -129,6 +133,7 @@
 				8027849D240EC76000AFD8E8 /* SceneDelegate.swift */,
 				80A7C9D32425095600C21FC6 /* LandingView.swift */,
 				8058CE13241D27D600559552 /* SplashView.swift */,
+				804BC0EF2427A738004ED836 /* Calendar */,
 				80A7C9D02425079500C21FC6 /* Traffic Prediction */,
 				8058CE19241D2A2500559552 /* Authentication */,
 				80F7A1D524213B3500061ED0 /* Logging */,
@@ -157,6 +162,14 @@
 				802784B4240EC76500AFD8E8 /* Info.plist */,
 			);
 			path = McGoMasTests;
+			sourceTree = "<group>";
+		};
+		804BC0EF2427A738004ED836 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				804BC0F02427A763004ED836 /* CalendarView.swift */,
+			);
+			name = Calendar;
 			sourceTree = "<group>";
 		};
 		8058CE17241D29E800559552 /* Styling */ = {
@@ -192,6 +205,7 @@
 			children = (
 				80F7A1D824213B6400061ED0 /* AddEntryView.swift */,
 				80F7A1DA24213F5000061ED0 /* LoggingHomeView.swift */,
+				804BC0F22427B89C004ED836 /* WorkoutForms.swift */,
 			);
 			name = Logging;
 			sourceTree = "<group>";
@@ -376,6 +390,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				80F7A1D924213B6400061ED0 /* AddEntryView.swift in Sources */,
+				804BC0F32427B89C004ED836 /* WorkoutForms.swift in Sources */,
 				8027849C240EC76000AFD8E8 /* AppDelegate.swift in Sources */,
 				80A7C9D2242507B900C21FC6 /* PredictionView.swift in Sources */,
 				800557CC2425579300FE11DA /* AuthView.swift in Sources */,
@@ -383,6 +398,7 @@
 				80C4846D2411727700BD7EAE /* LogoutView.swift in Sources */,
 				8020C2B92410138A0097BD5E /* GradientButtonStyle.swift in Sources */,
 				808736482416A4E000DFE94E /* SignupView.swift in Sources */,
+				804BC0F12427A763004ED836 /* CalendarView.swift in Sources */,
 				80F7A1DB24213F5000061ED0 /* LoggingHomeView.swift in Sources */,
 				8027849E240EC76000AFD8E8 /* SceneDelegate.swift in Sources */,
 				802784C1240EE1F200AFD8E8 /* LoginView.swift in Sources */,
