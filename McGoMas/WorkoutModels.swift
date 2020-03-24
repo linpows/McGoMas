@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
 struct WorkoutTypeArr {
     let arrWithDefault : Array<String> =
@@ -33,5 +34,3 @@ enum WorkoutType: Int {
         }
     }
 }
-
-

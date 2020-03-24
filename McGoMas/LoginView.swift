@@ -66,27 +66,6 @@ struct LoginView: View {
             
         }
     }
-    
-
-    //Will execute the given callback function with a valid user object or nil
-    func attemptSignIn(email: String, password: String, callback: @escaping (Firebase.User?) -> ()) {
-        //Have Firebase attempt to retrieve a user with the given password/email
-        Auth.auth().signIn(withEmail: email, password: password) { user, error in
-            
-            if let error = error { //Error encountered in signin
-                self.errorTxt = error.localizedDescription
-                callback(nil)
-            }
-            else if user != nil  {
-                callback(user?.user)
-            }
-            else {
-                callback(nil)
-            }
-        }
-        
-    }
-    
 }
 
 

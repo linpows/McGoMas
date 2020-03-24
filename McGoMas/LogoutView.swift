@@ -35,6 +35,7 @@ struct LogoutView: View {
                   Text("Save Profile Changes")
                 }
             )
+            Divider()
             Button(
                 action: {
                     self.userSession.signOut()

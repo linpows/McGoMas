@@ -81,21 +81,6 @@ struct SignupView: View {
             )
         }
     }
-    
-    func attemptSignUp(email: String, password: String, callback: @escaping (Firebase.User?) -> ()) {
-        Auth.auth().createUser(withEmail: email, password: password) { result, err in
-            if err != nil { //Something went wrong
-                self.errorMsg = err!.localizedDescription
-                callback(nil)
-            }
-            if let user = result?.user { //Success
-                callback(user)
-            }
-            else {
-                callback(nil)
-            }
-        }
-    }
 }
 
 
