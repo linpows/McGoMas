@@ -135,6 +135,7 @@
 				8027849D240EC76000AFD8E8 /* SceneDelegate.swift */,
 				80A7C9D32425095600C21FC6 /* LandingView.swift */,
 				8058CE13241D27D600559552 /* SplashView.swift */,
+				807AD2AA24291FE200861B8C /* UserSession.swift */,
 				804BC0EF2427A738004ED836 /* Calendar */,
 				80A7C9D02425079500C21FC6 /* Traffic Prediction */,
 				8058CE19241D2A2500559552 /* Authentication */,
@@ -190,7 +191,6 @@
 				80C4846C2411727700BD7EAE /* LogoutView.swift */,
 				802784C0240EE1F200AFD8E8 /* LoginView.swift */,
 				800557CB2425579300FE11DA /* AuthView.swift */,
-				807AD2AA24291FE200861B8C /* UserSession.swift */,
 			);
 			name = Authentication;
 			sourceTree = "<group>";

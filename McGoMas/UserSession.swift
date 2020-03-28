@@ -56,6 +56,43 @@ class UserSession: ObservableObject {
         }
     }
     
+    func updateProfileInfo(email: String, displayName: String?, handler: @escaping UserProfileChangeCallback) {
+        if let displayName = displayName {
+            if let request = Auth.auth().currentUser?.createProfileChangeRequest() {
+                request.displayName = displayName
+                request.commitChanges(completion: handler)
+            }
+        }
+        
+        Auth.auth().currentUser?.updateEmail(to: email, completion: handler)
+        
+        user!.email = email
+        user!.name = displayName
+    }
+    
+    /*
+     Given JSON representation of a workout, uploads to database
+     */
+    func uploadWorkout(workout: String) {
+        
+    }
+    
+    /*
+    Retrieves all of the user's workouts
+    */
+    func getWorkouts() -> [AnyObject] {
+        var workouts: [AnyObject] = []
+        // Fetch here
+        return workouts
+    }
+    
+    /*
+     Overrides the workout with the given identifier with the supplied workout
+     */
+    func updateWorkout(identifier: String, workout: String) {
+        
+    }
+    
     func stopListening() { //Stop listening for authentication
         if let stateHandler = stateHandler {
             Auth.auth().removeStateDidChangeListener(stateHandler)

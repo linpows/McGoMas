@@ -11,9 +11,9 @@ import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
-
+    //Reference for our app's database
+    var databaseRef: DatabaseReference! = Database.database().reference()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Configure Firebase apis
         // https://firebase.google.com/docs/auth/ios/start

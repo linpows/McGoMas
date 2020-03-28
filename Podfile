@@ -13,6 +13,8 @@ target 'McGoMas' do
   pod 'Firebase/Auth'
   # Pod for google calendars
   pod 'GoogleAPIClient/Calendar'
+  # For Firebase Database
+  pod 'Firebase/Database'
 
   target 'McGoMasTests' do
     inherit! :search_paths
