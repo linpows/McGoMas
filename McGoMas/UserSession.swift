@@ -19,6 +19,8 @@ class UserSession: ObservableObject {
     //User has a property observer "didSet". Will send the UserSession to subscribers every time a property of User is set
     @Published var user: User? { didSet {self.didChange.send(self)}}
     var stateHandler: AuthStateDidChangeListenerHandle?
+    //Reference for our app's database
+    var databaseRef: DatabaseReference! = Database.database().reference()
     
     func listen() { //Listen for authentications
         stateHandler = Auth.auth().addStateDidChangeListener { (auth, authUser) in

@@ -35,25 +35,33 @@ enum WorkoutType: Int {
     }
 }
 
+
+
 /*
  Models for different types of workouts.
  Stored under user's UID in Firebase Database
  */
 
-struct Weight: Identifiable {
+struct Weight: Identifiable, Hashable {
     var id: ObjectIdentifier
-    
+    //Example Set: ["weightName": "deadlift", "weight": "500", "repetitions": "5"]
+    var set: [String: String]
 }
 
-struct Bike: Identifiable {
+struct Bike: Identifiable, Hashable {
     var id: ObjectIdentifier
-    
+    var distance: Double
+    var time: TimeInterval
 }
 
-struct Run: Identifiable {
+struct Run: Identifiable, Hashable {
     var id: ObjectIdentifier
+    var distance: Double
+    var time: TimeInterval
 }
 
-struct Swim: Identifiable {
+struct Swim: Identifiable, Hashable {
     var id: ObjectIdentifier
+    var distance: Double
+    var time: TimeInterval
 }
