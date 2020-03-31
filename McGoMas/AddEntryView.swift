@@ -17,7 +17,9 @@ struct AddEntryView: View {
     @State private var alert = false
     @State private var show = false
     
-    @State var model: CardioModel
+    @State var modelStore: LocalLogList
+    @State var freshCardioModel: CardioModel = CardioModel()
+    @State var freshWeightModel: WeightModel = WeightModel()
     
     var body: some View {
             VStack () {
@@ -40,7 +42,10 @@ struct AddEntryView: View {
                         }
                         else { //All other values indicate a selection
                             self.type = WorkoutType(rawValue: self.selectedType)
-                            self.model.createCardio(withType: self.type!)
+                            /*
+                             TODO: accept weight model too
+                             */
+                            self.freshCardioModel.createCardio(withType: self.type!)
                             self.show = true
                         }
                     },
@@ -56,7 +61,10 @@ struct AddEntryView: View {
             }
             .navigationBarTitle("Add New Workout")
             .sheet(isPresented: $show) {
-                return EntryForm(formType: self.$type, model: self.model)
+                /*
+                 TODO: accept weight model too
+                 */
+                return EntryForm(formType: self.$type, model: self.freshCardioModel, modelStorage: self.modelStore)
             }
     }
 }
@@ -65,6 +73,7 @@ struct EntryForm: View {
     @Binding var formType: WorkoutType?
     @Environment(\.presentationMode) var presentationMode
     @State var model: CardioModel
+    @State var modelStorage: LocalLogList
     
     var body: some View {
         NavigationView () {
@@ -77,6 +86,7 @@ struct EntryForm: View {
                             /*
                              TODO: Save in local list/database
                              */
+                            self.modelStorage.cardioLogs.append(self.model.cardio!)
                             self.presentationMode.wrappedValue.dismiss()
                         },
                         label: {
@@ -85,6 +95,7 @@ struct EntryForm: View {
                     ).buttonStyle(GradientButtonStyle())
                     Button(
                         action: {
+                            self.model.removeCardio()
                             self.presentationMode.wrappedValue.dismiss()
                         },
                         label: {
@@ -99,7 +110,7 @@ struct EntryForm: View {
 
 struct AddEntryView_Previews: PreviewProvider {
     static var previews: some View {
-        let model: CardioModel = CardioModel()
-        return AddEntryView(model: model)
+        let modelStore: LocalLogList = LocalLogList()
+        return AddEntryView(modelStore: modelStore)
     }
 }

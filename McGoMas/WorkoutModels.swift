@@ -193,7 +193,8 @@ class CardioModel: ObservableObject {
         }
     }
     
-    class Cardio: Identifiable{
+    class Cardio: Identifiable {
+        
         
         let id: UUID = UUID()
         //Bike, run, swim...

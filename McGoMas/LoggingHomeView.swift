@@ -10,29 +10,38 @@ import SwiftUI
 import FirebaseDatabase
 import FirebaseAuth
 
+
+class LocalLogList: ObservableObject {
+    @Published var cardioLogs: [CardioModel.Cardio] = []
+}
+
 struct LoggingHomeView: View {
     @State private var showAdd: Bool = false
-    @EnvironmentObject var userSession: UserSession
-    //To see if we can retrieve an added/edited model
-    @ObservedObject var testModel: CardioModel = CardioModel()
     
+    @EnvironmentObject var userSession: UserSession
+    //Observes multiple additions
+    @ObservedObject var logs: LocalLogList = LocalLogList()
+
     
     var body: some View {
         NavigationView {
             VStack () {
-                NavigationLink(destination: AddEntryView(model: self.testModel), isActive: $showAdd) {
+                NavigationLink(destination: AddEntryView(modelStore: self.logs), isActive: $showAdd) {
                     EmptyView()
                 }
-                if testModel.cardio !== nil {
-                    Text("We have recieved the following Cardio Model:")
-                    Text("Date:")
-                    Text(self.testModel.cardio!.date.description)
-                    Text("Distance:")
-                    Text(self.testModel.cardio!.distance?.description ?? "")
-                    Text("Time in Minutes:")
-                    Text(self.testModel.cardio!.time?.description ?? "")
-                    
+                ForEach(logs.cardioLogs, id: \.self.id) { log in
+                    Group {
+                        Text("Received log with following CARDIO data:")
+                        Text("Date:")
+                        Text(log.date.description)
+                        Text("Distance:")
+                        Text(log.distance?.description ?? "")
+                        Text("Time in Minutes:")
+                        Text(log.time?.description ?? "")
+                        Divider()
+                    }
                 }
+                
             }
             .navigationBarTitle("Your Log")
             .navigationBarItems(trailing:
