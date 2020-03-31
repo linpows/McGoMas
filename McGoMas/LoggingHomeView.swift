@@ -13,26 +13,24 @@ import FirebaseAuth
 struct LoggingHomeView: View {
     @State private var showAdd: Bool = false
     @EnvironmentObject var userSession: UserSession
-    @State private var dummyData: [Swim] = [
-        Swim(id: ObjectIdentifier(Swim.Type.self), distance: 500.0, time: TimeInterval(30.00)),
-        Swim(id: ObjectIdentifier(Swim.Type.self), distance: 700.0, time: TimeInterval(60.00))
-    ]
+    //To see if we can retrieve an added/edited model
+    @ObservedObject var testModel: CardioModel = CardioModel()
     
     
     var body: some View {
         NavigationView {
             VStack () {
-                NavigationLink(destination: AddEntryView(), isActive: $showAdd) {
+                NavigationLink(destination: AddEntryView(model: self.testModel), isActive: $showAdd) {
                     EmptyView()
                 }
-                ScrollView(Axis.Set.vertical, showsIndicators: true){
-
-                        ForEach(self.dummyData, id: \.self) { item in
-                            Text("Test")
-                        }
-                        //https://firebase.google.com/docs/database/ios/lists-of-data
-                        //Query, get JSON, convert to array of workout objects
-                        //Display in a List UI component
+                if testModel.cardio !== nil {
+                    Text("We have recieved the following Cardio Model:")
+                    Text("Date:")
+                    Text(self.testModel.cardio!.date.description)
+                    Text("Distance:")
+                    Text(self.testModel.cardio!.distance?.description ?? "")
+                    Text("Time in Minutes:")
+                    Text(self.testModel.cardio!.time?.description ?? "")
                     
                 }
             }

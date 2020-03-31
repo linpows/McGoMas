@@ -19,10 +19,13 @@ struct TimeTextField: View {
         HStack () {
             TextField("Hours", text: $hour)
                 .textFieldStyle(TextEntryStyle())
+                .keyboardType(.numberPad)
                 .onReceive(Just(hour)) { typedValue in
                         //Filter out any non-valid characters
-                        let sanitized = typedValue.filter { self.validChars.contains($0) }
-                        self.min = sanitized
+                        let sanitized = typedValue.filter { self.validChars.contains($0)
+                            
+                        }
+                        self.hour = sanitized
                 }
             Text(":")
             TextField("Minutes", text: $min)

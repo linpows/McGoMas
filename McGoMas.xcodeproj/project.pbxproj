@@ -28,6 +28,7 @@
 		80A7C9D2242507B900C21FC6 /* PredictionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A7C9D1242507B900C21FC6 /* PredictionView.swift */; };
 		80A7C9D42425095600C21FC6 /* LandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A7C9D32425095600C21FC6 /* LandingView.swift */; };
 		80C4846D2411727700BD7EAE /* LogoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C4846C2411727700BD7EAE /* LogoutView.swift */; };
+		80D937F12433909400006E8B /* CardioEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D937F02433909400006E8B /* CardioEntry.swift */; };
 		80E61ECE24328F3C0068A63B /* TimeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E61ECD24328F3C0068A63B /* TimeTextField.swift */; };
 		80F7A1D924213B6400061ED0 /* AddEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F7A1D824213B6400061ED0 /* AddEntryView.swift */; };
 		80F7A1DB24213F5000061ED0 /* LoggingHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F7A1DA24213F5000061ED0 /* LoggingHomeView.swift */; };
@@ -73,6 +74,7 @@
 		80A7C9D1242507B900C21FC6 /* PredictionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictionView.swift; sourceTree = "<group>"; };
 		80A7C9D32425095600C21FC6 /* LandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingView.swift; sourceTree = "<group>"; };
 		80C4846C2411727700BD7EAE /* LogoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutView.swift; sourceTree = "<group>"; };
+		80D937F02433909400006E8B /* CardioEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardioEntry.swift; sourceTree = "<group>"; };
 		80E61ECD24328F3C0068A63B /* TimeTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTextField.swift; sourceTree = "<group>"; };
 		80F7A1D824213B6400061ED0 /* AddEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEntryView.swift; sourceTree = "<group>"; };
 		80F7A1DA24213F5000061ED0 /* LoggingHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingHomeView.swift; sourceTree = "<group>"; };
@@ -212,8 +214,9 @@
 		80F7A1D524213B3500061ED0 /* Logging */ = {
 			isa = PBXGroup;
 			children = (
-				80F7A1D824213B6400061ED0 /* AddEntryView.swift */,
 				80F7A1DA24213F5000061ED0 /* LoggingHomeView.swift */,
+				80F7A1D824213B6400061ED0 /* AddEntryView.swift */,
+				80D937F02433909400006E8B /* CardioEntry.swift */,
 				804BC0F22427B89C004ED836 /* WorkoutModels.swift */,
 			);
 			name = Logging;
@@ -412,6 +415,7 @@
 				8027849E240EC76000AFD8E8 /* SceneDelegate.swift in Sources */,
 				802784C1240EE1F200AFD8E8 /* LoginView.swift in Sources */,
 				8020C2BD241023C00097BD5E /* CustomTextEntry.swift in Sources */,
+				80D937F12433909400006E8B /* CardioEntry.swift in Sources */,
 				80E61ECE24328F3C0068A63B /* TimeTextField.swift in Sources */,
 				8058CE14241D27D600559552 /* SplashView.swift in Sources */,
 				8028D50D24315BAF00CF050B /* NumericTextField.swift in Sources */,

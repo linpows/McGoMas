@@ -17,6 +17,8 @@ struct AddEntryView: View {
     @State private var alert = false
     @State private var show = false
     
+    @State var model: CardioModel
+    
     var body: some View {
             VStack () {
                 Spacer()
@@ -38,6 +40,7 @@ struct AddEntryView: View {
                         }
                         else { //All other values indicate a selection
                             self.type = WorkoutType(rawValue: self.selectedType)
+                            self.model.createCardio(withType: self.type!)
                             self.show = true
                         }
                     },
@@ -53,7 +56,7 @@ struct AddEntryView: View {
             }
             .navigationBarTitle("Add New Workout")
             .sheet(isPresented: $show) {
-                EntryForm(formType: self.$type)
+                return EntryForm(formType: self.$type, model: self.model)
             }
     }
 }
@@ -61,11 +64,12 @@ struct AddEntryView: View {
 struct EntryForm: View {
     @Binding var formType: WorkoutType?
     @Environment(\.presentationMode) var presentationMode
+    @State var model: CardioModel
     
     var body: some View {
         NavigationView () {
             VStack () {
-                CardioEntry()
+                CardioEntry(model: model)
                 Spacer()
                 HStack () {
                     Button(
@@ -93,59 +97,9 @@ struct EntryForm: View {
     }
 }
 
-struct CardioEntry: View {
-    //Cardio entries have 3 main metrics: date completed, distance covered, time elapsed
-    @State private var date: Date = Date()
-    @State private var distance: String = ""
-    @State private var unitPicked = 0
-    @State private var time: TimeInterval? = nil
-    private var unitSelection = [DistanceUnit.miles, DistanceUnit.meters, DistanceUnit.kilometers]
-    
-    var body: some View {
-        VStack () {
-            Form {
-                Section(header: Text("Workout Date")) {
-                    DatePicker("Workout Date", selection: $date)
-                    .labelsHidden()
-                }
-                
-                Section(header: Text("Distance")) {
-                    NumericTextField(label: "Distance", enteredText: $distance)
-                    Picker("Unit", selection: $unitPicked) {
-                        ForEach( 0 ..< unitSelection.count) { index in
-                            Text(self.unitSelection[index].stringRep).tag(index)
-                        }.pickerStyle(SegmentedPickerStyle())
-                    }
-                }
-                
-                Section(header: Text("Time Elapsed")) {
-                    //Use "totalTimeInMinutes" to retrieve entered time
-                    TimeTextField()
-                }
-            }
-        }
-        
-    }
-    
-    enum DistanceUnit: Int {
-        case meters, miles, kilometers
-    
-        var stringRep: String {
-            switch self {
-                case DistanceUnit.meters:
-                    return "meters"
-                case DistanceUnit.miles:
-                    return "miles"
-                case DistanceUnit.kilometers:
-                    return "kilometers"
-            }
-        }
-        
-    }
-}
-
 struct AddEntryView_Previews: PreviewProvider {
     static var previews: some View {
-        AddEntryView()
+        let model: CardioModel = CardioModel()
+        return AddEntryView(model: model)
     }
 }

@@ -83,7 +83,7 @@ class UserSession: ObservableObject {
     Retrieves all of the user's workouts
     */
     func getWorkouts() -> [AnyObject] {
-        var workouts: [AnyObject] = []
+        let workouts: [AnyObject] = []
         // Fetch here
         return workouts
     }
