@@ -96,43 +96,47 @@ class WeightModel: ObservableObject {
             self.weight = myWeight
         }
     }
-}
-
-class Weight {
-    var dayCompleted: Date
-    var sets: [WeightSet]
     
-    /*
-     Can optionally specify some predefined sets.
-     If none specified, will assume an empty set array
-     Can optionally specify a day this was completed.
-     Default assumes the date is moment of creation
-     */
-    init(startingSets: [WeightSet]?, startingDate: Date?) {
-        if let initial = startingSets {
-            self.sets = initial
-        }
-        else {
-            self.sets = []
-        }
-        if let aDate = startingDate {
-            self.dayCompleted = aDate
-        }
-        else {
-            self.dayCompleted = Date()
+    class Weight: Identifiable {
+        var id: UUID
+        var dayCompleted: Date
+        var sets: [WeightSet]
+        
+        /*
+         Can optionally specify some predefined sets.
+         If none specified, will assume an empty set array
+         Can optionally specify a day this was completed.
+         Default assumes the date is moment of creation
+         */
+        init(startingSets: [WeightSet]?, startingDate: Date?) {
+            self.id = UUID()
+            if let initial = startingSets {
+                self.sets = initial
+            }
+            else {
+                self.sets = []
+            }
+            if let aDate = startingDate {
+                self.dayCompleted = aDate
+            }
+            else {
+                self.dayCompleted = Date()
+            }
+            
         }
         
-    }
-    
-    
-    struct WeightSet: Identifiable {
-        let id: UUID = UUID()
-        var weightName: String
-        var weight: Double
-        var weightUnit: String
-        var repetitions: Int
+        
+        struct WeightSet: Identifiable {
+            let id: UUID = UUID()
+            var weightName: String
+            var weight: Double
+            var weightUnit: String
+            var repetitions: Int
+        }
     }
 }
+
+
 
 class CardioModel: ObservableObject {
     var didChange = PassthroughSubject<CardioModel, Never>()
