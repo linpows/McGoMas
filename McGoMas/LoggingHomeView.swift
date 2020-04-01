@@ -13,6 +13,7 @@ import FirebaseAuth
 
 class LocalLogList: ObservableObject {
     @Published var cardioLogs: [CardioModel.Cardio] = []
+    @Published var weightLogs: [WeightModel.Weight] = []
 }
 
 struct LoggingHomeView: View {

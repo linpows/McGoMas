@@ -28,6 +28,7 @@
 		80A7C9D2242507B900C21FC6 /* PredictionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A7C9D1242507B900C21FC6 /* PredictionView.swift */; };
 		80A7C9D42425095600C21FC6 /* LandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A7C9D32425095600C21FC6 /* LandingView.swift */; };
 		80C4846D2411727700BD7EAE /* LogoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C4846C2411727700BD7EAE /* LogoutView.swift */; };
+		80CDF0DF24351BF3009EE05B /* WeightEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CDF0DE24351BF3009EE05B /* WeightEntry.swift */; };
 		80D937F12433909400006E8B /* CardioEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D937F02433909400006E8B /* CardioEntry.swift */; };
 		80E61ECE24328F3C0068A63B /* TimeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E61ECD24328F3C0068A63B /* TimeTextField.swift */; };
 		80F7A1D924213B6400061ED0 /* AddEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F7A1D824213B6400061ED0 /* AddEntryView.swift */; };
@@ -74,6 +75,7 @@
 		80A7C9D1242507B900C21FC6 /* PredictionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictionView.swift; sourceTree = "<group>"; };
 		80A7C9D32425095600C21FC6 /* LandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingView.swift; sourceTree = "<group>"; };
 		80C4846C2411727700BD7EAE /* LogoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutView.swift; sourceTree = "<group>"; };
+		80CDF0DE24351BF3009EE05B /* WeightEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightEntry.swift; sourceTree = "<group>"; };
 		80D937F02433909400006E8B /* CardioEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardioEntry.swift; sourceTree = "<group>"; };
 		80E61ECD24328F3C0068A63B /* TimeTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTextField.swift; sourceTree = "<group>"; };
 		80F7A1D824213B6400061ED0 /* AddEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEntryView.swift; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				80F7A1DA24213F5000061ED0 /* LoggingHomeView.swift */,
 				80F7A1D824213B6400061ED0 /* AddEntryView.swift */,
 				80D937F02433909400006E8B /* CardioEntry.swift */,
+				80CDF0DE24351BF3009EE05B /* WeightEntry.swift */,
 				804BC0F22427B89C004ED836 /* WorkoutModels.swift */,
 			);
 			name = Logging;
@@ -403,6 +406,7 @@
 			files = (
 				80F7A1D924213B6400061ED0 /* AddEntryView.swift in Sources */,
 				804BC0F32427B89C004ED836 /* WorkoutModels.swift in Sources */,
+				80CDF0DF24351BF3009EE05B /* WeightEntry.swift in Sources */,
 				8027849C240EC76000AFD8E8 /* AppDelegate.swift in Sources */,
 				80A7C9D2242507B900C21FC6 /* PredictionView.swift in Sources */,
 				800557CC2425579300FE11DA /* AuthView.swift in Sources */,

@@ -68,7 +68,7 @@ class WeightModel: ObservableObject {
     */
     func addSet(name: String, mass: Double, massUnit: String, reps: Int) {
         if let myWeight = self.weight {
-            myWeight.sets.append(Weight.WeightSet(weightName: name, weight: mass, weightUnit: massUnit, repetitions: reps))
+            myWeight.sets.append(WeightSet(weightName: name, weight: mass, weightUnit: massUnit, repetitions: reps))
             self.weight = myWeight
         }
     }
@@ -124,18 +124,16 @@ class WeightModel: ObservableObject {
             }
             
         }
-        
-        
-        struct WeightSet: Identifiable {
-            let id: UUID = UUID()
-            var weightName: String
-            var weight: Double
-            var weightUnit: String
-            var repetitions: Int
-        }
     }
 }
 
+struct WeightSet: Identifiable {
+    let id: UUID = UUID()
+    var weightName: String
+    var weight: Double
+    var weightUnit: String
+    var repetitions: Int
+}
 
 
 class CardioModel: ObservableObject {

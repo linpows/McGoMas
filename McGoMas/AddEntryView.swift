@@ -64,7 +64,7 @@ struct AddEntryView: View {
                 /*
                  TODO: accept weight model too
                  */
-                return EntryForm(formType: self.$type, model: self.freshCardioModel, modelStorage: self.modelStore)
+                return EntryForm(formType: self.$type, cardioModel: self.freshCardioModel, weightModel: self.freshWeightModel, modelStorage: self.modelStore)
             }
     }
 }
@@ -72,13 +72,19 @@ struct AddEntryView: View {
 struct EntryForm: View {
     @Binding var formType: WorkoutType?
     @Environment(\.presentationMode) var presentationMode
-    @State var model: CardioModel
+    @State var cardioModel: CardioModel
+    @State var weightModel: WeightModel
     @State var modelStorage: LocalLogList
     
     var body: some View {
         NavigationView () {
             VStack () {
-                CardioEntry(model: model)
+                if (self.formType == WorkoutType.weights) {
+                    WeightEntry(model: weightModel)
+                }
+                else {
+                    CardioEntry(model: cardioModel)
+                }
                 Spacer()
                 HStack () {
                     Button(
@@ -86,7 +92,15 @@ struct EntryForm: View {
                             /*
                              TODO: Save in local list/database
                              */
-                            self.modelStorage.cardioLogs.append(self.model.cardio!)
+                            if (self.formType == WorkoutType.weights) {
+                                //Store as weight workout
+                                self.modelStorage.weightLogs.append(self.weightModel.weight!)
+                            }
+                            else {
+                                //Store as cardio workout
+                                self.modelStorage.cardioLogs.append(self.cardioModel.cardio!)
+                            }
+                            
                             self.presentationMode.wrappedValue.dismiss()
                         },
                         label: {
@@ -95,7 +109,12 @@ struct EntryForm: View {
                     ).buttonStyle(GradientButtonStyle())
                     Button(
                         action: {
-                            self.model.removeCardio()
+                            if (self.formType == WorkoutType.weights) {
+                                self.weightModel.removeWeight()
+                            }
+                            else {
+                                self.cardioModel.removeCardio()
+                            }
                             self.presentationMode.wrappedValue.dismiss()
                         },
                         label: {
