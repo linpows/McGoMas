@@ -10,8 +10,7 @@ import SwiftUI
 
 struct AddEntryView: View {
     var workoutTypes = WorkoutTypeArr.init().arrWithDefault
-    //Initialize workout date to current date
-    @State private var workoutDate = Date()
+
     @State private var selectedType = 0
     @State private var type: WorkoutType? = nil
     @State private var alert = false
@@ -42,9 +41,8 @@ struct AddEntryView: View {
                         }
                         else { //All other values indicate a selection
                             self.type = WorkoutType(rawValue: self.selectedType)
-                            /*
-                             TODO: accept weight model too
-                             */
+                            
+                            self.freshWeightModel.createWeight()
                             self.freshCardioModel.createCardio(withType: self.type!)
                             self.show = true
                         }

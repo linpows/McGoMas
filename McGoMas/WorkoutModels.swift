@@ -133,6 +133,13 @@ struct WeightSet: Identifiable {
     var weight: Double
     var weightUnit: String
     var repetitions: Int
+    
+    func getStrRep() -> String {
+        var builderStr = "Weight name: " + self.weightName + " " + weightUnit
+        builderStr += "\n"
+        builderStr += "Reps: " + self.repetitions.description
+        return builderStr
+    }
 }
 
 

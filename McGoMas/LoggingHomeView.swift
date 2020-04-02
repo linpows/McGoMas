@@ -42,6 +42,18 @@ struct LoggingHomeView: View {
                         Divider()
                     }
                 }
+                ForEach(logs.weightLogs, id: \.self.id) { log in
+                    Group {
+                        Text("Received log with following WEIGHT data:")
+                        Text("Date:")
+                        Text(log.dayCompleted.description)
+                        Text("Sets:")
+                        ForEach(log.sets) { set in
+                            Text(set.getStrRep())
+                        }
+                        Divider()
+                    }
+                }
                 
             }
             .navigationBarTitle("Your Log")
