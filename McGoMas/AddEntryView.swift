@@ -7,15 +7,19 @@
 //
 
 import SwiftUI
+import FirebaseDatabase
+
 
 struct AddEntryView: View {
     var workoutTypes = WorkoutTypeArr.init().arrWithDefault
     //Initialize workout date to current date
-    @State private var workoutDate = Date()
     @State private var selectedType = 0
     @State private var type: WorkoutType? = nil
     @State private var alert = false
     @State private var show = false
+    
+    @EnvironmentObject var user: UserSession;
+
     
     var body: some View {
             VStack () {
@@ -53,14 +57,18 @@ struct AddEntryView: View {
             }
             .navigationBarTitle("Add New Workout")
             .sheet(isPresented: $show) {
-                SpecificEntryForm(formType: self.$type)
+                SpecificEntryForm(formType: self.$type, user: self.$user.user)
             }
     }
 }
 
 struct SpecificEntryForm: View {
     @Binding var formType: WorkoutType?
+    @Binding var user: User?
+
+
     @Environment(\.presentationMode) var presentationMode
+    var ref = Database.database().reference()
     
     var body: some View {
         VStack () {
@@ -72,6 +80,13 @@ struct SpecificEntryForm: View {
             HStack () {
                 Button(
                     action: {
+                        
+                        self.ref.child("logs") // get logs database
+                            .child(self.user!.userID) // gets all logs by current signed in user
+                            .childByAutoId() // generates a new UUID for new log
+                            .setValue(["date": Date().timeIntervalSince1970,
+                                       "workoutType": self.formType?.stringRep ?? "default"]) // log details
+
                         self.presentationMode.wrappedValue.dismiss()
                     },
                     label: {
