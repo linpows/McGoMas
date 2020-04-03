@@ -7,6 +7,8 @@
 //
 
 import SwiftUI
+import FirebaseDatabase
+
 
 struct AddEntryView: View {
     var workoutTypes = WorkoutTypeArr.init().arrWithDefault
@@ -17,10 +19,12 @@ struct AddEntryView: View {
     @State private var alert = false
     @State private var show = false
     
+
     @State var modelStore: LocalLogList
     @State var freshCardioModel: CardioModel = CardioModel()
     @State var freshWeightModel: WeightModel = WeightModel()
     
+    @EnvironmentObject var user: UserSession;
     
     var body: some View {
             VStack () {
@@ -94,7 +98,11 @@ struct AddEntryView: View {
 
 struct EntryForm: View {
     @Binding var formType: WorkoutType?
+    @Binding var user: User?
+
+
     @Environment(\.presentationMode) var presentationMode
+    private var ref = Database.database().reference()
     @State var cardioModel: CardioModel
     @State var weightModel: WeightModel
     @State var modelStorage: LocalLogList
@@ -113,17 +121,29 @@ struct EntryForm: View {
                 HStack () {
                     Button(
                         action: {
-                            /*
-                             TODO: Save in local list/database
-                             */
+                          
                             if (self.formType == WorkoutType.weights) {
                                 //Store as weight workout
                                 self.modelStorage.weightLogs.append(self.weightModel.weight!)
+                              self.ref.child("logs") // get logs database
+                            .child(self.user!.userID) // gets all logs by current signed in user
+                            .childByAutoId() // generates a new UUID for new log
+                            .setValue(["date": self.weightModel.weight!.dayCompleted,
+                                       "workoutType": "weights"]) // log details
+
                             }
                             else {
                                 //Store as cardio workout
                                 self.modelStorage.cardioLogs.append(self.cardioModel.cardio!)
+                              self.ref.child("logs") // get logs database
+                            .child(self.user!.userID) // gets all logs by current signed in user
+                            .childByAutoId() // generates a new UUID for new log
+                            .setValue(["date": self.cardioModel.cardio!.date,
+                                       "workoutType": self.formType?.stringRep ?? "default"]) // log details
+
                             }
+                          
+                          
                             
                             self.presentationMode.wrappedValue.dismiss()
                         },
