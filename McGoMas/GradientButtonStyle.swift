@@ -18,6 +18,7 @@ let hokieStone = Color.init(Color.RGBColorSpace.sRGB, red: 117.0 / 255, green: 1
 //Gradient for the button
 let maroonGradient = Gradient(colors: [chicagoMaroon, hokieStone])
 let orangeGradient = Gradient(colors: [hokieStone, burntOrange])
+let maroonOrangeGradient = Gradient(colors: [chicagoMaroon, hokieStone, burntOrange])
 
 // Custom styling for our buttons
 // Rounded edge with gradient color background

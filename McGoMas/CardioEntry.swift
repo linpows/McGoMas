@@ -15,7 +15,6 @@ struct CardioEntry: View {
     @State private var distance: String = ""
     @State private var unitPicked: Int = 0
     @State private var time: Double = 0.0
-    @State private var date: Date = Date()
     
     //MUST have instantiated model.cardio
     @ObservedObject var model: CardioModel
@@ -24,11 +23,6 @@ struct CardioEntry: View {
     var body: some View {
         VStack () {
             Form {
-                Section(header: Text("Workout Date")) {
-                    DatePicker("Workout Date", selection: $date)
-                    .labelsHidden()
-                }
-                
                 Section(header: Text("Workout Details")) {
                     HStack () {
                         NumericTextField(label: "Distance", enteredText: $distance)
@@ -45,14 +39,12 @@ struct CardioEntry: View {
                 let truthSource = self.model.cardio!
                 self.time = truthSource.time ?? 0.0
                 self.distance = truthSource.distance?.description ?? ""
-                self.date = truthSource.date
                 self.unitPicked = self.unitSelection.firstIndex(of: truthSource.distanceUnit ?? "") ?? 0
             }
             .onDisappear() {
                 self.model.setTime(newTime: self.time)
                 self.model.setUnit(newUnit: self.unitSelection[self.unitPicked])
                 self.model.setDistance(newDistance: Double(self.distance) ?? 0.0)
-                self.model.setDate(newDate: self.date)
             }
         }
         

@@ -18,7 +18,7 @@ class LocalLogList: ObservableObject {
 
 struct LoggingHomeView: View {
     @State private var showAdd: Bool = false
-    
+    @State private var showError: Bool = false
     @EnvironmentObject var userSession: UserSession
     //Observes multiple additions
     @ObservedObject var logs: LocalLogList = LocalLogList()
@@ -54,13 +54,20 @@ struct LoggingHomeView: View {
                         Divider()
                     }
                 }
-                
+            }
+            .alert(isPresented: $showError) {
+                Alert(title: Text("Oops"), message: Text("Sign in to access this functionality"), dismissButton: .default(Text("Ok")))
             }
             .navigationBarTitle("Your Log")
             .navigationBarItems(trailing:
                 Button(
                     action: {
-                        self.showAdd = true;
+                        if (self.userSession.user == nil) {
+                            self.showError = true;
+                        }
+                        else {
+                            self.showAdd = true;
+                        }
                     },
                     label: {
                         Image(systemName: "plus.square.fill")
@@ -72,10 +79,6 @@ struct LoggingHomeView: View {
                 )
             )
         }
-    }
-    
-    func renderWorkout(jsonData: Decodable) {
-        
     }
 }
 
