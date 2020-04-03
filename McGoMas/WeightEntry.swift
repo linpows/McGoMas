@@ -27,22 +27,19 @@ class SetArray: ObservableObject {
 }
 
 struct WeightEntry: View {
-    //Weight Entries have completion dates and 1 or more sets
-    @State private var date: Date = Date()
-    
     //Given model we will be storing changes in
     @ObservedObject var model: WeightModel
     //Sets within this workout model
     @ObservedObject var setEntries = SetArray()
     
     var body: some View {
-        VStack () {
-            SetEntry(currentLoggedSets: self.setEntries)
-        }
+ 
+        SetEntry(currentLoggedSets: self.setEntries)
         .onDisappear() {
             //Save data before exiting
-            self.model.weight!.dayCompleted = self.date
-            self.model.weight!.sets = self.setEntries.sets
+            if let weight = self.model.weight {
+                weight.sets = self.setEntries.sets
+            }
         }
     }
     

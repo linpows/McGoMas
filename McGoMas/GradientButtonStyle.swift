@@ -12,12 +12,12 @@ import Foundation
 import SwiftUI
 
 //Create color for chicago maroon, gray
-private var chicagoMaroon = Color.init(Color.RGBColorSpace.sRGB, red: 99.0 / 255, green: 0, blue: 49.0 / 255, opacity: 100)
-private var hokieStone = Color.init(Color.RGBColorSpace.sRGB, red: 117.0 / 255, green: 120.0 / 255, blue: 123.0 / 255, opacity: 100)
-private var burntOrange: Color = Color.init(Color.RGBColorSpace.sRGB, red: 207.0 / 255, green: 69.0 / 255, blue: 32.0 / 255, opacity: 100)
+let chicagoMaroon = Color.init(Color.RGBColorSpace.sRGB, red: 99.0 / 255, green: 0, blue: 49.0 / 255, opacity: 100)
+let hokieStone = Color.init(Color.RGBColorSpace.sRGB, red: 117.0 / 255, green: 120.0 / 255, blue: 123.0 / 255, opacity: 100)
+ let burntOrange: Color = Color.init(Color.RGBColorSpace.sRGB, red: 207.0 / 255, green: 69.0 / 255, blue: 32.0 / 255, opacity: 100)
 //Gradient for the button
-private var maroonGradient = Gradient(colors: [chicagoMaroon, hokieStone])
-private var orangeGradient = Gradient(colors: [hokieStone, burntOrange])
+let maroonGradient = Gradient(colors: [chicagoMaroon, hokieStone])
+let orangeGradient = Gradient(colors: [hokieStone, burntOrange])
 
 // Custom styling for our buttons
 // Rounded edge with gradient color background

@@ -10,9 +10,10 @@ import SwiftUI
 
 struct AddEntryView: View {
     var workoutTypes = WorkoutTypeArr.init().arrWithDefault
-
     @State private var selectedType = 0
     @State private var type: WorkoutType? = nil
+    @State private var date: Date = Date()
+    
     @State private var alert = false
     @State private var show = false
     
@@ -20,18 +21,37 @@ struct AddEntryView: View {
     @State var freshCardioModel: CardioModel = CardioModel()
     @State var freshWeightModel: WeightModel = WeightModel()
     
+    
     var body: some View {
             VStack () {
-                Spacer()
-                
-                Text("Select Workout Mode").font(.largeTitle)
+                Text("Workout Mode").font(.title)
+                    .frame(height: 50.0)
+                    .frame(minWidth:0, maxWidth: .infinity)
+                    .background(hokieStone)
+                    .cornerRadius(5.0)
+                    .padding()
+                    
                 Picker("Type", selection: $selectedType) {
                     ForEach(0 ..< workoutTypes.count) {
-                        Text(self.workoutTypes[$0])
+                        Text(self.workoutTypes[$0]).tag([$0])
                     }
                 }
+                .pickerStyle(SegmentedPickerStyle())
+                .padding()
                 .labelsHidden()
-               
+                
+                
+                Text("Workout Date").font(.title)
+                .frame(height: 50.0)
+                .frame(minWidth:0, maxWidth: .infinity)
+                .background(hokieStone)
+                .cornerRadius(5.0)
+                .padding()
+                
+                DatePicker("Date", selection: $date)
+                .padding()
+                .labelsHidden()
+                
                 Spacer()
                 
                 Button(
@@ -42,8 +62,16 @@ struct AddEntryView: View {
                         else { //All other values indicate a selection
                             self.type = WorkoutType(rawValue: self.selectedType)
                             
-                            self.freshWeightModel.createWeight()
-                            self.freshCardioModel.createCardio(withType: self.type!)
+                            if (self.type! == WorkoutType.weights) {
+                                self.freshWeightModel.createWeight()
+                                self.freshWeightModel.changeDate(newDate: self.date)
+
+                            }
+                            else {
+                                self.freshCardioModel.createCardio(withType: self.type!)
+                                self.freshCardioModel.setDate(newDate: self.date)
+                            }
+                            
                             self.show = true
                         }
                     },
@@ -51,17 +79,14 @@ struct AddEntryView: View {
                         Text("Create").font(.title)
                     }
                 )
+                .padding()
+                .buttonStyle(GradientButtonStyle())
+                .alert(isPresented: $alert) {
+                    //Unable to sign user in, alert to issue
+                    Alert(title: Text("Error!"), message: Text("Please select a workout type."), dismissButton: .default(Text("Ok")))
+                }
             }
-            .buttonStyle(GradientButtonStyle())
-            .alert(isPresented: $alert) {
-                //Unable to sign user in, alert to issue
-                Alert(title: Text("Error!"), message: Text("Please select a workout type."), dismissButton: .default(Text("Ok")))
-            }
-            .navigationBarTitle("Add New Workout")
             .sheet(isPresented: $show) {
-                /*
-                 TODO: accept weight model too
-                 */
                 return EntryForm(formType: self.$type, cardioModel: self.freshCardioModel, weightModel: self.freshWeightModel, modelStorage: self.modelStore)
             }
     }
@@ -81,6 +106,7 @@ struct EntryForm: View {
                     WeightEntry(model: weightModel)
                 }
                 else {
+                    
                     CardioEntry(model: cardioModel)
                 }
                 Spacer()
@@ -124,6 +150,7 @@ struct EntryForm: View {
         }
     }
 }
+
 
 struct AddEntryView_Previews: PreviewProvider {
     static var previews: some View {

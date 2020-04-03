@@ -10,13 +10,12 @@ import SwiftUI
 import Combine
 
 struct CardioEntry: View {
-    //Cardio entries have 3 main metrics: date completed, distance covered, time elapsed
-    @State private var date: Date = Date()
-    
-    let unitSelection = ["miles", "meters", "kilometers"]
+    //Cardio entries have 2 main metrics: distance covered, time elapsed
+    let unitSelection = ["mi", "m", "km"]
     @State private var distance: String = ""
     @State private var unitPicked: Int = 0
     @State private var time: Double = 0.0
+    @State private var date: Date = Date()
     
     //MUST have instantiated model.cardio
     @ObservedObject var model: CardioModel
@@ -30,17 +29,15 @@ struct CardioEntry: View {
                     .labelsHidden()
                 }
                 
-                Section(header: Text("Distance")) {
-                    NumericTextField(label: "Distance", enteredText: $distance)
-                    Picker("Unit", selection: $unitPicked) {
-                        ForEach( 0 ..< unitSelection.count) { index in
-                            Text(self.unitSelection[index]).tag(index)
+                Section(header: Text("Workout Details")) {
+                    HStack () {
+                        NumericTextField(label: "Distance", enteredText: $distance)
+                        Picker("Unit", selection: $unitPicked) {
+                            ForEach( 0 ..< unitSelection.count) { index in
+                                Text(self.unitSelection[index]).tag(index)
+                            }
                         }.pickerStyle(SegmentedPickerStyle())
                     }
-                }
-                
-                Section(header: Text("Time Elapsed")) {
-                    //Use "totalTimeInMinutes" to retrieve entered time
                     TimeTextField()
                 }
             }
@@ -48,14 +45,14 @@ struct CardioEntry: View {
                 let truthSource = self.model.cardio!
                 self.time = truthSource.time ?? 0.0
                 self.distance = truthSource.distance?.description ?? ""
-                self.unitPicked = self.unitSelection.firstIndex(of: truthSource.distanceUnit ?? "") ?? 0
                 self.date = truthSource.date
+                self.unitPicked = self.unitSelection.firstIndex(of: truthSource.distanceUnit ?? "") ?? 0
             }
             .onDisappear() {
-                self.model.setDate(newDate: self.date)
                 self.model.setTime(newTime: self.time)
                 self.model.setUnit(newUnit: self.unitSelection[self.unitPicked])
                 self.model.setDistance(newDistance: Double(self.distance) ?? 0.0)
+                self.model.setDate(newDate: self.date)
             }
         }
         

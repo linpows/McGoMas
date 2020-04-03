@@ -66,7 +66,7 @@ struct LoggingHomeView: View {
                         Image(systemName: "plus.square.fill")
                             .font(.largeTitle)
                             .padding(.top, 20)
-                        .foregroundColor(Color.init(Color.RGBColorSpace.sRGB, red: 99.0 / 255, green: 0, blue: 49.0 / 255, opacity: 100))
+                        .foregroundColor(chicagoMaroon)
                         
                     }
                 )

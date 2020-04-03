@@ -53,7 +53,7 @@ class WeightModel: ObservableObject {
      Initializes a new weight
      */
     func createWeight() {
-        self.weight = Weight(startingSets: nil, startingDate: nil)
+        self.weight = Weight(startingSets: [], startingDate: Date())
     }
     
     /*
