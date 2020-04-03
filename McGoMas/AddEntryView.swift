@@ -91,18 +91,18 @@ struct AddEntryView: View {
                 }
             }
             .sheet(isPresented: $show) {
-                return EntryForm(formType: self.$type, cardioModel: self.freshCardioModel, weightModel: self.freshWeightModel, modelStorage: self.modelStore)
+                return EntryForm(formType: self.$type, cardioModel: self.freshCardioModel, weightModel: self.freshWeightModel, modelStorage: self.modelStore).environmentObject(self.user)
             }
     }
 }
 
 struct EntryForm: View {
     @Binding var formType: WorkoutType?
-    @Binding var user: User?
+    @EnvironmentObject var user: UserSession
 
 
     @Environment(\.presentationMode) var presentationMode
-    private var ref = Database.database().reference()
+    var ref = Database.database().reference()
     @State var cardioModel: CardioModel
     @State var weightModel: WeightModel
     @State var modelStorage: LocalLogList
@@ -125,22 +125,22 @@ struct EntryForm: View {
                             if (self.formType == WorkoutType.weights) {
                                 //Store as weight workout
                                 self.modelStorage.weightLogs.append(self.weightModel.weight!)
-                              self.ref.child("logs") // get logs database
-                            .child(self.user!.userID) // gets all logs by current signed in user
-                            .childByAutoId() // generates a new UUID for new log
-                            .setValue(["date": self.weightModel.weight!.dayCompleted,
+                                
+                                self.ref.child("logs") // get logs database
+                                    .child(self.user.user!.userID) // gets all logs by current signed in user
+                                    .childByAutoId() // generates a new UUID for new log
+                                    .setValue(["date": self.weightModel.weight!.dayCompleted.timeIntervalSince1970,
                                        "workoutType": "weights"]) // log details
-
                             }
                             else {
                                 //Store as cardio workout
                                 self.modelStorage.cardioLogs.append(self.cardioModel.cardio!)
-                              self.ref.child("logs") // get logs database
-                            .child(self.user!.userID) // gets all logs by current signed in user
-                            .childByAutoId() // generates a new UUID for new log
-                            .setValue(["date": self.cardioModel.cardio!.date,
+                                
+                                self.ref.child("logs") // get logs database
+                                    .child(self.user.user!.userID) // gets all logs by current signed in user
+                                    .childByAutoId() // generates a new UUID for new log
+                                    .setValue(["date": self.cardioModel.cardio!.date.timeIntervalSince1970,
                                        "workoutType": self.formType?.stringRep ?? "default"]) // log details
-
                             }
                           
                           
