@@ -16,7 +16,7 @@ target 'McGoMas' do
 
   # Pod for google calendars
   pod 'GoogleAPIClient/Calendar'
-  
+
   target 'McGoMasTests' do
     inherit! :search_paths
     # Pods for testing

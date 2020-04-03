@@ -19,6 +19,8 @@ class UserSession: ObservableObject {
     //User has a property observer "didSet". Will send the UserSession to subscribers every time a property of User is set
     @Published var user: User? { didSet {self.didChange.send(self)}}
     var stateHandler: AuthStateDidChangeListenerHandle?
+    //Reference for our app's database
+    var databaseRef: DatabaseReference! = Database.database().reference()
     
     func listen() { //Listen for authentications
         stateHandler = Auth.auth().addStateDidChangeListener { (auth, authUser) in
@@ -54,6 +56,43 @@ class UserSession: ObservableObject {
         catch { //Return false if couldn't
             return false
         }
+    }
+    
+    func updateProfileInfo(email: String, displayName: String?, handler: @escaping UserProfileChangeCallback) {
+        if let displayName = displayName {
+            if let request = Auth.auth().currentUser?.createProfileChangeRequest() {
+                request.displayName = displayName
+                request.commitChanges(completion: handler)
+            }
+        }
+        
+        Auth.auth().currentUser?.updateEmail(to: email, completion: handler)
+        
+        user!.email = email
+        user!.name = displayName
+    }
+    
+    /*
+     Given JSON representation of a workout, uploads to database
+     */
+    func uploadWorkout(workout: String) {
+        
+    }
+    
+    /*
+    Retrieves all of the user's workouts
+    */
+    func getWorkouts() -> [AnyObject] {
+        let workouts: [AnyObject] = []
+        // Fetch here
+        return workouts
+    }
+    
+    /*
+     Overrides the workout with the given identifier with the supplied workout
+     */
+    func updateWorkout(identifier: String, workout: String) {
+        
     }
     
     func stopListening() { //Stop listening for authentication

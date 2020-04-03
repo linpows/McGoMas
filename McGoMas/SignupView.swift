@@ -30,6 +30,7 @@ struct SignupView: View {
         
             //User text entry
             CustomTextEntry(label: "Email", entryPrompt: "Enter your email", isSecure: false, enteredText: $email)
+                .keyboardType(.emailAddress)
             Divider().padding(.bottom, 20)
             CustomTextEntry(label: "Password", entryPrompt: "Enter your password", isSecure: true, enteredText: $password)
             CustomTextEntry(label: "Confirm Password", entryPrompt: "Enter your password", isSecure: true, enteredText: $confirmpassword)
@@ -46,7 +47,7 @@ struct SignupView: View {
                     else {
                         self.userSession
                             .signUp(email: self.email, password: self.password) { (res, err) in
-                                if let res = res {
+                                if res != nil {
                                     //Success
                                     self.presentationMode.wrappedValue.dismiss()
                                 }

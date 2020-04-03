@@ -29,15 +29,11 @@ struct CustomTextEntry: View {
                 if self.isSecure {
                     SecureField(self.entryPrompt, text: $enteredText)
                         .textFieldStyle(TextEntryStyle())
-                        .background(Color.init(UIColor.lightGray).opacity(0.5))
-                        .cornerRadius(5.0)
 
                 }
                 else {
                     TextField(self.entryPrompt, text: $enteredText)
                         .textFieldStyle(TextEntryStyle())
-                        .background(Color.init(UIColor.lightGray).opacity(0.5))
-                    .cornerRadius(5.0)
                 }
 
             }
@@ -53,5 +49,7 @@ struct TextEntryStyle: TextFieldStyle {
     public func _body(configuration: TextField<Self._Label>) -> some View {
             configuration
                 .padding(.all)
+                .background(Color.init(UIColor.lightGray).opacity(0.5))
+                .cornerRadius(5.0)
         }
 }

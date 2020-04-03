@@ -60,6 +60,7 @@ struct MainTabView: View {
                     }
             }.tag(1)
             LoggingHomeView()
+                .environmentObject(user)
                 .tabItem {
                     VStack () {
                         Image(systemName: "2.circle")
