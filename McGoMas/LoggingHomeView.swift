@@ -22,7 +22,8 @@ struct LoggingHomeView: View {
     @EnvironmentObject var userSession: UserSession
     //Observes multiple additions
     @ObservedObject var logs: LocalLogList = LocalLogList()
-
+    @State private var selection: Int = 0
+    private var types = ["Cardio", "Weights"]
     
     var body: some View {
         NavigationView {
@@ -30,30 +31,20 @@ struct LoggingHomeView: View {
                 NavigationLink(destination: AddEntryView(modelStore: self.logs), isActive: $showAdd) {
                     EmptyView()
                 }
-                ForEach(logs.cardioLogs, id: \.self.id) { log in
-                    Group {
-                        Text("Received log with following CARDIO data:")
-                        Text("Date:")
-                        Text(log.date.description)
-                        Text("Distance:")
-                        Text(log.distance?.description ?? "")
-                        Text("Time in Minutes:")
-                        Text(log.time?.description ?? "")
-                        Divider()
+                Picker("Log Type", selection: $selection) {
+                    ForEach( 0 ..< types.count) { index in
+                        Text(self.types[index]).tag(index)
                     }
+                }.pickerStyle(SegmentedPickerStyle())
+                Spacer()
+                
+                if (self.selection == 0) {
+                    CardioListView(logStore: self.logs)
                 }
-                ForEach(logs.weightLogs, id: \.self.id) { log in
-                    Group {
-                        Text("Received log with following WEIGHT data:")
-                        Text("Date:")
-                        Text(log.dayCompleted.description)
-                        Text("Sets:")
-                        ForEach(log.sets) { set in
-                            Text(set.getStrRep())
-                        }
-                        Divider()
-                    }
+                else {
+                    WeightListView(logStore: self.logs)
                 }
+                Spacer()
             }
             .alert(isPresented: $showError) {
                 Alert(title: Text("Oops"), message: Text("Sign in to access this functionality"), dismissButton: .default(Text("Ok")))
