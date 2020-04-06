@@ -12,8 +12,10 @@ struct WeightListView: View {
     @ObservedObject var logStore: LocalLogList
     
     var body: some View {
-        List (self.logStore.weightLogs) { weight in
-            WeightRow(displayedWeight: weight)
+        List {
+            ForEach(self.logStore.weightLogs) { weight in
+                WeightRow(displayedWeight: weight)
+            }.onDelete(perform: deleteWeight)
         }
     }
     //ROW
@@ -34,6 +36,7 @@ struct WeightListView: View {
         var body: some View {
             VStack() {
                 Text("Workout Completed\n" + formatDate(date: self.displayedWeight.dayCompleted)).font(.largeTitle)
+                Divider()
                 Text("Sets Completed: ").font(.title)
                 SetList(mySets: getMySetArray())
             }
@@ -51,6 +54,10 @@ struct WeightListView: View {
         }
     }
     
+    func deleteWeight(at offsets: IndexSet) {
+        self.logStore.weightLogs.remove(atOffsets: offsets)
+    }
+    
 }
 
 
@@ -60,13 +67,17 @@ struct SetList: View {
     @ObservedObject var mySets: SetArray
     
     var body: some View {
-        List(self.mySets.sets) { logSet in
-            NavigationLink(destination: SetDetail(displayedSet: logSet)) {
-                Text(logSet.weightName)
-            }
-        }
-        .padding(0.0)
-        
+        List {
+            ForEach (self.mySets.sets) { logSet in
+                NavigationLink(destination: SetDetail(displayedSet: logSet)) {
+                    Text(logSet.weightName)
+                }
+            }.onDelete(perform: removeSet)
+        }.padding(0.0)
+    }
+    
+    func removeSet(at offsets: IndexSet) {
+        self.mySets.sets.remove(atOffsets: offsets)
     }
     
     //Detail view of a logged set

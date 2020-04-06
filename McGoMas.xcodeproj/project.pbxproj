@@ -33,7 +33,6 @@
 		80C4846D2411727700BD7EAE /* LogoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C4846C2411727700BD7EAE /* LogoutView.swift */; };
 		80CDF0DF24351BF3009EE05B /* WeightEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CDF0DE24351BF3009EE05B /* WeightEntry.swift */; };
 		80D937F12433909400006E8B /* CardioEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D937F02433909400006E8B /* CardioEntry.swift */; };
-		80E61ECE24328F3C0068A63B /* TimeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E61ECD24328F3C0068A63B /* TimeTextField.swift */; };
 		80F7A1D924213B6400061ED0 /* AddEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F7A1D824213B6400061ED0 /* AddEntryView.swift */; };
 		80F7A1DB24213F5000061ED0 /* LoggingHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F7A1DA24213F5000061ED0 /* LoggingHomeView.swift */; };
 		BB33E4D1186D10D817E09DC1 /* Pods_McGoMas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 532037967455B767F9F12BDD /* Pods_McGoMas.framework */; };
@@ -83,7 +82,6 @@
 		80C4846C2411727700BD7EAE /* LogoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutView.swift; sourceTree = "<group>"; };
 		80CDF0DE24351BF3009EE05B /* WeightEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightEntry.swift; sourceTree = "<group>"; };
 		80D937F02433909400006E8B /* CardioEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardioEntry.swift; sourceTree = "<group>"; };
-		80E61ECD24328F3C0068A63B /* TimeTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTextField.swift; sourceTree = "<group>"; };
 		80F7A1D824213B6400061ED0 /* AddEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEntryView.swift; sourceTree = "<group>"; };
 		80F7A1DA24213F5000061ED0 /* LoggingHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingHomeView.swift; sourceTree = "<group>"; };
 		9EC3563F716A47E3524DA60F /* Pods-McGoMasTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-McGoMasTests.debug.xcconfig"; path = "Target Support Files/Pods-McGoMasTests/Pods-McGoMasTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -195,7 +193,6 @@
 				8020C2BC241023C00097BD5E /* CustomTextEntry.swift */,
 				8020C2B82410138A0097BD5E /* GradientButtonStyle.swift */,
 				8028D50C24315BAF00CF050B /* NumericTextField.swift */,
-				80E61ECD24328F3C0068A63B /* TimeTextField.swift */,
 			);
 			name = Styling;
 			sourceTree = "<group>";
@@ -432,7 +429,6 @@
 				8020C2BD241023C00097BD5E /* CustomTextEntry.swift in Sources */,
 				80D937F12433909400006E8B /* CardioEntry.swift in Sources */,
 				8083E7CB2436239200837D3F /* SetEntry.swift in Sources */,
-				80E61ECE24328F3C0068A63B /* TimeTextField.swift in Sources */,
 				8058CE14241D27D600559552 /* SplashView.swift in Sources */,
 				8028D50D24315BAF00CF050B /* NumericTextField.swift in Sources */,
 				807AD2AB24291FE200861B8C /* UserSession.swift in Sources */,

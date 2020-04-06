@@ -48,12 +48,7 @@ struct TimeTextField: View {
         }
     }
     
-    func totalTimeInMinutes() -> Double {
-        let hourSum: Double = (Double(self.hour) ?? 0.0) * 60.0
-        let minSum: Double = Double(self.min) ?? 0.0
-        let secSum: Double = (Double(self.sec) ?? 0.0) / 60.0
-        return hourSum + minSum + secSum
-    }
+    
 }
 
 struct TimeTextField_Previews: PreviewProvider {

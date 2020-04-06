@@ -14,7 +14,19 @@ struct CardioEntry: View {
     let unitSelection = ["mi", "m", "km"]
     @State private var distance: String = ""
     @State private var unitPicked: Int = 0
-    @State private var time: Double = 0.0
+    
+    
+    @State private var hour: String = ""
+    @State private var min: String = ""
+    @State private var sec: String = ""
+    let validChars = "1234567890"
+    
+    func totalTimeInMinutes() -> Double {
+        let hourSum: Double = (Double(self.hour) ?? 0.0) * 60.0
+        let minSum: Double = Double(self.min) ?? 0.0
+        let secSum: Double = (Double(self.sec) ?? 0.0) / 60.0
+        return hourSum + minSum + secSum
+    }
     
     //MUST have instantiated model.cardio
     @ObservedObject var model: CardioModel
@@ -24,7 +36,7 @@ struct CardioEntry: View {
         VStack () {
             Form {
                 Section(header: Text("Workout Details")) {
-                    HStack () {
+                    HStack () { //DISTANCE INPUT
                         NumericTextField(label: "Distance", enteredText: $distance)
                         Picker("Unit", selection: $unitPicked) {
                             ForEach( 0 ..< unitSelection.count) { index in
@@ -32,17 +44,38 @@ struct CardioEntry: View {
                             }
                         }.pickerStyle(SegmentedPickerStyle())
                     }
-                    TimeTextField()
+                    HStack () { //TIME INPUT
+                        TextField("Hours", text: $hour)
+                            .textFieldStyle(TextEntryStyle())
+                            .keyboardType(.numberPad)
+                            .onReceive(Just(hour)) { typedValue in
+                                //Filter out any non-valid characters
+                                let sanitized = typedValue.filter { self.validChars.contains($0) }
+                                self.hour = sanitized
+                            }
+                        Text(":")
+                        TextField("Minutes", text: $min)
+                            .textFieldStyle(TextEntryStyle())
+                            .keyboardType(.numberPad)
+                            .onReceive(Just(min)) { typedValue in
+                                //Filter out any non-valid characters
+                                let sanitized = typedValue.filter { self.validChars.contains($0) }
+                                self.min = sanitized
+                            }
+                        Text(":")
+                        TextField("Seconds", text: $sec)
+                            .textFieldStyle(TextEntryStyle())
+                            .keyboardType(.numberPad)
+                            .onReceive(Just(sec)) { typedValue in
+                                //Filter out any non-valid characters
+                                let sanitized = typedValue.filter { self.validChars.contains($0) }
+                                self.sec = sanitized
+                            }
+                    }
                 }
             }
-            .onAppear() {
-                let truthSource = self.model.cardio!
-                self.time = truthSource.time ?? 0.0
-                self.distance = truthSource.distance?.description ?? ""
-                self.unitPicked = self.unitSelection.firstIndex(of: truthSource.distanceUnit ?? "") ?? 0
-            }
             .onDisappear() {
-                self.model.setTime(newTime: self.time)
+                self.model.setTime(newTime: self.totalTimeInMinutes())
                 self.model.setUnit(newUnit: self.unitSelection[self.unitPicked])
                 self.model.setDistance(newDistance: Double(self.distance) ?? 0.0)
             }
