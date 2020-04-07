@@ -68,22 +68,8 @@ class WeightModel: ObservableObject {
     */
     func addSet(name: String, mass: Double, massUnit: String, reps: Int) {
         if let myWeight = self.weight {
-            myWeight.sets.append(WeightSet(weightName: name, weight: mass, weightUnit: massUnit, repetitions: reps))
+            myWeight.sets.addSet(set: WeightSet(weightName: name, weight: mass, weightUnit: massUnit, repetitions: reps))
             self.weight = myWeight
-        }
-    }
-    
-    /*
-    remove a set with a specific ID from the workout
-    */
-    func removeSet(withID: UUID) {
-        if let weight = self.weight {
-            //Get the set that does not have that id
-           let removed = weight.sets.filter( { set in
-                set.id != withID
-            })
-            weight.sets = removed
-            self.weight = weight
         }
     }
     
@@ -100,7 +86,7 @@ class WeightModel: ObservableObject {
     class Weight: Identifiable {
         var id: UUID
         var dayCompleted: Date
-        var sets: [WeightSet]
+        var sets: SetArray
         
         /*
          Can optionally specify some predefined sets.
@@ -108,14 +94,10 @@ class WeightModel: ObservableObject {
          Can optionally specify a day this was completed.
          Default assumes the date is moment of creation
          */
-        init(startingSets: [WeightSet]?, startingDate: Date?) {
+        init(startingSets: [WeightSet], startingDate: Date?) {
             self.id = UUID()
-            if let initial = startingSets {
-                self.sets = initial
-            }
-            else {
-                self.sets = []
-            }
+            self.sets = SetArray(fromSets: startingSets)
+            
             if let aDate = startingDate {
                 self.dayCompleted = aDate
             }
@@ -124,6 +106,36 @@ class WeightModel: ObservableObject {
             }
             
         }
+    }
+}
+
+class SetArray: ObservableObject {    
+    var didChange = PassthroughSubject<SetArray, Never>()
+    @Published var sets: [WeightSet] { didSet {
+        //When a class in "weight" is set, broadcast change
+        self.didChange.send(self)
+    }}
+    
+    init(fromSets: [WeightSet]) {
+        self.sets = fromSets
+    }
+    
+    init() {
+        self.sets = []
+    }
+    
+    func addSet(set: WeightSet) {
+        self.sets.append(set)
+    }
+    
+    func removeSet(set: WeightSet) {
+        
+        let filtered = self.sets.filter( { mySet in
+                mySet.id != set.id
+            }
+        )
+        
+        self.sets = filtered
     }
 }
 

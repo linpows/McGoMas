@@ -21,9 +21,8 @@ struct WeightListView: View {
     //ROW
     struct WeightRow: View {
         @State var displayedWeight: WeightModel.Weight
-        @State private var setArray: SetArray = SetArray()
         var body: some View {
-            NavigationLink(destination: WeightDetail(displayedWeight: self.displayedWeight)) {
+            NavigationLink(destination: WeightDetail(displayedWeight: self.displayedWeight, sets: self.displayedWeight.sets)) {
                 Text(formatDate(date: self.displayedWeight.dayCompleted))
             }
         }
@@ -32,25 +31,15 @@ struct WeightListView: View {
     //DETAIL
     struct WeightDetail: View {
         @State var displayedWeight: WeightModel.Weight
+        @ObservedObject var sets: SetArray
         
         var body: some View {
             VStack() {
                 Text("Workout Completed\n" + formatDate(date: self.displayedWeight.dayCompleted)).font(.largeTitle)
                 Divider()
                 Text("Sets Completed: ").font(.title)
-                SetList(mySets: getMySetArray())
+                SetList(mySets: self.sets)
             }
-        }
-        
-        func getMySetArray() -> SetArray {
-            let setArray = SetArray()
-            let allSets = displayedWeight.sets
-            
-            for set in allSets {
-                setArray.addSet(set: set)
-            }
-            
-            return setArray
         }
     }
     

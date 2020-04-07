@@ -131,7 +131,7 @@ struct EntryForm: View {
                                 encoder.outputFormatting = .prettyPrinted
                                 
                                 do {
-                                    let data = try encoder.encode(self.weightModel.weight!.sets)
+                                    let data = try encoder.encode(self.weightModel.weight!.sets.sets)
                                                                
                                     let setJsonString = String(data: data, encoding: .utf8)
                                    
