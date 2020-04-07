@@ -127,7 +127,7 @@ class WeightModel: ObservableObject {
     }
 }
 
-struct WeightSet: Identifiable {
+struct WeightSet: Codable, Identifiable {
     let id: UUID = UUID()
     var weightName: String
     var weight: Double

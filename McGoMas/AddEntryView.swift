@@ -126,11 +126,25 @@ struct EntryForm: View {
                                 //Store as weight workout
                                 self.modelStorage.weightLogs.append(self.weightModel.weight!)
                                 
-                                self.ref.child("logs") // get logs database
-                                    .child(self.user.user!.userID) // gets all logs by current signed in user
-                                    .childByAutoId() // generates a new UUID for new log
-                                    .setValue(["date": self.weightModel.weight!.dayCompleted.timeIntervalSince1970,
-                                       "workoutType": "weights"]) // log details
+                                
+                                let encoder = JSONEncoder()
+                                encoder.outputFormatting = .prettyPrinted
+                                
+                                do {
+                                    let data = try encoder.encode(self.weightModel.weight!.sets)
+                                                               
+                                    let setJsonString = String(data: data, encoding: .utf8)
+                                   
+                                    self.ref.child("logs") // get logs database
+                                       .child(self.user.user!.userID) // gets all logs by current signed in user
+                                       .child(self.weightModel.weight!.id.uuidString)
+                                       .setValue(["date": self.weightModel.weight!.dayCompleted.timeIntervalSince1970,
+                                                  "sets": setJsonString!,
+                                                  "workoutType": "weights"]) // log details
+                                }
+                                catch {
+                                    print("rip")
+                                }
                             }
                             else {
                                 //Store as cardio workout
@@ -138,9 +152,12 @@ struct EntryForm: View {
                                 
                                 self.ref.child("logs") // get logs database
                                     .child(self.user.user!.userID) // gets all logs by current signed in user
-                                    .childByAutoId() // generates a new UUID for new log
+                                    .child(self.cardioModel.cardio!.id.uuidString)
                                     .setValue(["date": self.cardioModel.cardio!.date.timeIntervalSince1970,
-                                       "workoutType": self.formType?.stringRep ?? "default"]) // log details
+                                               "distance": self.cardioModel.cardio!.distance ?? 0,
+                                               "unit": self.cardioModel.cardio!.distanceUnit ?? "",
+                                               "time": self.cardioModel.cardio!.time ?? 0,
+                                               "workoutType": self.formType?.stringRep ?? "default"]) // log details
                             }
 
                             self.presentationMode.wrappedValue.dismiss()
