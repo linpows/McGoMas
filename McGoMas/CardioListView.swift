@@ -9,12 +9,12 @@
 import SwiftUI
 
 struct CardioListView: View {
-    @ObservedObject var logStore: LocalLogList
+    @EnvironmentObject var logStore: UserLogList
     
     var body: some View {
         List {
             ForEach(self.logStore.cardioLogs) { cardio in
-                CardioRow(displayedCardio: cardio)
+                CardioRow(displayedCardio: cardio.cardio!)
             }.onDelete(perform: deleteCardio)
         }
     }
@@ -69,11 +69,11 @@ struct CardioListView: View {
 struct CardioListView_Previews: PreviewProvider {
 
     static var previews: some View {
-        let logStore = LocalLogList()
         let cardioWorkout = CardioModel()
         cardioWorkout.createCardio(withType: WorkoutType.swim, date: Date(), distance: 1.5, distanceUnit: "miles", time: 60.0)
-        logStore.cardioLogs.append(cardioWorkout.cardio!)
+        let logStore = UserLogList(cardioModels: [cardioWorkout], weightModels: [])
+
         
-        return CardioListView(logStore: logStore)
+        return CardioListView().environmentObject( logStore)
     }
 }

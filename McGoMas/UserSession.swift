@@ -20,15 +20,17 @@ class UserSession: ObservableObject {
     @Published var user: User? { didSet {self.didChange.send(self)}}
     var stateHandler: AuthStateDidChangeListenerHandle?
     //Reference for our app's database
-    var databaseRef: DatabaseReference! = Database.database().reference()
+    var databaseRef: DatabaseReference?
     
     func listen() { //Listen for authentications
         stateHandler = Auth.auth().addStateDidChangeListener { (auth, authUser) in
             if let authUser = authUser { //if user exists...
                 self.user = User(userID: authUser.uid, name: authUser.displayName, email: authUser.email!)
+                self.databaseRef = Database.database().reference().child("logs").child(authUser.uid)
             }
             else { //No user signed in
                 self.user = nil
+                self.databaseRef = nil
             }
             
         }
@@ -51,11 +53,13 @@ class UserSession: ObservableObject {
         do { //Attempt to sign out
             try Auth.auth().signOut()
             self.user = nil
+            self.databaseRef = nil
             return true
         }
         catch { //Return false if couldn't
             return false
         }
+        
     }
     
     func updateProfileInfo(email: String, displayName: String?, handler: @escaping UserProfileChangeCallback) {
@@ -72,11 +76,50 @@ class UserSession: ObservableObject {
         user!.name = displayName
     }
     
-    /*
-     Given JSON representation of a workout, uploads to database
-     */
-    func uploadWorkout(workout: String) {
+    func uploadCardio(workout: CardioModel) {
         
+        let dict: [String : Any] = [
+            "date": workout.cardio!.date.timeIntervalSince1970,
+            "distance": workout.cardio!.distance ?? 0,
+            "unit": workout.cardio!.distanceUnit ?? "",
+            "time": workout.cardio!.time ?? 0,
+            "workoutType": workout.cardio!.workoutType.stringRep
+        ]
+        
+        if let ref = databaseRef {
+            ref.child(workout.id.uuidString)
+            .setValue(dict)
+        }
+        
+    }
+    
+    /*
+     uploads weight entry to database
+     */
+    func uploadWeight(workout: WeightModel) {
+        
+        let encoder = JSONEncoder()
+        var setJSON = ""
+        encoder.outputFormatting = .prettyPrinted
+        
+        do {
+            let setData = try encoder.encode(workout.weight!.sets.sets)
+            setJSON = String(data: setData, encoding: .utf8) ?? ""
+        }
+        catch {
+            print("Error in JSON serialization")
+        }
+        
+        let dict: [String : Any] = [
+            "date": workout.weight!.dayCompleted.timeIntervalSince1970,
+            "workoutType": WorkoutType.weights.stringRep,
+            "sets": setJSON
+        ]
+        
+        if let ref = databaseRef {
+            ref.child(workout.id.uuidString)
+            .setValue(dict)
+        }
     }
     
     /*

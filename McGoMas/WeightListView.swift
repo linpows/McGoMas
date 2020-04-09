@@ -9,15 +9,16 @@
 import SwiftUI
 
 struct WeightListView: View {
-    @ObservedObject var logStore: LocalLogList
+    @EnvironmentObject var logStore: UserLogList
     
     var body: some View {
         List {
             ForEach(self.logStore.weightLogs) { weight in
-                WeightRow(displayedWeight: weight)
+                WeightRow(displayedWeight: weight.weight!)
             }.onDelete(perform: deleteWeight)
         }
     }
+    
     //ROW
     struct WeightRow: View {
         @State var displayedWeight: WeightModel.Weight
@@ -104,13 +105,12 @@ func formatDate(date: Date) -> String {
 
 struct WeightListView_Previews: PreviewProvider {
     static var previews: some View {
-        let logStore = LocalLogList()
         let workout = WeightModel()
         workout.createWeight()
         workout.changeDate(newDate: Date())
         workout.addSet(name: "Test", mass: 3.0, massUnit: "pounds", reps: 3)
-        logStore.weightLogs.append(workout.weight!)
+        let logStore = UserLogList(cardioModels: [], weightModels: [workout])
         
-        return WeightListView(logStore: logStore)
+        return WeightListView().environmentObject( logStore)
     }
 }

@@ -11,24 +11,21 @@ import FirebaseDatabase
 import FirebaseAuth
 
 
-class LocalLogList: ObservableObject {
-    @Published var cardioLogs: [CardioModel.Cardio] = []
-    @Published var weightLogs: [WeightModel.Weight] = []
-}
-
 struct LoggingHomeView: View {
     @State private var showAdd: Bool = false
     @State private var showError: Bool = false
+    
     @EnvironmentObject var userSession: UserSession
-    //Observes multiple additions
-    @ObservedObject var logs: LocalLogList = LocalLogList()
+    @EnvironmentObject var logs: UserLogList
+    let ref = Database.database().reference()
+    
     @State private var selection: Int = 0
     private var types = ["Cardio", "Weights"]
     
     var body: some View {
         NavigationView {
             VStack () {
-                NavigationLink(destination: AddEntryView(modelStore: self.logs), isActive: $showAdd) {
+                NavigationLink(destination: AddEntryView().environmentObject(self.logs), isActive: $showAdd) {
                     EmptyView()
                 }
                 Picker("Log Type", selection: $selection) {
@@ -39,12 +36,38 @@ struct LoggingHomeView: View {
                 Spacer()
                 
                 if (self.selection == 0) {
-                    CardioListView(logStore: self.logs)
+                    CardioListView().environmentObject(self.logs)
                 }
                 else {
-                    WeightListView(logStore: self.logs)
+                    WeightListView().environmentObject(self.logs)
                 }
                 Spacer()
+                Button (
+                    action: {
+                        let cardioSave = self.logs.cardioLogs.filter({ cardio in
+                            cardio.pushToDB
+                        })
+                        
+                        for cardio in cardioSave {
+                            self.userSession.uploadCardio(workout: cardio)
+                            cardio.pushToDB = false //updated
+                        }
+                        
+                        
+                        let weightSave = self.logs.weightLogs.filter({ weight in
+                            weight.pushToDB
+                        })
+                        
+                        for weight in weightSave {
+                            self.userSession.uploadWeight(workout: weight)
+                            weight.pushToDB = false //updated
+                        }
+                        
+                    },
+                    label: {
+                        Text("Save Changes")
+                    }
+                )
             }
             .alert(isPresented: $showError) {
                 Alert(title: Text("Oops"), message: Text("Sign in to access this functionality"), dismissButton: .default(Text("Ok")))
@@ -76,6 +99,10 @@ struct LoggingHomeView: View {
 
 struct LoggingHomeView_Previews: PreviewProvider {
     static var previews: some View {
-        LoggingHomeView()
+        let cardioModels: [CardioModel] = [CardioModel(), CardioModel()]
+        cardioModels.forEach({
+            $0.createCardio(withType: WorkoutType.swim, date: Date(), distance: 10.0, distanceUnit: "mile", time: 60.0)
+        })
+        return  LoggingHomeView().environmentObject(UserLogList(cardioModels: cardioModels, weightModels: []))
     }
 }

@@ -29,7 +29,7 @@ struct CardioEntry: View {
     }
     
     //MUST have instantiated model.cardio
-    @ObservedObject var model: CardioModel
+    @EnvironmentObject var model: CardioModel
 
     
     var body: some View {
@@ -105,6 +105,6 @@ struct CardioEntry_Previews: PreviewProvider {
         let practiceModel = CardioModel()
         practiceModel.createCardio(withType: WorkoutType.bike)
         practiceModel.setDistance(newDistance: 10.0)
-        return CardioEntry(model: practiceModel)
+        return CardioEntry().environmentObject(practiceModel)
     }
 }

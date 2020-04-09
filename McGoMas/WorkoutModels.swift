@@ -41,13 +41,10 @@ enum WorkoutType: Int {
  Stored under user's UID in Firebase Database
  */
 
-class WeightModel: ObservableObject {
-    //Publisher-- subscribers will get notified if a given model changes
-    var didChange = PassthroughSubject<WeightModel, Never>()
-    @Published var weight: Weight? { didSet {
-        //When a class in "weight" is set, broadcast change
-        self.didChange.send(self)
-    }}
+class WeightModel: ObservableObject, Identifiable {
+    @Published var weight: Weight? 
+    var id = UUID()
+    var pushToDB: Bool = true //denotes a new update/creation
     
     /*
      Initializes a new weight
@@ -83,8 +80,7 @@ class WeightModel: ObservableObject {
         }
     }
     
-    class Weight: Identifiable {
-        var id: UUID
+    class Weight {
         var dayCompleted: Date
         var sets: SetArray
         
@@ -95,7 +91,6 @@ class WeightModel: ObservableObject {
          Default assumes the date is moment of creation
          */
         init(startingSets: [WeightSet], startingDate: Date?) {
-            self.id = UUID()
             self.sets = SetArray(fromSets: startingSets)
             
             if let aDate = startingDate {
@@ -109,12 +104,8 @@ class WeightModel: ObservableObject {
     }
 }
 
-class SetArray: ObservableObject {    
-    var didChange = PassthroughSubject<SetArray, Never>()
-    @Published var sets: [WeightSet] { didSet {
-        //When a class in "weight" is set, broadcast change
-        self.didChange.send(self)
-    }}
+class SetArray: ObservableObject {
+    @Published var sets: [WeightSet]
     
     init(fromSets: [WeightSet]) {
         self.sets = fromSets
@@ -155,12 +146,11 @@ struct WeightSet: Codable, Identifiable {
 }
 
 
-class CardioModel: ObservableObject {
-    var didChange = PassthroughSubject<CardioModel, Never>()
-    @Published var cardio: Cardio? { didSet {
-        //When a class in "weight" is set, broadcast change
-        self.didChange.send(self)
-    } }
+class CardioModel: ObservableObject, Identifiable {
+    @Published var cardio: Cardio?
+    
+    var id = UUID()
+    var pushToDB: Bool = true //denotes a new update/creation
     
     /*
      Initializes a new cardio workout
@@ -214,10 +204,7 @@ class CardioModel: ObservableObject {
         }
     }
     
-    class Cardio: Identifiable {
-        
-        
-        let id: UUID = UUID()
+    class Cardio {
         //Bike, run, swim...
         var workoutType: WorkoutType
         var date: Date

@@ -19,12 +19,9 @@ struct AddEntryView: View {
     @State private var alert = false
     @State private var show = false
     
-
-    @State var modelStore: LocalLogList
-    @State var freshCardioModel: CardioModel = CardioModel()
-    @State var freshWeightModel: WeightModel = WeightModel()
+    @EnvironmentObject var logs: UserLogList
     
-    @EnvironmentObject var user: UserSession;
+    @EnvironmentObject var user: UserSession
     
     var body: some View {
         VStack () {
@@ -67,13 +64,19 @@ struct AddEntryView: View {
                         self.type = WorkoutType(rawValue: self.selectedType)
                         
                         if (self.type! == WorkoutType.weights) {
-                            self.freshWeightModel.createWeight()
-                            self.freshWeightModel.changeDate(newDate: self.date)
-
+                            let model = WeightModel()
+                            model.createWeight()
+                            model.changeDate(newDate: self.date)
+                            
+                            self.logs.weightLogs.append(model)
+                            
                         }
                         else {
-                            self.freshCardioModel.createCardio(withType: self.type!)
-                            self.freshCardioModel.setDate(newDate: self.date)
+                            let model = CardioModel()
+                            model.createCardio(withType: self.type!)
+                            model.setDate(newDate: self.date)
+                            
+                            self.logs.cardioLogs.append(model)
                         }
                         
                         self.show = true
@@ -91,7 +94,7 @@ struct AddEntryView: View {
             }
         }
         .sheet(isPresented: $show) {
-            return EntryForm(formType: self.$type, cardioModel: self.freshCardioModel, weightModel: self.freshWeightModel, modelStorage: self.modelStore).environmentObject(self.user)
+            return EntryForm(formType: self.$type).environmentObject(self.user).environmentObject(self.logs)
         }
     }
 }
@@ -100,80 +103,44 @@ struct EntryForm: View {
     @Binding var formType: WorkoutType?
     @EnvironmentObject var user: UserSession
 
-
     @Environment(\.presentationMode) var presentationMode
-    var ref = Database.database().reference()
-    @State var cardioModel: CardioModel
-    @State var weightModel: WeightModel
-    @State var modelStorage: LocalLogList
+
+    @EnvironmentObject var modelStorage: UserLogList
     
     var body: some View {
         NavigationView () {
             VStack () {
                 if (self.formType == WorkoutType.weights) {
-                    WeightEntry(model: weightModel)
+                    WeightEntry().environmentObject(self.modelStorage.weightLogs.last!)
                 }
                 else {
-                    
-                    CardioEntry(model: cardioModel)
+                    CardioEntry().environmentObject(self.modelStorage.cardioLogs.last!)
                 }
                 Spacer()
                 HStack () {
                     Button(
                         action: {
-                          
-                            if (self.formType == WorkoutType.weights) {
-                                //Store as weight workout
-                                self.modelStorage.weightLogs.append(self.weightModel.weight!)
-                                
-                                
-                                let encoder = JSONEncoder()
-                                encoder.outputFormatting = .prettyPrinted
-                                
-                                do {
-                                    let data = try encoder.encode(self.weightModel.weight!.sets.sets)
-                                                               
-                                    let setJsonString = String(data: data, encoding: .utf8)
-                                   
-                                    self.ref.child("logs") // get logs database
-                                       .child(self.user.user!.userID) // gets all logs by current signed in user
-                                       .child(self.weightModel.weight!.id.uuidString)
-                                       .setValue(["date": self.weightModel.weight!.dayCompleted.timeIntervalSince1970,
-                                                  "sets": setJsonString!,
-                                                  "workoutType": "weights"]) // log details
-                                }
-                                catch {
-                                    print("rip")
-                                }
-                            }
-                            else {
-                                //Store as cardio workout
-                                self.modelStorage.cardioLogs.append(self.cardioModel.cardio!)
-                                
-                                self.ref.child("logs") // get logs database
-                                    .child(self.user.user!.userID) // gets all logs by current signed in user
-                                    .child(self.cardioModel.cardio!.id.uuidString)
-                                    .setValue(["date": self.cardioModel.cardio!.date.timeIntervalSince1970,
-                                               "distance": self.cardioModel.cardio!.distance ?? 0,
-                                               "unit": self.cardioModel.cardio!.distanceUnit ?? "",
-                                               "time": self.cardioModel.cardio!.time ?? 0,
-                                               "workoutType": self.formType?.stringRep ?? "default"]) // log details
-                            }
-
+                            //Dismiss to logging home view
                             self.presentationMode.wrappedValue.dismiss()
                         },
                         label: {
-                            Text("Save").font(.title)
+                            Text("Done").font(.title)
                         }
                     ).buttonStyle(GradientButtonStyle())
                     
-                    Button(
+                    Button( //Cancel button, discard current workout
                         action: {
                             if (self.formType == WorkoutType.weights) {
-                                self.weightModel.removeWeight()
+                                let cancelled = self.modelStorage.weightLogs.popLast()
+                                if let cancelled = cancelled {
+                                    cancelled.removeWeight()
+                                }
                             }
                             else {
-                                self.cardioModel.removeCardio()
+                                let cancelled = self.modelStorage.cardioLogs.popLast()
+                                if let cancelled = cancelled {
+                                    cancelled.removeCardio()
+                                }
                             }
                             self.presentationMode.wrappedValue.dismiss()
                         },
@@ -182,7 +149,8 @@ struct EntryForm: View {
                         }
                     ).buttonStyle(AltGradientButtonStyle())
                 }
-            }.navigationBarTitle("New \(self.formType?.stringRep ?? "") Entry")
+            }
+            .navigationBarTitle("New \(self.formType?.stringRep ?? "") Entry")
         }
     }
 }
@@ -190,7 +158,7 @@ struct EntryForm: View {
 
 struct AddEntryView_Previews: PreviewProvider {
     static var previews: some View {
-        let modelStore: LocalLogList = LocalLogList()
-        return AddEntryView(modelStore: modelStore)
+        let modelStore = UserLogList(cardioModels: [], weightModels: [])
+        return AddEntryView().environmentObject(modelStore)
     }
 }

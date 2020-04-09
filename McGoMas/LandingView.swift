@@ -8,10 +8,46 @@
 
 import SwiftUI
 import Firebase
+import Combine
 
 extension AnyTransition { //Provides splash screen custom transition
     static var shrinkFade: AnyTransition {
         AnyTransition.scale.combined(with: .opacity)
+    }
+}
+
+class UserLogList: ObservableObject { //Locally held record of the user's logged workouts
+    var didChange = PassthroughSubject<UserLogList, Never>()
+    
+    @Published var cardioLogs: [CardioModel] { didSet {
+        //When a class in "weight" is set, broadcast change
+        self.didChange.send(self)
+    }}
+    
+    @Published var weightLogs: [WeightModel] { didSet {
+        //broadcast changes to this list
+        self.didChange.send(self)
+    }}
+    
+    var cancellables = [AnyCancellable]()
+
+    //https://stackoverflow.com/questions/57302033/published-works-for-single-object-but-not-for-array-of-objects
+    init(cardioModels: [CardioModel], weightModels: [WeightModel]){
+        self.cardioLogs = cardioModels
+        self.weightLogs = weightModels
+        
+        self.cardioLogs.forEach({
+            let c = $0.objectWillChange.sink(receiveValue: { self.objectWillChange.send() })
+
+            // otherwise the sink subscription gets cancelled
+            self.cancellables.append(c)
+        })
+        self.weightLogs.forEach({
+            let c = $0.objectWillChange.sink(receiveValue: { self.objectWillChange.send() })
+
+            // otherwise the sink subscription gets cancelled
+            self.cancellables.append(c)
+        })
     }
 }
 
@@ -48,6 +84,7 @@ struct LandingView: View {
 
 struct MainTabView: View {
     @EnvironmentObject var user: UserSession
+    @State private var logs: UserLogList = UserLogList(cardioModels: [], weightModels: [])
     
     var body: some View {
         TabView {
@@ -61,6 +98,7 @@ struct MainTabView: View {
             }.tag(1)
             LoggingHomeView()
                 .environmentObject(user)
+                .environmentObject(self.logs)
                 .tabItem {
                     VStack () {
                         Image(systemName: "2.circle")

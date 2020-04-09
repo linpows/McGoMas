@@ -10,10 +10,10 @@ import SwiftUI
 
 struct WeightEntry: View {
     //Given model we will be storing changes in
-    @ObservedObject var model: WeightModel
+    @EnvironmentObject var weight: WeightModel
     
     var body: some View {
-        SetEntry(currentLoggedSets: self.model.weight!.sets)
+        SetEntry(currentLoggedSets: weight.weight!.sets)
     }
 }
 
@@ -23,7 +23,7 @@ struct WeightEntry_Previews: PreviewProvider {
     static var previews: some View {
         let model = WeightModel()
         let inNavView = NavigationView {
-            WeightEntry(model: model)
+            WeightEntry().environmentObject(model)
         }
         return inNavView
     }
