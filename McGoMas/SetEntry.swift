@@ -13,7 +13,7 @@ import SwiftUI
  */
 struct SetEntry: View {
     // Array of logged sets to display in list
-    @ObservedObject var currentLoggedSets: SetArray
+    @EnvironmentObject var currentLoggedSets: SetArray
     
     //User-defined metrics: weight lifted, number of lifts, name of the weight
     let unitOptions = ["pounds", "kilograms"]
@@ -109,6 +109,6 @@ struct SetEntry_Previews: PreviewProvider {
         displayed.addSet(set: setOne)
         displayed.addSet(set: setTwo)
         
-        return SetEntry(currentLoggedSets: displayed)
+        return SetEntry().environmentObject(displayed)
     }
 }

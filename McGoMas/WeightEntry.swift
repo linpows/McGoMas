@@ -13,7 +13,7 @@ struct WeightEntry: View {
     @EnvironmentObject var weight: WeightModel
     
     var body: some View {
-        SetEntry(currentLoggedSets: weight.weight!.sets)
+        SetEntry().environmentObject(weight.weight!.sets)
     }
 }
 
