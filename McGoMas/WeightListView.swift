@@ -10,7 +10,6 @@ import SwiftUI
 
 struct WeightListView: View {
     @EnvironmentObject var logStore: UserLogList
-    private var sorted: [WeightModel] = []
     
     func sortLogs() {
         //Sort logs by date

@@ -13,7 +13,7 @@ struct WeightEntry: View {
     @EnvironmentObject var models: UserLogList
     
     var body: some View {
-        SetEntry().environmentObject(models.editingWeightInstance!.weight!.sets)
+        SetEntry().environmentObject(models)
     }
 }
 

@@ -75,9 +75,11 @@ struct CardioEntry: View {
                 }
             }
             .onDisappear() {
-                self.models.editingCardioInstance!.setTime(newTime: self.totalTimeInMinutes())
-                self.models.editingCardioInstance!.setUnit(newUnit: self.unitSelection[self.unitPicked])
-                self.models.editingCardioInstance!.setDistance(newDistance: Double(self.distance) ?? 0.0)
+                if (self.models.editingCardioInstance != nil) { //if did not abandon entry, save it.
+                    self.models.editingCardioInstance!.setTime(newTime: self.totalTimeInMinutes())
+                    self.models.editingCardioInstance!.setUnit(newUnit: self.unitSelection[self.unitPicked])
+                    self.models.editingCardioInstance!.setDistance(newDistance: Double(self.distance) ?? 0.0)
+                }
             }
         }
         

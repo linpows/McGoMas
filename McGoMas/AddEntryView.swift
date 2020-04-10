@@ -132,16 +132,25 @@ struct EntryForm: View {
                     Button( //Cancel button, discard current workout
                         action: {
                             if (self.formType == WorkoutType.weights) {
-                                let cancelled = self.modelStorage.weightLogs.popLast()
+                                let cancelled = self.modelStorage.editingWeightInstance
                                 if let cancelled = cancelled {
                                     cancelled.removeWeight()
                                 }
+                                self.modelStorage.weightLogs.removeAll(where: { weight in
+                                    weight.weight == nil
+                                })
+                                //self.modelStorage.editingWeightInstance = nil
                             }
                             else {
-                                let cancelled = self.modelStorage.cardioLogs.popLast()
+                                let cancelled = self.modelStorage.editingCardioInstance
                                 if let cancelled = cancelled {
                                     cancelled.removeCardio()
                                 }
+                                
+                                self.modelStorage.cardioLogs.removeAll(where: { cardio in
+                                    cardio.cardio == nil
+                                })
+                                self.modelStorage.editingCardioInstance = nil
                             }
                             self.presentationMode.wrappedValue.dismiss()
                         },

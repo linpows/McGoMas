@@ -13,7 +13,7 @@ import SwiftUI
  */
 struct SetEntry: View {
     // Array of logged sets to display in list
-    @EnvironmentObject var currentLoggedSets: SetArray
+    @EnvironmentObject var models: UserLogList
     
     //User-defined metrics: weight lifted, number of lifts, name of the weight
     let unitOptions = ["pounds", "kilograms"]
@@ -51,7 +51,7 @@ struct SetEntry: View {
                     
                     if (!self.err) {
                         let newSet = self.saveEntry()
-                        self._currentLoggedSets.wrappedValue.addSet(set: newSet)
+                        self.models.editingWeightInstance!.weight!.sets.addSet(set: newSet)
                         self.clearUserEntry()
                     }
                 },
@@ -64,7 +64,7 @@ struct SetEntry: View {
                     Alert(title: Text("Invalid Entry"), message: Text(self.errTxt), dismissButton: .default(Text("Ok")))
                 }
             Divider()
-            SetList(mySets: self.currentLoggedSets).padding(.top, 0)
+            SetList(mySets: self.models.editingWeightInstance?.weight?.sets ?? SetArray(fromSets: [])).padding(.top, 0)
         }
     }
         
