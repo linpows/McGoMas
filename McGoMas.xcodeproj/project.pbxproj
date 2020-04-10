@@ -221,10 +221,10 @@
 			children = (
 				80F7A1DA24213F5000061ED0 /* LoggingHomeView.swift */,
 				801F887B243A246B0080CEA2 /* WeightListView.swift */,
-				801F887D243A24880080CEA2 /* CardioListView.swift */,
 				80F7A1D824213B6400061ED0 /* AddEntryView.swift */,
 				80D937F02433909400006E8B /* CardioEntry.swift */,
 				80CDF0DE24351BF3009EE05B /* WeightEntry.swift */,
+				801F887D243A24880080CEA2 /* CardioListView.swift */,
 				8083E7CA2436239200837D3F /* SetEntry.swift */,
 				804BC0F22427B89C004ED836 /* WorkoutModels.swift */,
 			);

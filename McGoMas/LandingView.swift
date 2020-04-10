@@ -19,6 +19,9 @@ extension AnyTransition { //Provides splash screen custom transition
 class UserLogList: ObservableObject { //Locally held record of the user's logged workouts
     var didChange = PassthroughSubject<UserLogList, Never>()
     
+    var editingCardioInstance: CardioModel? = nil
+    var editingWeightInstance: WeightModel? = nil
+    
     @Published var cardioLogs: [CardioModel] { didSet {
         //When a class in "weight" is set, broadcast change
         self.didChange.send(self)
@@ -28,6 +31,7 @@ class UserLogList: ObservableObject { //Locally held record of the user's logged
         //broadcast changes to this list
         self.didChange.send(self)
     }}
+    
     
     var cancellables = [AnyCancellable]()
 
@@ -98,7 +102,7 @@ struct MainTabView: View {
             }.tag(1)
             LoggingHomeView()
                 .environmentObject(user)
-                .environmentObject(self.logs)
+                .environmentObject(logs)
                 .tabItem {
                     VStack () {
                         Image(systemName: "2.circle")

@@ -10,12 +10,24 @@ import SwiftUI
 
 struct CardioListView: View {
     @EnvironmentObject var logStore: UserLogList
+    @State private var sorted: [CardioModel] = []
+    
+    func sortLogs() {
+        //Sort logs by date
+        logStore.cardioLogs.sort { one, two in
+            one.cardio!.date >= two.cardio!.date
+        }
+
+    }
     
     var body: some View {
         List {
             ForEach(self.logStore.cardioLogs) { cardio in
                 CardioRow(displayedCardio: cardio.cardio!)
             }.onDelete(perform: deleteCardio)
+        }
+        .onAppear() {
+            self.sortLogs()
         }
     }
     

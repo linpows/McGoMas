@@ -10,10 +10,10 @@ import SwiftUI
 
 struct WeightEntry: View {
     //Given model we will be storing changes in
-    @EnvironmentObject var weight: WeightModel
+    @EnvironmentObject var models: UserLogList
     
     var body: some View {
-        SetEntry().environmentObject(weight.weight!.sets)
+        SetEntry().environmentObject(models.editingWeightInstance!.weight!.sets)
     }
 }
 

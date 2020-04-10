@@ -10,12 +10,23 @@ import SwiftUI
 
 struct WeightListView: View {
     @EnvironmentObject var logStore: UserLogList
+    private var sorted: [WeightModel] = []
+    
+    func sortLogs() {
+        //Sort logs by date
+        logStore.weightLogs.sort { one, two in
+            one.weight!.dayCompleted >= two.weight!.dayCompleted
+        }
+    }
     
     var body: some View {
         List {
             ForEach(self.logStore.weightLogs) { weight in
                 WeightRow(displayedWeight: weight.weight!)
             }.onDelete(perform: deleteWeight)
+        }
+        .onAppear() {
+            self.sortLogs()
         }
     }
     

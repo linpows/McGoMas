@@ -28,8 +28,8 @@ struct CardioEntry: View {
         return hourSum + minSum + secSum
     }
     
-    //MUST have instantiated model.cardio
-    @EnvironmentObject var model: CardioModel
+    //MUST have instantiated the editing instance in the list
+    @EnvironmentObject var models: UserLogList
 
     
     var body: some View {
@@ -75,9 +75,9 @@ struct CardioEntry: View {
                 }
             }
             .onDisappear() {
-                self.model.setTime(newTime: self.totalTimeInMinutes())
-                self.model.setUnit(newUnit: self.unitSelection[self.unitPicked])
-                self.model.setDistance(newDistance: Double(self.distance) ?? 0.0)
+                self.models.editingCardioInstance!.setTime(newTime: self.totalTimeInMinutes())
+                self.models.editingCardioInstance!.setUnit(newUnit: self.unitSelection[self.unitPicked])
+                self.models.editingCardioInstance!.setDistance(newDistance: Double(self.distance) ?? 0.0)
             }
         }
         

@@ -69,6 +69,7 @@ struct AddEntryView: View {
                             model.changeDate(newDate: self.date)
                             
                             self.logs.weightLogs.append(model)
+                            self.logs.editingWeightInstance = model
                             
                         }
                         else {
@@ -77,6 +78,7 @@ struct AddEntryView: View {
                             model.setDate(newDate: self.date)
                             
                             self.logs.cardioLogs.append(model)
+                            self.logs.editingCardioInstance = model
                         }
                         
                         self.show = true
@@ -101,20 +103,19 @@ struct AddEntryView: View {
 
 struct EntryForm: View {
     @Binding var formType: WorkoutType?
+    
     @EnvironmentObject var user: UserSession
-
     @Environment(\.presentationMode) var presentationMode
-
     @EnvironmentObject var modelStorage: UserLogList
     
     var body: some View {
         NavigationView () {
             VStack () {
                 if (self.formType == WorkoutType.weights) {
-                    WeightEntry().environmentObject(self.modelStorage.weightLogs.last!)
+                    WeightEntry().environmentObject(self.modelStorage)
                 }
                 else {
-                    CardioEntry().environmentObject(self.modelStorage.cardioLogs.last!)
+                    CardioEntry().environmentObject(self.modelStorage)
                 }
                 Spacer()
                 HStack () {
