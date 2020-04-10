@@ -10,6 +10,7 @@ import SwiftUI
 
 struct WeightListView: View {
     @EnvironmentObject var logStore: UserLogList
+    @EnvironmentObject var user: UserSession
     
     func sortLogs() {
         //Sort logs by date
@@ -55,7 +56,11 @@ struct WeightListView: View {
     }
     
     func deleteWeight(at offsets: IndexSet) {
-        self.logStore.weightLogs.remove(atOffsets: offsets)
+        for idx in offsets {//Remove from database
+            let ref = self.logStore.weightLogs[idx]
+            user.removeWeight(weight: ref)
+        }
+        self.logStore.weightLogs.remove(atOffsets: offsets) //Remove locally
     }
     
 }

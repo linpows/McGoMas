@@ -122,6 +122,28 @@ class UserSession: ObservableObject {
         }
     }
     
+    func removeCardio(cardio: CardioModel) {
+        let identifier = cardio.id.uuidString
+        if let ref = databaseRef {
+            ref.child(identifier).removeValue { err, _ in
+                if let err = err {
+                    print(err.localizedDescription)
+                }
+            }
+        }
+    }
+    
+    func removeWeight(weight: WeightModel) {
+        let identifier = weight.id.uuidString
+        if let ref = databaseRef {
+            ref.child(identifier).removeValue { err, _ in
+                if let err = err {
+                    print(err.localizedDescription)
+                }
+            }
+        }
+    }
+    
     /*
     Retrieves all of the user's workouts
     */

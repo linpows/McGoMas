@@ -10,6 +10,8 @@ import SwiftUI
 
 struct CardioListView: View {
     @EnvironmentObject var logStore: UserLogList
+    @EnvironmentObject var user: UserSession
+    
     @State private var sorted: [CardioModel] = []
     
     func sortLogs() {
@@ -73,8 +75,12 @@ struct CardioListView: View {
         }
     }
     
-    func deleteCardio(at offset: IndexSet) {
-        self.logStore.cardioLogs.remove(atOffsets: offset)
+    func deleteCardio(at offsets: IndexSet) {
+        for idx in offsets {//Remove from database
+            let ref = self.logStore.cardioLogs[idx]
+            user.removeCardio(cardio: ref)
+        }
+        self.logStore.cardioLogs.remove(atOffsets: offsets)
     }
 }
 

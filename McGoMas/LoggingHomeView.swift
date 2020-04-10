@@ -21,6 +21,7 @@ struct LoggingHomeView: View {
     
     @State private var selection: Int = 0
     private var types = ["Cardio", "Weights"]
+
     
     var body: some View {
         NavigationView {
@@ -36,10 +37,10 @@ struct LoggingHomeView: View {
                 Spacer()
                 
                 if (self.selection == 0) {
-                    CardioListView().environmentObject(self.logs)
+                    CardioListView().environmentObject(self.logs).environmentObject(self.userSession)
                 }
                 else {
-                    WeightListView().environmentObject(self.logs)
+                    WeightListView().environmentObject(self.logs).environmentObject(self.userSession)
                 }
                 Spacer()
                 Button (
