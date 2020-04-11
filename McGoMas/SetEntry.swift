@@ -12,8 +12,11 @@ import SwiftUI
  An entry form for a user to input set information
  */
 struct SetEntry: View {
-    // Array of logged sets to display in list
+    // Editing instance houses the weight we are adding a set for
     @EnvironmentObject var models: UserLogList
+    @Environment(\.presentationMode) var presentationMode
+    @State var prepopulatedFields: WeightSet?
+    @State var saveWillDismiss: Bool
     
     //User-defined metrics: weight lifted, number of lifts, name of the weight
     let unitOptions = ["pounds", "kilograms"]
@@ -46,26 +49,46 @@ struct SetEntry: View {
             
             Stepper("\(self.reps)  Repetitions", value: $reps, in: 0...100).padding(.horizontal)
             Button(
-                action: {
-                    self.checkUserEntry()
-                    
-                    if (!self.err) {
-                        let newSet = self.saveEntry()
-                        self.models.editingWeightInstance!.weight!.sets.addSet(set: newSet)
-                        self.clearUserEntry()
-                    }
-                },
-                label: {
-                    Text("Save Set").bold().kerning(1.0).font(.system(size: 17.0))
-                })
-                .buttonStyle(GradientButtonStyle())
-                .padding()
-                .alert(isPresented: $err) {
-                    Alert(title: Text("Invalid Entry"), message: Text(self.errTxt), dismissButton: .default(Text("Ok")))
+            action: {
+                //Assure user have properly entered everything
+                self.checkUserEntry()
+                
+                if (!self.err) { //Save as new set
+                    let newSet = self.saveEntry()
+                    self.models.editingWeightInstance!.weight!.sets.addSet(set: newSet)
+                    self.clearUserEntry()
                 }
-            Divider()
-            SetList(mySets: self.models.editingWeightInstance?.weight?.sets ?? SetArray(fromSets: [])).padding(.top, 0)
+                if (self.saveWillDismiss) {
+                    self.presentationMode.wrappedValue.dismiss()
+                }
+            },
+            label: {
+                Text("Save Set").bold().kerning(1.0).font(.system(size: 17.0))
+            })
+            .buttonStyle(GradientButtonStyle())
+            .padding()
+            .alert(isPresented: $err) {
+                Alert(title: Text("Invalid Entry"), message: Text(self.errTxt), dismissButton: .default(Text("Ok")))
+            }
+            
         }
+        .onAppear() {
+            if let filler = self.prepopulatedFields {
+                //Fill in given info instead of defaults
+                self.name = filler.weightName
+                self.reps = filler.repetitions
+                self.mass = String(filler.weight)
+                switch (filler.weightUnit) {
+                case "pounds":
+                    self.unitPicked = 0
+                case "kilograms":
+                    self.unitPicked = 1
+                default:
+                    self.unitPicked = 0
+                }
+            }
+        }
+        
     }
         
     private func saveEntry() -> WeightSet {
@@ -102,13 +125,15 @@ struct SetEntry: View {
 struct SetEntry_Previews: PreviewProvider {
     
     static var previews: some View {
-        let setOne = WeightSet(weightName: "Dead Lift", weight: 20.0, weightUnit: "pounds", repetitions: 5)
-        let setTwo = WeightSet(weightName: "Bicep Curl", weight: 50.0, weightUnit: "pounds", repetitions: 10)
+
+        let weight = WeightModel()
+        weight.createWeight()
+        weight.addSet(name: "Dead Lift", mass: 20.0, massUnit: "pounds", reps: 5)
         
-        let displayed: SetArray = SetArray()
-        displayed.addSet(set: setOne)
-        displayed.addSet(set: setTwo)
         
-        return SetEntry().environmentObject(displayed)
+        let storage = UserLogList(cardioModels: [], weightModels: [weight])
+        storage.editingWeightInstance = weight
+        
+        return SetEntry(prepopulatedFields: WeightSet(weightName: "Test", weight: 10.0, weightUnit: "pounds", repetitions: 2), saveWillDismiss: false).environmentObject(storage)
     }
 }

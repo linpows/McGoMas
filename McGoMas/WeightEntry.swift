@@ -13,7 +13,11 @@ struct WeightEntry: View {
     @EnvironmentObject var models: UserLogList
     
     var body: some View {
-        SetEntry().environmentObject(models)
+        VStack() {
+            SetEntry(saveWillDismiss: false).environmentObject(models)
+            Divider()
+            SetList(mySets: self.models.editingWeightInstance!.weight?.sets ?? SetArray(fromSets: []), forModel: self.models.editingWeightInstance!).padding(.top, 0)
+        }
     }
 }
 
@@ -21,9 +25,9 @@ struct WeightEntry: View {
 
 struct WeightEntry_Previews: PreviewProvider {
     static var previews: some View {
-        let model = WeightModel()
+        let models = UserLogList(cardioModels: [], weightModels: [])
         let inNavView = NavigationView {
-            WeightEntry().environmentObject(model)
+            WeightEntry().environmentObject(models)
         }
         return inNavView
     }

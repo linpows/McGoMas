@@ -22,7 +22,7 @@ struct WeightListView: View {
     var body: some View {
         List {
             ForEach(self.logStore.weightLogs) { weight in
-                WeightRow(displayedWeight: weight.weight!)
+                WeightRow(displayedWeight: weight).environmentObject(self.logStore)
             }.onDelete(perform: deleteWeight)
         }
         .onAppear() {
@@ -32,25 +32,27 @@ struct WeightListView: View {
     
     //ROW
     struct WeightRow: View {
-        @State var displayedWeight: WeightModel.Weight
+        @ObservedObject var displayedWeight: WeightModel
+        @EnvironmentObject var logStore: UserLogList
         var body: some View {
-            NavigationLink(destination: WeightDetail(displayedWeight: self.displayedWeight, sets: self.displayedWeight.sets)) {
-                Text(formatDate(date: self.displayedWeight.dayCompleted))
+            NavigationLink(destination: WeightDetail(displayedWeight: self.displayedWeight, sets: self.displayedWeight.weight!.sets).environmentObject(self.logStore)) {
+                Text(formatDate(date: self.displayedWeight.weight!.dayCompleted))
             }
         }
     }
     
     //DETAIL
     struct WeightDetail: View {
-        @State var displayedWeight: WeightModel.Weight
+        @ObservedObject var displayedWeight: WeightModel
         @ObservedObject var sets: SetArray
+        @EnvironmentObject var logStore: UserLogList
         
         var body: some View {
             VStack() {
-                Text("Workout Completed\n" + formatDate(date: self.displayedWeight.dayCompleted)).font(.largeTitle)
+                Text("Workout Completed\n" + formatDate(date: self.displayedWeight.weight!.dayCompleted)).font(.largeTitle)
                 Divider()
                 Text("Sets Completed: ").font(.title)
-                SetList(mySets: self.sets)
+                SetList(mySets: self.sets, forModel: self.displayedWeight).environmentObject(self.logStore)
             }
         }
     }
@@ -70,11 +72,14 @@ struct WeightListView: View {
 struct SetList: View {
     //Sets to display
     @ObservedObject var mySets: SetArray
+    @ObservedObject var forModel: WeightModel
+    @EnvironmentObject var logs: UserLogList
+    @EnvironmentObject var logStore: UserLogList
     
     var body: some View {
         List {
             ForEach (self.mySets.sets) { logSet in
-                NavigationLink(destination: SetDetail(displayedSet: logSet)) {
+                NavigationLink(destination: SetDetail(forModel: self.forModel, displayedSet: logSet).environmentObject(self.logs)) {
                     Text(logSet.weightName)
                 }
             }.onDelete(perform: removeSet)
@@ -82,12 +87,15 @@ struct SetList: View {
     }
     
     func removeSet(at offsets: IndexSet) {
-        self.mySets.sets.remove(atOffsets: offsets)
+        self.forModel.weight!.sets.sets.remove(atOffsets: offsets)
     }
     
     //Detail view of a logged set
     struct SetDetail: View {
+        @ObservedObject var forModel: WeightModel
         @State var displayedSet: WeightSet
+        @State private var edit = false
+        @EnvironmentObject var logs: UserLogList
         
         var body: some View {
             VStack () {
@@ -104,6 +112,20 @@ struct SetList: View {
                     Text(String(displayedSet.repetitions)).font(.title).bold()
                 }
                 Spacer()
+                .navigationBarItems(trailing: Button(
+                    action: {
+                        //Remove set from within the model
+                        self.forModel.weight!.sets.removeSet(set: self.displayedSet)
+                        //Set logs to edit this weight
+                        self.forModel.pushToDB = true
+                        self.logs.editingWeightInstance = self.forModel
+                        self.edit = true
+                    },
+                    label: {Text("Edit")}
+                ))
+                .sheet(isPresented: $edit) {
+                    SetEntry(prepopulatedFields: self.displayedSet, saveWillDismiss: true).environmentObject(self.logs)
+                }
             }
         }
     }

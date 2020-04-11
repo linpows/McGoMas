@@ -35,7 +35,7 @@ struct CardioEntry: View {
     var body: some View {
         VStack () {
             Form {
-                Section(header: Text("Workout Details")) {
+                Section() {
                     HStack () { //DISTANCE INPUT
                         NumericTextField(label: "Distance", enteredText: $distance)
                         Picker("Unit", selection: $unitPicked) {
@@ -74,6 +74,37 @@ struct CardioEntry: View {
                     }
                 }
             }
+            .onAppear() { //If editing, will fill fields in
+                if let instance = self.models.editingCardioInstance {
+                    
+                    let minutes = instance.cardio?.time ?? 0.0
+                    let hours: Int = Int(minutes / 60)
+                    let remainingMinutes: Int = Int(minutes) % 60
+                    let remainder = minutes.truncatingRemainder(dividingBy: 1.0)
+                    var secs = remainder * 60.0
+                    secs.round()
+                    let seconds = Int(secs)
+                    
+                    self.hour = hours == 0 ? "" : String(hours)
+                    self.min = remainingMinutes == 0 ? "" : String(remainingMinutes)
+                    self.sec = seconds == 0 ? "" : String(seconds)
+                    
+                    switch (instance.cardio?.distanceUnit ?? "") {
+                        case "mi":
+                            self.unitPicked = 0
+                        case "m":
+                            self.unitPicked = 1
+                        case "km":
+                            self.unitPicked = 2
+                        default:
+                            self.unitPicked = 0
+                    }
+                    
+                    if let distance = instance.cardio?.distance {
+                        self.distance = distance.description
+                    }
+                }
+            }
             .onDisappear() {
                 if (self.models.editingCardioInstance != nil) { //if did not abandon entry, save it.
                     self.models.editingCardioInstance!.setTime(newTime: self.totalTimeInMinutes())
@@ -82,7 +113,6 @@ struct CardioEntry: View {
                 }
             }
         }
-        
     }
     
     enum DistanceUnit: Int {

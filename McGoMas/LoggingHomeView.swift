@@ -14,6 +14,7 @@ import FirebaseAuth
 struct LoggingHomeView: View {
     @State private var showAdd: Bool = false
     @State private var showError: Bool = false
+    @State private var done: Bool = false
     
     @EnvironmentObject var userSession: UserSession
     @EnvironmentObject var logs: UserLogList
@@ -46,7 +47,7 @@ struct LoggingHomeView: View {
                 Button (
                     action: {
                         let cardioSave = self.logs.cardioLogs.filter({ cardio in
-                            cardio.pushToDB
+                            cardio.pushToDB //Push only the ones that need adding/updating
                         })
                         
                         for cardio in cardioSave {
@@ -63,15 +64,21 @@ struct LoggingHomeView: View {
                             self.userSession.uploadWeight(workout: weight)
                             weight.pushToDB = false //updated
                         }
-                        
+                        self.done = true
                     },
                     label: {
-                        Text("Save Changes")
+                        Text("Save Changes").font(.title)
+                        .fontWeight(.bold)
                     }
                 )
+                .buttonStyle(GradientButtonStyle())
+                .padding()
             }
             .alert(isPresented: $showError) {
                 Alert(title: Text("Oops"), message: Text("Sign in to access this functionality"), dismissButton: .default(Text("Ok")))
+            }
+            .alert(isPresented: $done) {
+                Alert(title: Text("Success"), message: Text("Changes saved successfully."), dismissButton: .default(Text("Ok")))
             }
             .navigationBarTitle("Your Log")
             .navigationBarItems(trailing:
@@ -104,6 +111,6 @@ struct LoggingHomeView_Previews: PreviewProvider {
         cardioModels.forEach({
             $0.createCardio(withType: WorkoutType.swim, date: Date(), distance: 10.0, distanceUnit: "mile", time: 60.0)
         })
-        return  LoggingHomeView().environmentObject(UserLogList(cardioModels: cardioModels, weightModels: []))
+        return LoggingHomeView().environmentObject(UserLogList(cardioModels: cardioModels, weightModels: [])).environmentObject(UserSession())
     }
 }

@@ -119,10 +119,17 @@ struct MainTabView: View {
             CalendarView()
                 .tabItem {
                     VStack () {
-                        Image(systemName: "3.circle")
+                        Image(systemName: "4.circle")
                         Text("Calendar")
                     }
             }.tag(4)
+            TutorialHome()
+                .tabItem {
+                    VStack() {
+                        Image(systemName: "5.circle")
+                        Text("Tutorials")
+                    }
+            }
         }
     }
 }
