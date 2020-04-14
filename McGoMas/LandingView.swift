@@ -88,7 +88,6 @@ struct LandingView: View {
 
 struct MainTabView: View {
     @EnvironmentObject var user: UserSession
-    @State private var logs: UserLogList = UserLogList(cardioModels: [], weightModels: [])
     
     var body: some View {
         TabView {
@@ -102,7 +101,7 @@ struct MainTabView: View {
             }.tag(1)
             LoggingHomeView()
                 .environmentObject(user)
-                .environmentObject(logs)
+                .environmentObject(user.logs)
                 .tabItem {
                     VStack () {
                         Image(systemName: "2.circle")

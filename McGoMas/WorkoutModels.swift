@@ -43,8 +43,15 @@ enum WorkoutType: Int {
 
 class WeightModel: ObservableObject, Identifiable {
     @Published var weight: Weight? 
-    var id = UUID()
+    var id: UUID
     var pushToDB: Bool = true //denotes a new update/creation
+    
+    init() {
+        self.id = UUID()
+    }
+    init(withID: UUID) {
+        self.id = withID
+    }
     
     /*
      Initializes a new weight
@@ -66,6 +73,16 @@ class WeightModel: ObservableObject, Identifiable {
     func addSet(name: String, mass: Double, massUnit: String, reps: Int) {
         if let myWeight = self.weight {
             myWeight.sets.addSet(set: WeightSet(weightName: name, weight: mass, weightUnit: massUnit, repetitions: reps))
+            self.weight = myWeight
+        }
+    }
+    
+    /*
+    Add a single set to this weight workout
+    */
+    func addSet(set: WeightSet) {
+        if let myWeight = self.weight {
+            myWeight.sets.addSet(set: set)
             self.weight = myWeight
         }
     }
@@ -149,8 +166,15 @@ struct WeightSet: Codable, Identifiable {
 class CardioModel: ObservableObject, Identifiable {
     @Published var cardio: Cardio?
     
-    var id = UUID()
+    var id: UUID
     var pushToDB: Bool = true //denotes a new update/creation
+    
+    init() {
+        self.id = UUID()
+    }
+    init(withID: UUID) {
+        self.id = withID
+    }
     
     /*
      Initializes a new cardio workout

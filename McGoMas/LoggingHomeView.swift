@@ -34,7 +34,7 @@ struct LoggingHomeView: View {
                     ForEach( 0 ..< types.count) { index in
                         Text(self.types[index]).tag(index)
                     }
-                }.pickerStyle(SegmentedPickerStyle())
+                }.pickerStyle(SegmentedPickerStyle()).padding()
                 Spacer()
                 
                 if (self.selection == 0) {

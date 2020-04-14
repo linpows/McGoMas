@@ -43,7 +43,7 @@ struct CardioListView: View {
             NavigationLink(destination: CardioDetail(displayedCardio: self.displayedCardio)) {
                 HStack() {
                     rowImage().resizable().aspectRatio(contentMode: .fit).frame(height: 50).padding(.trailing)
-                    Text(self.displayedCardio.cardio!.workoutType.stringRep + " " + formatDate(date: self.displayedCardio.cardio!.date))
+                    Text(self.displayedCardio.cardio!.workoutType.stringRep + " " + formatDate(date: self.displayedCardio.cardio!.date)).multilineTextAlignment(.center)
                 }
             }
         }
@@ -88,7 +88,7 @@ struct CardioListView: View {
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .multilineTextAlignment(.center)
-                Text(formatDate(date: self.displayedCardio.cardio!.date)).font(.largeTitle)
+                Text("\t" + formatDate(date: self.displayedCardio.cardio!.date) + "\t").font(.largeTitle).multilineTextAlignment(.center)
                 Divider()
                 
                 Text("Distance").font(.title)
