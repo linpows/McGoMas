@@ -43,7 +43,8 @@ struct CardioListView: View {
             NavigationLink(destination: CardioDetail(displayedCardio: self.displayedCardio)) {
                 HStack() {
                     rowImage().resizable().aspectRatio(contentMode: .fit).frame(height: 50).padding(.trailing)
-                    Text(self.displayedCardio.cardio!.workoutType.stringRep + " " + formatDate(date: self.displayedCardio.cardio!.date)).multilineTextAlignment(.center)
+                    Text(self.displayedCardio.cardio!.workoutType.stringRep + " ").bold()
+                    Text(formatDate(date: self.displayedCardio.cardio!.date)).multilineTextAlignment(.center)
                 }
             }
         }

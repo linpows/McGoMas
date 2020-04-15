@@ -36,7 +36,12 @@ struct WeightListView: View {
         @EnvironmentObject var logStore: UserLogList
         var body: some View {
             NavigationLink(destination: WeightDetail(displayedWeight: self.displayedWeight, sets: self.displayedWeight.weight!.sets).environmentObject(self.logStore)) {
-                Text(formatDate(date: self.displayedWeight.weight!.dayCompleted))
+                HStack () {
+                    Image("weights")
+                    .resizable().aspectRatio(contentMode: .fit).frame(height: 50).padding(.trailing)
+                    Text("Weights ").bold()
+                    Text(formatDate(date: self.displayedWeight.weight!.dayCompleted))
+                }
             }
         }
     }
@@ -49,7 +54,9 @@ struct WeightListView: View {
         
         var body: some View {
             VStack() {
-                Text("Workout Completed\n" + formatDate(date: self.displayedWeight.weight!.dayCompleted)).font(.largeTitle)
+                Image("weights").resizable().aspectRatio(contentMode: .fit).frame(height: 100)
+                Text("Workout Completed\n" + formatDate(date: self.displayedWeight.weight!.dayCompleted))
+                    .font(.largeTitle).multilineTextAlignment(.center)
                 Divider()
                 Text("Sets Completed: ").font(.title)
                 SetList(mySets: self.sets, forModel: self.displayedWeight).environmentObject(self.logStore)
@@ -88,6 +95,7 @@ struct SetList: View {
     
     func removeSet(at offsets: IndexSet) {
         self.forModel.weight!.sets.sets.remove(atOffsets: offsets)
+        self.forModel.pushToDB = true //need to record changes
     }
     
     //Detail view of a logged set
