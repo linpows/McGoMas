@@ -153,10 +153,8 @@ struct CardioListView: View {
     
     func deleteCardio(at offsets: IndexSet) {
         for idx in offsets {//Remove from database
-            let ref = self.logStore.cardioLogs[idx]
-            user.removeCardio(cardio: ref)
+            user.removeCardio(idx: idx)
         }
-        self.logStore.cardioLogs.remove(atOffsets: offsets)
     }
 }
 
@@ -168,7 +166,7 @@ struct CardioListView_Previews: PreviewProvider {
         let logStore = UserLogList(cardioModels: [cardioWorkout], weightModels: [])
 
         let navWrapped = NavigationView {
-            CardioListView().environmentObject( logStore)
+            CardioListView().environmentObject(logStore).environmentObject(UserSession())
         }
         return navWrapped
     }

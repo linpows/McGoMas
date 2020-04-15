@@ -126,26 +126,33 @@ class UserSession: ObservableObject {
         }
     }
     
-    func removeCardio(cardio: CardioModel) {
+    func removeCardio(idx: Int) {
+        let cardio = self.logs.cardioLogs[idx]
         let identifier = cardio.id.uuidString
-        if let ref = databaseRef {
+        if let ref = databaseRef { //remove from database
             ref.child(identifier).removeValue { err, _ in
                 if let err = err {
                     print(err.localizedDescription)
                 }
             }
         }
+        //Remove locally
+        self.logs.cardioLogs.remove(at: idx)
     }
     
-    func removeWeight(weight: WeightModel) {
+    func removeWeight(idx: Int) {
+        let weight = self.logs.weightLogs[idx]
         let identifier = weight.id.uuidString
         if let ref = databaseRef {
+            //Remove from database
             ref.child(identifier).removeValue { err, _ in
                 if let err = err {
                     print(err.localizedDescription)
                 }
             }
         }
+        //Remove locally
+        self.logs.weightLogs.remove(at: idx)
     }
     
     func databasePull() {

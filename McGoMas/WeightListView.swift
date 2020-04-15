@@ -66,10 +66,8 @@ struct WeightListView: View {
     
     func deleteWeight(at offsets: IndexSet) {
         for idx in offsets {//Remove from database
-            let ref = self.logStore.weightLogs[idx]
-            user.removeWeight(weight: ref)
+            user.removeWeight(idx: idx)
         }
-        self.logStore.weightLogs.remove(atOffsets: offsets) //Remove locally
     }
     
 }
@@ -81,7 +79,6 @@ struct SetList: View {
     @ObservedObject var mySets: SetArray
     @ObservedObject var forModel: WeightModel
     @EnvironmentObject var logs: UserLogList
-    @EnvironmentObject var logStore: UserLogList
     
     var body: some View {
         List {
@@ -156,6 +153,6 @@ struct WeightListView_Previews: PreviewProvider {
         workout.addSet(name: "Test", mass: 3.0, massUnit: "pounds", reps: 3)
         let logStore = UserLogList(cardioModels: [], weightModels: [workout])
         
-        return WeightListView().environmentObject( logStore)
+        return WeightListView().environmentObject(logStore).environmentObject(UserSession())
     }
 }
