@@ -26,7 +26,7 @@ struct CardioListView: View {
     var body: some View {
         List {
             ForEach(self.logStore.cardioLogs) { cardio in
-                CardioRow(displayedCardio: cardio)
+                CardioRow(displayedCardio: cardio).environmentObject(self.logStore)
             }.onDelete(perform: deleteCardio)
         }
         .onAppear() {
@@ -40,7 +40,7 @@ struct CardioListView: View {
         @State var displayedCardio: CardioModel
         
         var body: some View {
-            NavigationLink(destination: CardioDetail(displayedCardio: self.displayedCardio)) {
+            NavigationLink(destination: CardioDetail(displayedCardio: self.displayedCardio).environmentObject(self.logStore)) {
                 HStack() {
                     rowImage().resizable().aspectRatio(contentMode: .fit).frame(height: 50).padding(.trailing)
                     Text(self.displayedCardio.cardio!.workoutType.stringRep + " ").bold()

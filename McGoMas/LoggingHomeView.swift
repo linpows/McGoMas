@@ -13,6 +13,7 @@ import FirebaseAuth
 
 struct LoggingHomeView: View {
     @State private var showAdd: Bool = false
+    @State private var showStats: Bool = false
     @State private var showError: Bool = false
     @State private var done: Bool = false
     
@@ -27,6 +28,9 @@ struct LoggingHomeView: View {
         NavigationView {
             VStack () {
                 NavigationLink(destination: AddEntryView().environmentObject(self.userSession.logs), isActive: $showAdd) {
+                    EmptyView()
+                }
+                NavigationLink(destination: LogGraphView().environmentObject(self.userSession), isActive: $showStats) {
                     EmptyView()
                 }
                 Picker("Log Type", selection: $selection) {
@@ -80,7 +84,24 @@ struct LoggingHomeView: View {
                 Alert(title: Text("Success"), message: Text("Changes saved successfully."), dismissButton: .default(Text("Ok")))
             }
             .navigationBarTitle("Your Log")
-            .navigationBarItems(trailing:
+            .navigationBarItems(
+                leading:
+                Button(
+                    action: {
+                        if (self.userSession.user == nil) {
+                            self.showError = true;
+                        }
+                        else {
+                            self.showStats = true;
+                        }
+                    },
+                    label: {
+                        Image(systemName: "chart.pie.fill")
+                        .font(.largeTitle)
+                        .padding(.top, 20)
+                        .foregroundColor(burntOrange)
+                    }
+                ), trailing:
                 Button(
                     action: {
                         if (self.userSession.user == nil) {
@@ -89,14 +110,14 @@ struct LoggingHomeView: View {
                         else {
                             self.showAdd = true;
                         }
-                    },
+                },
                     label: {
                         Image(systemName: "plus.square.fill")
                             .font(.largeTitle)
                             .padding(.top, 20)
-                        .foregroundColor(chicagoMaroon)
+                            .foregroundColor(chicagoMaroon)
                         
-                    }
+                }
                 )
             )
         }

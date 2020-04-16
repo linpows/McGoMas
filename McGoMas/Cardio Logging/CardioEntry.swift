@@ -28,8 +28,8 @@ struct CardioEntry: View {
         return hourSum + minSum + secSum
     }
     
-    //MUST have instantiated the editing instance in user session
-    @EnvironmentObject var user: UserSession
+    //MUST have instantiated the editing instance
+    @EnvironmentObject var logs: UserLogList
 
     
     var body: some View {
@@ -75,7 +75,7 @@ struct CardioEntry: View {
                 }
             }
             .onAppear() { //If editing, will fill fields in
-                if let instance = self.user.logs.editingCardioInstance {
+                if let instance = self.logs.editingCardioInstance {
                     
                     let minutes = instance.cardio?.time ?? 0.0
                     let hours: Int = Int(minutes / 60)
@@ -106,10 +106,10 @@ struct CardioEntry: View {
                 }
             }
             .onDisappear() {
-                if (self.user.logs.editingCardioInstance != nil) { //if did not abandon entry, save it.
-                    self.user.logs.editingCardioInstance!.setTime(newTime: self.totalTimeInMinutes())
-                    self.user.logs.editingCardioInstance!.setUnit(newUnit: self.unitSelection[self.unitPicked])
-                    self.user.logs.editingCardioInstance!.setDistance(newDistance: Double(self.distance) ?? 0.0)
+                if (self.logs.editingCardioInstance != nil) { //if did not abandon entry, save it.
+                    self.logs.editingCardioInstance!.setTime(newTime: self.totalTimeInMinutes())
+                    self.logs.editingCardioInstance!.setUnit(newUnit: self.unitSelection[self.unitPicked])
+                    self.logs.editingCardioInstance!.setDistance(newDistance: Double(self.distance) ?? 0.0)
                 }
             }
         }
@@ -134,6 +134,6 @@ struct CardioEntry: View {
 
 struct CardioEntry_Previews: PreviewProvider {
     static var previews: some View {
-        return CardioEntry().environmentObject(UserSession())
+        return CardioEntry().environmentObject(UserSession().logs)
     }
 }

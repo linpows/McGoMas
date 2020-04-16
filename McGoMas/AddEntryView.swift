@@ -106,59 +106,57 @@ struct EntryForm: View {
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        NavigationView () {
-            VStack () {
-                if (self.formType == WorkoutType.weights) {
-                    WeightEntry().environmentObject(self.user.logs)
-                }
-                else {
-                    CardioEntry().environmentObject(self.user.logs)
-                }
-                Spacer()
-                HStack () {
-                    Button(
-                        action: {
-                            //Dismiss to logging home view
-                            self.presentationMode.wrappedValue.dismiss()
-                        },
-                        label: {
-                            Text("Done").font(.title)
-                        }
-                    ).buttonStyle(GradientButtonStyle())
-                    
-                    Button( //Cancel button, discard current workout
-                        action: {
-                            if (self.formType == WorkoutType.weights) {
-                                let cancelled = self.user.logs.editingWeightInstance
-                                if let cancelled = cancelled {
-                                    cancelled.removeWeight()
-                                }
-                                self.user.logs.weightLogs.removeAll(where: { weight in
-                                    weight.weight == nil
-                                })
-                                //self.modelStorage.editingWeightInstance = nil
-                            }
-                            else {
-                                let cancelled = self.user.logs.editingCardioInstance
-                                if let cancelled = cancelled {
-                                    cancelled.removeCardio()
-                                }
-                                
-                                self.user.logs.cardioLogs.removeAll(where: { cardio in
-                                    cardio.cardio == nil
-                                })
-                                self.user.logs.editingCardioInstance = nil
-                            }
-                            self.presentationMode.wrappedValue.dismiss()
-                        },
-                        label: {
-                            Text("Cancel").font(.title)
-                        }
-                    ).buttonStyle(AltGradientButtonStyle())
-                }
+        VStack () {
+            if (self.formType == WorkoutType.weights) {
+                WeightEntry().environmentObject(self.user.logs)
             }
-            .navigationBarTitle("New \(self.formType?.stringRep ?? "") Entry")
+            else {
+                CardioEntry().environmentObject(self.user.logs)
+            }
+            Spacer()
+            HStack () {
+                Button(
+                    action: {
+                        //Dismiss to logging home view
+                        self.presentationMode.wrappedValue.dismiss()
+                    },
+                    label: {
+                        Text("Done").font(.title)
+                    }
+                ).buttonStyle(GradientButtonStyle())
+                
+                Button( //Cancel button, discard current workout
+                    action: {
+                        if (self.formType == WorkoutType.weights) {
+                            let cancelled = self.user.logs.editingWeightInstance
+                            if let cancelled = cancelled {
+                                cancelled.removeWeight()
+                            }
+                            self.user.logs.weightLogs.removeAll(where: { weight in
+                                weight.weight == nil
+                            })
+                            //self.modelStorage.editingWeightInstance = nil
+                        }
+                        else {
+                            let cancelled = self.user.logs.editingCardioInstance
+                            if let cancelled = cancelled {
+                                cancelled.removeCardio()
+                            }
+                            
+                            self.user.logs.cardioLogs.removeAll(where: { cardio in
+                                cardio.cardio == nil
+                            })
+                            self.user.logs.editingCardioInstance = nil
+                        }
+                        self.presentationMode.wrappedValue.dismiss()
+                    },
+                    label: {
+                        Text("Cancel").font(.title)
+                    }
+                ).buttonStyle(AltGradientButtonStyle())
+            }
         }
+        .navigationBarTitle("New \(self.formType?.stringRep ?? "") Entry")
     }
 }
 

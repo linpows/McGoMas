@@ -14,8 +14,8 @@
             filePath = "McGoMas/LoggingHomeView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -46,8 +46,8 @@
             filePath = "McGoMas/LoggingHomeView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -114,6 +114,162 @@
             endingLineNumber = "68"
             landmarkName = "deleteWeight(at:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E61C78CA-73FA-43C1-9DFD-6B6B6E22C065"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "McGoMas/Cardio Logging/CardioListView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "CardioRow"
+            landmarkType = "14">
+            <Locations>
+               <Location
+                  uuid = "E61C78CA-73FA-43C1-9DFD-6B6B6E22C065 - 3d1a21ef201c5881"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "McGoMas.CardioListView.CardioRow.logStore.getter : McGoMas.UserLogList"
+                  moduleName = "McGoMas"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mikaylarichardson/Desktop/McGoMas/McGoMas/Cardio%20Logging/CardioListView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "104">
+               </Location>
+               <Location
+                  uuid = "E61C78CA-73FA-43C1-9DFD-6B6B6E22C065 - c16b8fa5295865fc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "McGoMas.CardioListView.CardioRow.$logStore.getter : SwiftUI.EnvironmentObject&lt;McGoMas.UserLogList&gt;.Wrapper"
+                  moduleName = "McGoMas"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mikaylarichardson/Desktop/McGoMas/McGoMas/Cardio%20Logging/CardioListView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "104">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3385C3AD-B679-4083-9274-8AD8AA0282A1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "McGoMas/Cardio Logging/CardioListView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "CardioDetail"
+            landmarkType = "14">
+            <Locations>
+               <Location
+                  uuid = "3385C3AD-B679-4083-9274-8AD8AA0282A1 - c7c8dc71ad67c4ad"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "property wrapper backing initializer of McGoMas.CardioListView.CardioDetail.displayedCardio : McGoMas.CardioModel"
+                  moduleName = "McGoMas"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mikaylarichardson/Desktop/McGoMas/McGoMas/Cardio%20Logging/CardioListView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  uuid = "3385C3AD-B679-4083-9274-8AD8AA0282A1 - d77a8efaf8655034"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "McGoMas.CardioListView.CardioDetail.displayedCardio.getter : McGoMas.CardioModel"
+                  moduleName = "McGoMas"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mikaylarichardson/Desktop/McGoMas/McGoMas/Cardio%20Logging/CardioListView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
+                  offsetFromSymbolStart = "60">
+               </Location>
+               <Location
+                  uuid = "3385C3AD-B679-4083-9274-8AD8AA0282A1 - 957b631c6b1b8c28"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "McGoMas.CardioListView.CardioDetail.displayedCardio.setter : McGoMas.CardioModel"
+                  moduleName = "McGoMas"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mikaylarichardson/Desktop/McGoMas/McGoMas/Cardio%20Logging/CardioListView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
+                  offsetFromSymbolStart = "74">
+               </Location>
+               <Location
+                  uuid = "3385C3AD-B679-4083-9274-8AD8AA0282A1 - bbd53718d2001337"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "McGoMas.CardioListView.CardioDetail.displayedCardio.modify : McGoMas.CardioModel"
+                  moduleName = "McGoMas"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mikaylarichardson/Desktop/McGoMas/McGoMas/Cardio%20Logging/CardioListView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "14">
+               </Location>
+               <Location
+                  uuid = "3385C3AD-B679-4083-9274-8AD8AA0282A1 - d0b6ad34e5162b08"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "McGoMas.CardioListView.CardioDetail.displayedCardio.modify : McGoMas.CardioModel with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "McGoMas"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mikaylarichardson/Desktop/McGoMas/McGoMas/Cardio%20Logging/CardioListView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  uuid = "3385C3AD-B679-4083-9274-8AD8AA0282A1 - 511830cae00ccc68"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "McGoMas.CardioListView.CardioDetail.$displayedCardio.getter : SwiftUI.ObservedObject&lt;McGoMas.CardioModel&gt;.Wrapper"
+                  moduleName = "McGoMas"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mikaylarichardson/Desktop/McGoMas/McGoMas/Cardio%20Logging/CardioListView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
+                  offsetFromSymbolStart = "98">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
