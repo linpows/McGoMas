@@ -24,6 +24,7 @@ struct TotalLogStats: View {
     //Follow [bike, swim, run] pattern
     @State private var mileRatio: [Double] = [0.0, 0.0, 0.0]
     @State private var mileTotals: [Double] = [0.0, 0.0, 0.0]
+    @State private var barFillColor = burntOrange
     
     var body: some View {
         HStack(alignment: .bottom, spacing: 0) {
@@ -31,19 +32,28 @@ struct TotalLogStats: View {
                 GeometryReader { geometry in
                     VStack(spacing: 0) {
                         Spacer()
-                        Rectangle().fill(chicagoMaroon)
+                            .frame(minWidth: 0.0, maxWidth: .infinity, minHeight: 0.0, maxHeight: .infinity)
+                        Rectangle().fill(self.barFillColor)
                             .frame(width: geometry.size.width * 0.90, height: geometry.size.height * CGFloat(self.mileRatio[idx]), alignment: .bottom)
+                            .onAppear() {
+                                let spring = Animation.spring(response: 5, dampingFraction: 0.8, blendDuration: 0.7)
+                                
+                                return withAnimation(spring) {
+                                    self.calcRatio()
+                                    self.barFillColor = chicagoMaroon
+                                }
+                            }
                     
-                        Text("\(self.cardioTypes[idx].stringRep)\nMiles (" + String(self.mileTotals[idx]) + ")").padding().multilineTextAlignment(.center)
+                        Text("\(self.cardioTypes[idx].stringRep)\n(" + String(self.mileTotals[idx]) + " miles)").padding().multilineTextAlignment(.center)
                     }
                     .frame(width: geometry.size.width, height: nil, alignment: .top)
                 }
                 Divider()
             }
         }
-        .onAppear() {
-            self.calcRatio()
-        }
+//        .onAppear() {
+//            self.calcRatio()
+//        }
     }
     
     private func calcRatio() {
@@ -55,7 +65,9 @@ struct TotalLogStats: View {
             mileTotals[i] = self.sumCardioMiles(forType: self.cardioTypes[i])
         }
         //Calculate percentage attributes to each type of workout
-        mileRatio = mileTotals.map { $0 / sum }
+        if (sum > 0.0) { //Guard against divide by zero error
+            mileRatio = mileTotals.map { $0 / sum }
+        }
     }
     
     private func sumCardioMiles(forType: WorkoutType) -> Double {
