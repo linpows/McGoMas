@@ -2,7 +2,7 @@
 //  TutorialHome.swift
 //  McGoMas
 // Use to make dynamically filtering search bar:
-// https://medium.com/better-programming/implement-searchbar-in-swiftui-556a204e1970
+// https://medium.com/@axelhodler/creating-a-search-bar-for-swiftui-e216fe8c8c7f
 // Used for incorporating GIFS : https://github.com/kirualex/SwiftyGif
 //  Created by Mikayla Richardson on 4/10/20.
 //  Copyright © 2020 Capstone. All rights reserved.
@@ -21,7 +21,7 @@ struct TutorialHome: View {
         NavigationView {
             VStack () {
                 //Search bar
-                CustomTextEntry(label: "", entryPrompt: "Search Tutorials", isSecure: false, enteredText: $query).labelsHidden().padding()
+                SearchBar(query: $query)
                 //Optional toggle to search through self-selected favorites
                 Picker("Filter", selection: $selection) {
                     ForEach( 0 ..< pickerOptions.count) { index in
@@ -34,7 +34,11 @@ struct TutorialHome: View {
                 //Results
                 List {
                     //Filter out non-favorited IF user has selected to only search favorites
-                    ForEach(self.tutorialArray.filter{self.selection == 0 ? true : $0.userFavorite}) { tutorial in
+                    ForEach(
+                        self.tutorialArray
+                            .filter{self.selection == 0 ? true : $0.userFavorite}
+                            .filter{self.query.isEmpty ? true : $0.id.lowercased().contains(self.query.lowercased())}
+                    ) { tutorial in
                         NavigationLink(destination: TutorialDetail(tutorial: tutorial)) {
                             Text(tutorial.id)
                         }

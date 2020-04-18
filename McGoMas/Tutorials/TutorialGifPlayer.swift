@@ -22,6 +22,7 @@ struct TutorialGifPlayer: UIViewRepresentable {
         } catch { //Could not make image from given name
             print(error)
         }
+        //If we couldn't make a gif, return an error placeholder
         let errImg = UIImage(systemName: "xmark.octagon")!
         let errView = UIImageView(image: errImg)
         errView.contentMode = .scaleAspectFit
@@ -30,24 +31,6 @@ struct TutorialGifPlayer: UIViewRepresentable {
     
     func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<TutorialGifPlayer>) {
         //Used to adjust to orientation changes
-    }
-}
-
-class Gif: UIView {
-    private var gifView: UIImageView = UIImageView()
-    
-    init(frame: CGRect, gifURL: URL) {
-        
-        super.init(frame: frame)
-        
-        //Infinite gif loop
-        self.gifView = UIImageView(gifURL: gifURL, loopCount: -1)
-        
-        self.addSubview(gifView)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }
 

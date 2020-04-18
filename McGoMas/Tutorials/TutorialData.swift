@@ -10,7 +10,16 @@ import Foundation
 
 
 let tutorials: [TutorialModel] = [
-    //TutorialModel(id: "Deadlift", link:URL(string: "https://i.imgur.com/JO9xrl9.mp4")!, isFavorite: false),
-    //TutorialModel(id: "Leg Extension", gifName: "", isFavorite: false),
-    TutorialModel(id: "Leg Curl", gifName: "leg_curl.gif", isFavorite: false)
+    TutorialModel(id: "Bicep Cable Press", gifName: "bicep_cable_press.gif", isFavorite: false),
+    TutorialModel(id: "Deadlift", gifName: "deadlift.gif", isFavorite: false),
+    TutorialModel(id: "Hanging Leg Raise", gifName: "hanging_leg_raise.gif", isFavorite: false),
+    TutorialModel(id: "Lat Pull Down", gifName: "lat_pull_down.gif", isFavorite: false),
+    TutorialModel(id: "Leg Curl", gifName: "leg_curl.gif", isFavorite: false),
+    TutorialModel(id: "Leg Extension", gifName: "leg_extension.gif", isFavorite: false),
+    TutorialModel(id: "Leg Press", gifName: "leg_press.gif", isFavorite: false),
+    TutorialModel(id: "Tricep Cable Press", gifName: "tricep_cable_press.gif", isFavorite: false)
 ]
+
+enum WeightTags: Int {
+    case arm, leg, core
+}
