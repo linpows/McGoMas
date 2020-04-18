@@ -7,15 +7,14 @@ target 'McGoMas' do
 
   # Pods for McGoMas
 
-  # add the Firebase pod for Google Analytics
-  pod 'Firebase/Analytics'
   # Firebase pod for Authentication
   pod 'Firebase/Auth'
+  pod 'Firebase/Analytics'
   # Firebase pod for Database
   pod 'Firebase/Database'
-
-  # Pod for google calendars
-  pod 'GoogleAPIClient/Calendar'
+  # Pod for using gifs
+  source 'https://github.com/CocoaPods/Specs.git'
+  pod 'SwiftyGif'
 
   target 'McGoMasTests' do
     inherit! :search_paths

@@ -10,12 +10,12 @@ import Foundation
 
 class TutorialModel: Identifiable, ObservableObject {
     var id: String //Name of weight
-    var link: URL //link to mp4
+    var gifName: String //locally held gif of tutorial
     @Published var userFavorite: Bool //toggle in user favorites
     
-    init(id: String, link: URL, isFavorite: Bool) {
+    init(id: String, gifName: String, isFavorite: Bool) {
         self.id = id
-        self.link = link
+        self.gifName = gifName
         self.userFavorite = isFavorite
     }
 }

@@ -44,16 +44,13 @@ struct TotalLogStats: View {
                                 }
                             }
                     
-                        Text("\(self.cardioTypes[idx].stringRep)\n(" + String(self.mileTotals[idx]) + " miles)").padding().multilineTextAlignment(.center)
+                        Text("\(self.cardioTypes[idx].stringRep)\n" + String(self.mileTotals[idx]) + " miles").padding().multilineTextAlignment(.center)
                     }
                     .frame(width: geometry.size.width, height: nil, alignment: .top)
                 }
                 Divider()
             }
         }
-//        .onAppear() {
-//            self.calcRatio()
-//        }
     }
     
     private func calcRatio() {

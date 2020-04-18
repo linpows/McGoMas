@@ -3,6 +3,7 @@
 //  McGoMas
 // Use to make dynamically filtering search bar:
 // https://medium.com/better-programming/implement-searchbar-in-swiftui-556a204e1970
+// Used for incorporating GIFS : https://github.com/kirualex/SwiftyGif
 //  Created by Mikayla Richardson on 4/10/20.
 //  Copyright © 2020 Capstone. All rights reserved.
 //
@@ -10,7 +11,7 @@
 import SwiftUI
 
 struct TutorialHome: View {
-    private var tutorialArray: [TutorialModel] = [TutorialModel(id: "Deadlift", link:URL(string: "https://i.imgur.com/JO9xrl9.mp4")!, isFavorite: false)]
+    private var tutorialArray: [TutorialModel] = tutorials
     private var pickerOptions = ["All", "Favorites"]
     @State private var selection: Int = 0
     
@@ -51,16 +52,16 @@ struct TutorialDetail: View {
     
     var body: some View {
         VStack() {
-            VideoView(url: self.tutorial.link)
+            TutorialGifPlayer(gifName: tutorial.gifName)
             Button( //Toggle this tutorial in/out of the favorites
                 action: {
                     self.tutorial.userFavorite.toggle()
                 },
-                label: {
+                label: { //Filled heart if favorite, empty heart if not
                     Image(systemName: self.tutorial.userFavorite ? "heart.fill" : "heart")
                 }
             )
-            .font(Font.system(size: 30)).padding()
+            .font(Font.system(size: 50)).padding()
             .buttonStyle(FavButtonStyle())
             
         }

@@ -29,6 +29,9 @@
 		807AD2AB24291FE200861B8C /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807AD2AA24291FE200861B8C /* UserSession.swift */; };
 		8083E7CB2436239200837D3F /* SetEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8083E7CA2436239200837D3F /* SetEntry.swift */; };
 		808736482416A4E000DFE94E /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808736472416A4E000DFE94E /* SignupView.swift */; };
+		80945FC32449F88000F55562 /* TutorialData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80945FC22449F88000F55562 /* TutorialData.swift */; };
+		80945FC52449FECD00F55562 /* TutorialGifPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80945FC42449FECD00F55562 /* TutorialGifPlayer.swift */; };
+		80A7AED4244B4C48009D6BFF /* leg_curl.gif in Resources */ = {isa = PBXBuildFile; fileRef = 80A7AED3244B4C48009D6BFF /* leg_curl.gif */; };
 		80A7C9D2242507B900C21FC6 /* PredictionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A7C9D1242507B900C21FC6 /* PredictionView.swift */; };
 		80A7C9D42425095600C21FC6 /* LandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A7C9D32425095600C21FC6 /* LandingView.swift */; };
 		80B5F5AF2443790D00EE0D3D /* TutorialModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B5F5AE2443790D00EE0D3D /* TutorialModel.swift */; };
@@ -82,6 +85,9 @@
 		807AD2AA24291FE200861B8C /* UserSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
 		8083E7CA2436239200837D3F /* SetEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetEntry.swift; sourceTree = "<group>"; };
 		808736472416A4E000DFE94E /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
+		80945FC22449F88000F55562 /* TutorialData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialData.swift; sourceTree = "<group>"; };
+		80945FC42449FECD00F55562 /* TutorialGifPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialGifPlayer.swift; sourceTree = "<group>"; };
+		80A7AED3244B4C48009D6BFF /* leg_curl.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = leg_curl.gif; sourceTree = "<group>"; };
 		80A7C9D1242507B900C21FC6 /* PredictionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictionView.swift; sourceTree = "<group>"; };
 		80A7C9D32425095600C21FC6 /* LandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingView.swift; sourceTree = "<group>"; };
 		80B5F5AE2443790D00EE0D3D /* TutorialModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialModel.swift; sourceTree = "<group>"; };
@@ -199,9 +205,12 @@
 		805382BF24415D4400F989AB /* Tutorials */ = {
 			isa = PBXGroup;
 			children = (
+				80A7AED2244B4C3E009D6BFF /* Local Gifs */,
 				805382C024415D5C00F989AB /* TutorialHome.swift */,
 				80B5F5B02443FC3A00EE0D3D /* TutorialVideoPlayer.swift */,
+				80945FC42449FECD00F55562 /* TutorialGifPlayer.swift */,
 				80B5F5AE2443790D00EE0D3D /* TutorialModel.swift */,
+				80945FC22449F88000F55562 /* TutorialData.swift */,
 			);
 			path = Tutorials;
 			sourceTree = "<group>";
@@ -244,6 +253,14 @@
 				800557CB2425579300FE11DA /* AuthView.swift */,
 			);
 			name = Authentication;
+			sourceTree = "<group>";
+		};
+		80A7AED2244B4C3E009D6BFF /* Local Gifs */ = {
+			isa = PBXGroup;
+			children = (
+				80A7AED3244B4C48009D6BFF /* leg_curl.gif */,
+			);
+			path = "Local Gifs";
 			sourceTree = "<group>";
 		};
 		80A7C9D02425079500C21FC6 /* Traffic Prediction */ = {
@@ -361,6 +378,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				802784A8240EC76500AFD8E8 /* LaunchScreen.storyboard in Resources */,
+				80A7AED4244B4C48009D6BFF /* leg_curl.gif in Resources */,
 				802784BE240ED0F200AFD8E8 /* GoogleService-Info.plist in Resources */,
 				802784A5240EC76500AFD8E8 /* Preview Assets.xcassets in Resources */,
 				802784A2240EC76500AFD8E8 /* Assets.xcassets in Resources */,
@@ -461,7 +479,9 @@
 				804BC0F12427A763004ED836 /* CalendarView.swift in Sources */,
 				805382C124415D5C00F989AB /* TutorialHome.swift in Sources */,
 				80B67F6F244754D700650AEF /* LogGraphView.swift in Sources */,
+				80945FC32449F88000F55562 /* TutorialData.swift in Sources */,
 				80B5F5AF2443790D00EE0D3D /* TutorialModel.swift in Sources */,
+				80945FC52449FECD00F55562 /* TutorialGifPlayer.swift in Sources */,
 				80F7A1DB24213F5000061ED0 /* LoggingHomeView.swift in Sources */,
 				8027849E240EC76000AFD8E8 /* SceneDelegate.swift in Sources */,
 				802784C1240EE1F200AFD8E8 /* LoginView.swift in Sources */,
