@@ -1,24 +1,15 @@
 //
-//  LogGraphView.swift
+//  Totals.swift
 //  McGoMas
 //
-//  Created by Mikayla Richardson on 4/15/20.
+//  Created by Mikayla Richardson on 4/19/20.
 //  Copyright © 2020 Capstone. All rights reserved.
 //
 
 import SwiftUI
 
-struct LogGraphView: View {
-    @EnvironmentObject var user: UserSession
-    var body: some View {
-        NavigationLink(destination: TotalLogStats().environmentObject(user)) {
-            Text("View Totals")
-        }
-    }
-}
-
 //Totals: view how many miles run/swum/biked throughout log time
-struct TotalLogStats: View {
+struct Totals: View {
     @EnvironmentObject var user: UserSession
     private var cardioTypes: [WorkoutType] = [WorkoutType.bike, WorkoutType.swim, WorkoutType.run]
     //Follow [bike, swim, run] pattern
@@ -93,14 +84,14 @@ struct TotalLogStats: View {
     }
 }
 
-struct LogGraphView_Previews: PreviewProvider {
+struct Totals_Previews: PreviewProvider {
     static var previews: some View {
         let user = UserSession()
         let run = CardioModel()
         run.createCardio(withType: WorkoutType.run)
         run.cardio!.distance = 10.0
         user.uploadCardio(workout: run)
-        let view = TotalLogStats().environmentObject(user)
+        let view = Totals().environmentObject(user)
         return view
     }
 }

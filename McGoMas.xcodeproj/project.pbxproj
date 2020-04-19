@@ -47,6 +47,9 @@
 		80C4846D2411727700BD7EAE /* LogoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C4846C2411727700BD7EAE /* LogoutView.swift */; };
 		80CDF0DF24351BF3009EE05B /* WeightEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CDF0DE24351BF3009EE05B /* WeightEntry.swift */; };
 		80D937F12433909400006E8B /* CardioEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D937F02433909400006E8B /* CardioEntry.swift */; };
+		80DEEC8A244C901E00B72798 /* Totals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DEEC89244C901E00B72798 /* Totals.swift */; };
+		80DEEC8C244C91A600B72798 /* GridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DEEC8B244C91A600B72798 /* GridCell.swift */; };
+		80DEEC91244C9EBE00B72798 /* Weekly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DEEC90244C9EBE00B72798 /* Weekly.swift */; };
 		80F7A1D924213B6400061ED0 /* AddEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F7A1D824213B6400061ED0 /* AddEntryView.swift */; };
 		80F7A1DB24213F5000061ED0 /* LoggingHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F7A1DA24213F5000061ED0 /* LoggingHomeView.swift */; };
 		BB33E4D1186D10D817E09DC1 /* Pods_McGoMas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 532037967455B767F9F12BDD /* Pods_McGoMas.framework */; };
@@ -110,6 +113,9 @@
 		80C4846C2411727700BD7EAE /* LogoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutView.swift; sourceTree = "<group>"; };
 		80CDF0DE24351BF3009EE05B /* WeightEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightEntry.swift; sourceTree = "<group>"; };
 		80D937F02433909400006E8B /* CardioEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardioEntry.swift; sourceTree = "<group>"; };
+		80DEEC89244C901E00B72798 /* Totals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Totals.swift; sourceTree = "<group>"; };
+		80DEEC8B244C91A600B72798 /* GridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCell.swift; sourceTree = "<group>"; };
+		80DEEC90244C9EBE00B72798 /* Weekly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weekly.swift; sourceTree = "<group>"; };
 		80F7A1D824213B6400061ED0 /* AddEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEntryView.swift; sourceTree = "<group>"; };
 		80F7A1DA24213F5000061ED0 /* LoggingHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingHomeView.swift; sourceTree = "<group>"; };
 		9EC3563F716A47E3524DA60F /* Pods-McGoMasTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-McGoMasTests.debug.xcconfig"; path = "Target Support Files/Pods-McGoMasTests/Pods-McGoMasTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -292,6 +298,17 @@
 			name = "Traffic Prediction";
 			sourceTree = "<group>";
 		};
+		80DEEC88244C8FFD00B72798 /* Trends */ = {
+			isa = PBXGroup;
+			children = (
+				80B67F6E244754D700650AEF /* LogGraphView.swift */,
+				80DEEC90244C9EBE00B72798 /* Weekly.swift */,
+				80DEEC8B244C91A600B72798 /* GridCell.swift */,
+				80DEEC89244C901E00B72798 /* Totals.swift */,
+			);
+			path = Trends;
+			sourceTree = "<group>";
+		};
 		80F7A1D524213B3500061ED0 /* Logging */ = {
 			isa = PBXGroup;
 			children = (
@@ -300,7 +317,7 @@
 				80F7A1DA24213F5000061ED0 /* LoggingHomeView.swift */,
 				80F7A1D824213B6400061ED0 /* AddEntryView.swift */,
 				804BC0F22427B89C004ED836 /* WorkoutModels.swift */,
-				80B67F6E244754D700650AEF /* LogGraphView.swift */,
+				80DEEC88244C8FFD00B72798 /* Trends */,
 			);
 			name = Logging;
 			sourceTree = "<group>";
@@ -508,6 +525,7 @@
 				80B67F6F244754D700650AEF /* LogGraphView.swift in Sources */,
 				80945FC32449F88000F55562 /* TutorialData.swift in Sources */,
 				80B5F5AF2443790D00EE0D3D /* TutorialModel.swift in Sources */,
+				80DEEC91244C9EBE00B72798 /* Weekly.swift in Sources */,
 				80945FC52449FECD00F55562 /* TutorialGifPlayer.swift in Sources */,
 				80F7A1DB24213F5000061ED0 /* LoggingHomeView.swift in Sources */,
 				8027849E240EC76000AFD8E8 /* SceneDelegate.swift in Sources */,
@@ -516,10 +534,12 @@
 				80A7AEE4244B555D009D6BFF /* SearchBar.swift in Sources */,
 				8020C2BD241023C00097BD5E /* CustomTextEntry.swift in Sources */,
 				80D937F12433909400006E8B /* CardioEntry.swift in Sources */,
+				80DEEC8A244C901E00B72798 /* Totals.swift in Sources */,
 				8083E7CB2436239200837D3F /* SetEntry.swift in Sources */,
 				8058CE14241D27D600559552 /* SplashView.swift in Sources */,
 				8028D50D24315BAF00CF050B /* NumericTextField.swift in Sources */,
 				807AD2AB24291FE200861B8C /* UserSession.swift in Sources */,
+				80DEEC8C244C91A600B72798 /* GridCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
