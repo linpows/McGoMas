@@ -13,21 +13,30 @@ struct Totals: View {
     @EnvironmentObject var user: UserSession
     private var cardioTypes: [WorkoutType] = [WorkoutType.bike, WorkoutType.swim, WorkoutType.run]
     //Follow [bike, swim, run] pattern
-    @State private var mileRatio: [Double] = [0.0, 0.0, 0.0]
-    @State private var mileTotals: [Double] = [0.0, 0.0, 0.0]
+    @State private var ratios: [Double] = [0.0, 0.0, 0.0]
+    @State private var totals: [Double] = [0.0, 0.0, 0.0]
     
     @State private var idxTapped = -1
     @State private var isTapped = false
+    
+    @State private var pickerSelection = 0
     
     var body: some View {
         VStack() {
             //Bring this to the front only when a bar/rectangle is hovered over
             if (self.isTapped) {
-                Text(String(self.mileTotals[self.idxTapped]) + " miles completed.").font(.title).padding().multilineTextAlignment(.center)
+                Text(String(self.totals[self.idxTapped]) + (self.pickerSelection == 0 ? " miles " : " minutes ") + "completed.").font(.title).padding().multilineTextAlignment(.center)
             }
             else {
                 Text("Click a bar to learn more.").font(.title).padding().multilineTextAlignment(.center)
             }
+            
+            MinuteMilePicker(selection: $pickerSelection.onChange({ index in
+                let spring = Animation.spring(response: 5, dampingFraction: 0.8, blendDuration: 0.5)
+                return withAnimation(spring) {
+                    self.ratio(unitSelection: index)
+                }
+            }))
             
             HStack(alignment: .bottom, spacing: 0) {
                 ForEach(0 ..< self.cardioTypes.count) { idx in
@@ -36,7 +45,7 @@ struct Totals: View {
                             Spacer()
                                 .frame(minWidth: 0.0, maxWidth: .infinity, minHeight: 0.0, maxHeight: .infinity)
                             Rectangle().fill(chicagoMaroon)
-                                .frame(width: geometry.size.width * 0.90, height: geometry.size.height * CGFloat(self.mileRatio[idx]), alignment: .bottom)
+                                .frame(width: geometry.size.width * 0.90, height: geometry.size.height * CGFloat(self.ratios[idx]), alignment: .bottom)
                                 .overlay(
                                     Rectangle()
                                         .stroke(burntOrange, lineWidth: self.idxTapped == idx ? 5 : 0)
@@ -55,12 +64,6 @@ struct Totals: View {
                                     }
                                     
                                 }
-                                .onAppear() {
-                                    let spring = Animation.spring(response: 5, dampingFraction: 0.8, blendDuration: 0.5)
-                                    return withAnimation(spring) {
-                                        self.calcRatio()
-                                    }
-                                }
                             Text(self.cardioTypes[idx].stringRep)
                         }
                         .frame(width: geometry.size.width, height: nil, alignment: .top)
@@ -68,21 +71,42 @@ struct Totals: View {
                     Divider()
                 }
             }
+            .onAppear {
+                self.ratio(unitSelection: 0)
+            }
         }
     }
     
-    private func calcRatio() {
+    private func ratio(unitSelection: Int) {
         var sum = 0.0 //Sum of all miles completed in cardio
         for i in 0 ..< self.cardioTypes.count {
-            //track total miles for specific types
-            mileTotals[i] = self.sumCardioMiles(forType: self.cardioTypes[i])
-            //Keep running sum of ALL miles for ALL types
-            sum += mileTotals[i]
+            if (unitSelection == 0) {
+                //track total miles for specific types
+                totals[i] = self.sumCardioMiles(forType: self.cardioTypes[i])
+            }
+            else {
+                totals[i] = self.sumCardioMins(forType: self.cardioTypes[i])
+            }
+            
+            //Keep running sum for ALL types
+            sum += totals[i]
         }
         //Calculate percentage attributes to each type of workout
         if (sum > 0.0) { //Guard against divide by zero error
-            mileRatio = mileTotals.map { $0 / sum }
+            ratios = totals.map { $0 / sum }
         }
+    }
+    
+    private func sumCardioMins(forType: WorkoutType) -> Double {
+        let specificType = user.logs.cardioLogs.filter { cardio in
+            //Find only entries attributed to the specific type
+            cardio.cardio != nil && cardio.cardio!.workoutType == forType
+        }
+        
+        //Convert model distances to an array of MILE distances
+        let mins = specificType.reduce(0.0, {$0 + ($1.cardio!.time ?? 0.0)})
+        
+        return mins
     }
     
     private func sumCardioMiles(forType: WorkoutType) -> Double {
