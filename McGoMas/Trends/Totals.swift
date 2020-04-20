@@ -25,15 +25,14 @@ struct Totals: View {
         VStack() {
             //Bring this to the front only when a bar/rectangle is hovered over
             if (self.isTapped) {
-                Text(String(self.totals[self.idxTapped]) + (self.pickerSelection == 0 ? " miles " : " minutes ") + "completed.").font(.title).padding().multilineTextAlignment(.center)
+                Text(String(format: "%.2f", self.totals[self.idxTapped]) + (self.pickerSelection == 0 ? " miles " : " minutes ") + "completed.").font(.title).padding().multilineTextAlignment(.center)
             }
             else {
                 Text("Click a bar to learn more.").font(.title).padding().multilineTextAlignment(.center)
             }
             
             MinuteMilePicker(selection: $pickerSelection.onChange({ index in
-                let spring = Animation.spring(response: 5, dampingFraction: 0.8, blendDuration: 0.5)
-                return withAnimation(spring) {
+                return withAnimation(Animation.spring()) {
                     self.ratio(unitSelection: index)
                 }
             }))
