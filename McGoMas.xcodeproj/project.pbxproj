@@ -14,6 +14,8 @@
 		3E551107244E6889002450E9 /* RKCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5510F9244E6889002450E9 /* RKCell.swift */; };
 		3E551108244E6889002450E9 /* RKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5510FA244E6889002450E9 /* RKManager.swift */; };
 		3E551109244E6889002450E9 /* RKViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5510FB244E6889002450E9 /* RKViewController.swift */; };
+		3E55110C244E6990002450E9 /* CalendarModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E55110A244E6990002450E9 /* CalendarModels.swift */; };
+		3E55110D244E6990002450E9 /* CalendarDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E55110B244E6990002450E9 /* CalendarDayView.swift */; };
 		800557CC2425579300FE11DA /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800557CB2425579300FE11DA /* AuthView.swift */; };
 		801F887C243A246B0080CEA2 /* WeightListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801F887B243A246B0080CEA2 /* WeightListView.swift */; };
 		801F887E243A24880080CEA2 /* CardioListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801F887D243A24880080CEA2 /* CardioListView.swift */; };
@@ -84,6 +86,8 @@
 		3E5510F9244E6889002450E9 /* RKCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RKCell.swift; path = RKCalendar/RKCell.swift; sourceTree = "<group>"; };
 		3E5510FA244E6889002450E9 /* RKManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RKManager.swift; path = RKCalendar/RKManager.swift; sourceTree = "<group>"; };
 		3E5510FB244E6889002450E9 /* RKViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RKViewController.swift; path = RKCalendar/RKViewController.swift; sourceTree = "<group>"; };
+		3E55110A244E6990002450E9 /* CalendarModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarModels.swift; sourceTree = "<group>"; };
+		3E55110B244E6990002450E9 /* CalendarDayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarDayView.swift; sourceTree = "<group>"; };
 		532037967455B767F9F12BDD /* Pods_McGoMas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_McGoMas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		800557CB2425579300FE11DA /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		801F887B243A246B0080CEA2 /* WeightListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightListView.swift; sourceTree = "<group>"; };
@@ -247,6 +251,8 @@
 		804BC0EF2427A738004ED836 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				3E55110B244E6990002450E9 /* CalendarDayView.swift */,
+				3E55110A244E6990002450E9 /* CalendarModels.swift */,
 				3E5510EC244E685D002450E9 /* RKCalendar */,
 				804BC0F02427A763004ED836 /* CalendarView.swift */,
 			);
@@ -569,6 +575,7 @@
 				8027849E240EC76000AFD8E8 /* SceneDelegate.swift in Sources */,
 				802784C1240EE1F200AFD8E8 /* LoginView.swift in Sources */,
 				801F887E243A24880080CEA2 /* CardioListView.swift in Sources */,
+				3E55110D244E6990002450E9 /* CalendarDayView.swift in Sources */,
 				80A7AEE4244B555D009D6BFF /* SearchBar.swift in Sources */,
 				8020C2BD241023C00097BD5E /* CustomTextEntry.swift in Sources */,
 				80D937F12433909400006E8B /* CardioEntry.swift in Sources */,
@@ -578,6 +585,7 @@
 				8058CE14241D27D600559552 /* SplashView.swift in Sources */,
 				8028D50D24315BAF00CF050B /* NumericTextField.swift in Sources */,
 				3E551106244E6889002450E9 /* RKWeekdayHeader.swift in Sources */,
+				3E55110C244E6990002450E9 /* CalendarModels.swift in Sources */,
 				807AD2AB24291FE200861B8C /* UserSession.swift in Sources */,
 				80DEEC8C244C91A600B72798 /* GridCell.swift in Sources */,
 			);
