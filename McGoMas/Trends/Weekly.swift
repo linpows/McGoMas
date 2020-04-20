@@ -14,6 +14,9 @@ struct Weekly: View {
     @State private var weeklyRatio: [Double] = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
     @State private var dayName: [String] = ["", "", "", "", "", "", ""]
     
+    @State private var idxTapped = -1
+    @State private var isTapped = false
+    
     var body: some View {
         HStack(alignment: .bottom, spacing: 0.0) {
             ForEach(0 ..< self.weeklyDistance.count) { idx in
@@ -23,6 +26,24 @@ struct Weekly: View {
                             .frame(minWidth: 0.0, maxWidth: .infinity, minHeight: 0.0, maxHeight: .infinity)
                         Rectangle()
                             .fill(burntOrange)
+                            .overlay(
+                                Rectangle()
+                                    .stroke(chicagoMaroon, lineWidth: self.idxTapped == idx ? 5 : 0)
+                                    .blur(radius: self.idxTapped == idx ? 2 : 0)
+                            )
+                            .onTapGesture {
+                                if (!self.isTapped || idx != self.idxTapped) {
+                                    //Bring to focus detail on this bar
+                                    self.idxTapped = idx
+                                    self.isTapped = true
+                                }
+                                else {
+                                    //Else the user has re-tapped the same rectangle to dismiss
+                                    self.isTapped = false
+                                    self.idxTapped = -1
+                                }
+                                
+                            }
                             .frame(width: geometry.size.width / 2.0, height: geometry.size.height * CGFloat(self.weeklyRatio[idx]), alignment: .bottom)
                         Text(self.dayName[idx]).padding()
                     }
