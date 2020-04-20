@@ -15,31 +15,58 @@ struct Totals: View {
     //Follow [bike, swim, run] pattern
     @State private var mileRatio: [Double] = [0.0, 0.0, 0.0]
     @State private var mileTotals: [Double] = [0.0, 0.0, 0.0]
-    @State private var barFillColor = burntOrange
+    
+    @State private var idxTapped = -1
+    @State private var isTapped = false
     
     var body: some View {
-        HStack(alignment: .bottom, spacing: 0) {
-            ForEach(0 ..< self.cardioTypes.count) { idx in
-                GeometryReader { geometry in
-                    VStack(spacing: 0) {
-                        Spacer()
-                            .frame(minWidth: 0.0, maxWidth: .infinity, minHeight: 0.0, maxHeight: .infinity)
-                        Rectangle().fill(self.barFillColor)
-                            .frame(width: geometry.size.width * 0.90, height: geometry.size.height * CGFloat(self.mileRatio[idx]), alignment: .bottom)
-                            .onAppear() {
-                                let spring = Animation.spring(response: 5, dampingFraction: 0.8, blendDuration: 0.7)
-                                
-                                return withAnimation(spring) {
-                                    self.calcRatio()
-                                    self.barFillColor = chicagoMaroon
+        VStack() {
+            //Bring this to the front only when a bar/rectangle is hovered over
+            if (self.isTapped) {
+                Text(String(self.mileTotals[self.idxTapped]) + " miles completed.").font(.title).padding().multilineTextAlignment(.center)
+            }
+            else {
+                Text("Click a bar to learn more.").font(.title).padding().multilineTextAlignment(.center)
+            }
+            
+            HStack(alignment: .bottom, spacing: 0) {
+                ForEach(0 ..< self.cardioTypes.count) { idx in
+                    GeometryReader { geometry in
+                        VStack(spacing: 0) {
+                            Spacer()
+                                .frame(minWidth: 0.0, maxWidth: .infinity, minHeight: 0.0, maxHeight: .infinity)
+                            Rectangle().fill(chicagoMaroon)
+                                .frame(width: geometry.size.width * 0.90, height: geometry.size.height * CGFloat(self.mileRatio[idx]), alignment: .bottom)
+                                .overlay(
+                                    Rectangle()
+                                        .stroke(burntOrange, lineWidth: self.idxTapped == idx ? 5 : 0)
+                                        .blur(radius: self.idxTapped == idx ? 2 : 0)
+                                )
+                                .onTapGesture {
+                                    if (!self.isTapped || idx != self.idxTapped) {
+                                        //Bring to focus detail on this bar
+                                        self.idxTapped = idx
+                                        self.isTapped = true
+                                    }
+                                    else {
+                                        //Else the user has re-tapped the same rectangle to dismiss
+                                        self.isTapped = false
+                                        self.idxTapped = -1
+                                    }
+                                    
                                 }
-                            }
-                    
-                        Text("\(self.cardioTypes[idx].stringRep)\n" + String(self.mileTotals[idx]) + " miles").padding().multilineTextAlignment(.center)
+                                .onAppear() {
+                                    let spring = Animation.spring(response: 5, dampingFraction: 0.8, blendDuration: 0.5)
+                                    return withAnimation(spring) {
+                                        self.calcRatio()
+                                    }
+                                }
+                            Text(self.cardioTypes[idx].stringRep)
+                        }
+                        .frame(width: geometry.size.width, height: nil, alignment: .top)
                     }
-                    .frame(width: geometry.size.width, height: nil, alignment: .top)
+                    Divider()
                 }
-                Divider()
             }
         }
     }
@@ -47,10 +74,10 @@ struct Totals: View {
     private func calcRatio() {
         var sum = 0.0 //Sum of all miles completed in cardio
         for i in 0 ..< self.cardioTypes.count {
-            //Keep running sum of ALL miles for ALL types
-            sum += self.sumCardioMiles(forType: self.cardioTypes[i])
-            //Also track total miles for specific types
+            //track total miles for specific types
             mileTotals[i] = self.sumCardioMiles(forType: self.cardioTypes[i])
+            //Keep running sum of ALL miles for ALL types
+            sum += mileTotals[i]
         }
         //Calculate percentage attributes to each type of workout
         if (sum > 0.0) { //Guard against divide by zero error
