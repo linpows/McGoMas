@@ -18,9 +18,7 @@ struct AddEntryView: View {
     
     @State private var alert = false
     @State private var show = false
-    
-    @EnvironmentObject var logs: UserLogList
-    
+
     @EnvironmentObject var user: UserSession
     
     var body: some View {
@@ -68,8 +66,8 @@ struct AddEntryView: View {
                             model.createWeight()
                             model.changeDate(newDate: self.date)
                             
-                            self.logs.weightLogs.append(model)
-                            self.logs.editingWeightInstance = model
+                            self.user.logs.weightLogs.append(model)
+                            self.user.logs.editingWeightInstance = model
                             
                         }
                         else {
@@ -77,8 +75,8 @@ struct AddEntryView: View {
                             model.createCardio(withType: self.type!)
                             model.setDate(newDate: self.date)
                             
-                            self.logs.cardioLogs.append(model)
-                            self.logs.editingCardioInstance = model
+                            self.user.logs.cardioLogs.append(model)
+                            self.user.logs.editingCardioInstance = model
                         }
                         
                         self.show = true
@@ -96,7 +94,7 @@ struct AddEntryView: View {
             }
         }
         .sheet(isPresented: $show) {
-            return EntryForm(formType: self.$type).environmentObject(self.user).environmentObject(self.logs)
+            return EntryForm(formType: self.$type).environmentObject(self.user)
         }
     }
 }
@@ -106,69 +104,65 @@ struct EntryForm: View {
     
     @EnvironmentObject var user: UserSession
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var modelStorage: UserLogList
     
     var body: some View {
-        NavigationView () {
-            VStack () {
-                if (self.formType == WorkoutType.weights) {
-                    WeightEntry().environmentObject(self.modelStorage)
-                }
-                else {
-                    CardioEntry().environmentObject(self.modelStorage)
-                }
-                Spacer()
-                HStack () {
-                    Button(
-                        action: {
-                            //Dismiss to logging home view
-                            self.presentationMode.wrappedValue.dismiss()
-                        },
-                        label: {
-                            Text("Done").font(.title)
-                        }
-                    ).buttonStyle(GradientButtonStyle())
-                    
-                    Button( //Cancel button, discard current workout
-                        action: {
-                            if (self.formType == WorkoutType.weights) {
-                                let cancelled = self.modelStorage.editingWeightInstance
-                                if let cancelled = cancelled {
-                                    cancelled.removeWeight()
-                                }
-                                self.modelStorage.weightLogs.removeAll(where: { weight in
-                                    weight.weight == nil
-                                })
-                                //self.modelStorage.editingWeightInstance = nil
-                            }
-                            else {
-                                let cancelled = self.modelStorage.editingCardioInstance
-                                if let cancelled = cancelled {
-                                    cancelled.removeCardio()
-                                }
-                                
-                                self.modelStorage.cardioLogs.removeAll(where: { cardio in
-                                    cardio.cardio == nil
-                                })
-                                self.modelStorage.editingCardioInstance = nil
-                            }
-                            self.presentationMode.wrappedValue.dismiss()
-                        },
-                        label: {
-                            Text("Cancel").font(.title)
-                        }
-                    ).buttonStyle(AltGradientButtonStyle())
-                }
+        VStack () {
+            if (self.formType == WorkoutType.weights) {
+                WeightEntry().environmentObject(self.user.logs)
             }
-            .navigationBarTitle("New \(self.formType?.stringRep ?? "") Entry")
+            else {
+                CardioEntry().environmentObject(self.user.logs)
+            }
+            Spacer()
+            HStack () {
+                Button(
+                    action: {
+                        //Dismiss to logging home view
+                        self.presentationMode.wrappedValue.dismiss()
+                    },
+                    label: {
+                        Text("Done").font(.title)
+                    }
+                ).buttonStyle(GradientButtonStyle())
+                
+                Button( //Cancel button, discard current workout
+                    action: {
+                        if (self.formType == WorkoutType.weights) {
+                            let cancelled = self.user.logs.editingWeightInstance
+                            if let cancelled = cancelled {
+                                cancelled.removeWeight()
+                            }
+                            self.user.logs.weightLogs.removeAll(where: { weight in
+                                weight.weight == nil
+                            })
+                            //self.modelStorage.editingWeightInstance = nil
+                        }
+                        else {
+                            let cancelled = self.user.logs.editingCardioInstance
+                            if let cancelled = cancelled {
+                                cancelled.removeCardio()
+                            }
+                            
+                            self.user.logs.cardioLogs.removeAll(where: { cardio in
+                                cardio.cardio == nil
+                            })
+                            self.user.logs.editingCardioInstance = nil
+                        }
+                        self.presentationMode.wrappedValue.dismiss()
+                    },
+                    label: {
+                        Text("Cancel").font(.title)
+                    }
+                ).buttonStyle(AltGradientButtonStyle())
+            }
         }
+        .navigationBarTitle("New \(self.formType?.stringRep ?? "") Entry")
     }
 }
 
 
 struct AddEntryView_Previews: PreviewProvider {
     static var previews: some View {
-        let modelStore = UserLogList(cardioModels: [], weightModels: [])
-        return AddEntryView().environmentObject(modelStore)
+        return AddEntryView().environmentObject(UserSession())
     }
 }

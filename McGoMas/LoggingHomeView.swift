@@ -13,11 +13,11 @@ import FirebaseAuth
 
 struct LoggingHomeView: View {
     @State private var showAdd: Bool = false
+    @State private var showStats: Bool = false
     @State private var showError: Bool = false
     @State private var done: Bool = false
     
     @EnvironmentObject var userSession: UserSession
-    @EnvironmentObject var logs: UserLogList
     let ref = Database.database().reference()
     
     @State private var selection: Int = 0
@@ -27,26 +27,29 @@ struct LoggingHomeView: View {
     var body: some View {
         NavigationView {
             VStack () {
-                NavigationLink(destination: AddEntryView().environmentObject(self.logs), isActive: $showAdd) {
+                NavigationLink(destination: AddEntryView().environmentObject(self.userSession.logs), isActive: $showAdd) {
+                    EmptyView()
+                }
+                NavigationLink(destination: LogGraphView().environmentObject(self.userSession), isActive: $showStats) {
                     EmptyView()
                 }
                 Picker("Log Type", selection: $selection) {
                     ForEach( 0 ..< types.count) { index in
                         Text(self.types[index]).tag(index)
                     }
-                }.pickerStyle(SegmentedPickerStyle())
+                }.pickerStyle(SegmentedPickerStyle()).padding()
                 Spacer()
                 
                 if (self.selection == 0) {
-                    CardioListView().environmentObject(self.logs).environmentObject(self.userSession)
+                    CardioListView().environmentObject(self.userSession).environmentObject(self.userSession.logs)
                 }
                 else {
-                    WeightListView().environmentObject(self.logs).environmentObject(self.userSession)
+                    WeightListView().environmentObject(self.userSession).environmentObject(self.userSession.logs)
                 }
                 Spacer()
                 Button (
                     action: {
-                        let cardioSave = self.logs.cardioLogs.filter({ cardio in
+                        let cardioSave = self.userSession.logs.cardioLogs.filter({ cardio in
                             cardio.pushToDB //Push only the ones that need adding/updating
                         })
                         
@@ -56,7 +59,7 @@ struct LoggingHomeView: View {
                         }
                         
                         
-                        let weightSave = self.logs.weightLogs.filter({ weight in
+                        let weightSave = self.userSession.logs.weightLogs.filter({ weight in
                             weight.pushToDB
                         })
                         
@@ -81,7 +84,24 @@ struct LoggingHomeView: View {
                 Alert(title: Text("Success"), message: Text("Changes saved successfully."), dismissButton: .default(Text("Ok")))
             }
             .navigationBarTitle("Your Log")
-            .navigationBarItems(trailing:
+            .navigationBarItems(
+                leading:
+                Button(
+                    action: {
+                        if (self.userSession.user == nil) {
+                            self.showError = true;
+                        }
+                        else {
+                            self.showStats = true;
+                        }
+                    },
+                    label: {
+                        Image(systemName: "chart.pie.fill")
+                        .font(.largeTitle)
+                        .padding(.top, 20)
+                        .foregroundColor(burntOrange)
+                    }
+                ), trailing:
                 Button(
                     action: {
                         if (self.userSession.user == nil) {
@@ -90,14 +110,14 @@ struct LoggingHomeView: View {
                         else {
                             self.showAdd = true;
                         }
-                    },
+                },
                     label: {
                         Image(systemName: "plus.square.fill")
                             .font(.largeTitle)
                             .padding(.top, 20)
-                        .foregroundColor(chicagoMaroon)
+                            .foregroundColor(chicagoMaroon)
                         
-                    }
+                }
                 )
             )
         }
@@ -107,10 +127,6 @@ struct LoggingHomeView: View {
 
 struct LoggingHomeView_Previews: PreviewProvider {
     static var previews: some View {
-        let cardioModels: [CardioModel] = [CardioModel(), CardioModel()]
-        cardioModels.forEach({
-            $0.createCardio(withType: WorkoutType.swim, date: Date(), distance: 10.0, distanceUnit: "mile", time: 60.0)
-        })
-        return LoggingHomeView().environmentObject(UserLogList(cardioModels: cardioModels, weightModels: [])).environmentObject(UserSession())
+        return LoggingHomeView().environmentObject(UserSession())
     }
 }

@@ -36,7 +36,12 @@ struct WeightListView: View {
         @EnvironmentObject var logStore: UserLogList
         var body: some View {
             NavigationLink(destination: WeightDetail(displayedWeight: self.displayedWeight, sets: self.displayedWeight.weight!.sets).environmentObject(self.logStore)) {
-                Text(formatDate(date: self.displayedWeight.weight!.dayCompleted))
+                HStack () {
+                    Image("weights")
+                    .resizable().aspectRatio(contentMode: .fit).frame(height: 50).padding(.trailing)
+                    Text("Weights ").bold()
+                    Text(formatDate(date: self.displayedWeight.weight!.dayCompleted))
+                }
             }
         }
     }
@@ -49,7 +54,9 @@ struct WeightListView: View {
         
         var body: some View {
             VStack() {
-                Text("Workout Completed\n" + formatDate(date: self.displayedWeight.weight!.dayCompleted)).font(.largeTitle)
+                Image("weights").resizable().aspectRatio(contentMode: .fit).frame(height: 100)
+                Text("Workout Completed\n" + formatDate(date: self.displayedWeight.weight!.dayCompleted))
+                    .font(.largeTitle).multilineTextAlignment(.center)
                 Divider()
                 Text("Sets Completed: ").font(.title)
                 SetList(mySets: self.sets, forModel: self.displayedWeight).environmentObject(self.logStore)
@@ -59,10 +66,8 @@ struct WeightListView: View {
     
     func deleteWeight(at offsets: IndexSet) {
         for idx in offsets {//Remove from database
-            let ref = self.logStore.weightLogs[idx]
-            user.removeWeight(weight: ref)
+            user.removeWeight(idx: idx)
         }
-        self.logStore.weightLogs.remove(atOffsets: offsets) //Remove locally
     }
     
 }
@@ -74,7 +79,6 @@ struct SetList: View {
     @ObservedObject var mySets: SetArray
     @ObservedObject var forModel: WeightModel
     @EnvironmentObject var logs: UserLogList
-    @EnvironmentObject var logStore: UserLogList
     
     var body: some View {
         List {
@@ -88,6 +92,7 @@ struct SetList: View {
     
     func removeSet(at offsets: IndexSet) {
         self.forModel.weight!.sets.sets.remove(atOffsets: offsets)
+        self.forModel.pushToDB = true //need to record changes
     }
     
     //Detail view of a logged set
@@ -148,6 +153,6 @@ struct WeightListView_Previews: PreviewProvider {
         workout.addSet(name: "Test", mass: 3.0, massUnit: "pounds", reps: 3)
         let logStore = UserLogList(cardioModels: [], weightModels: [workout])
         
-        return WeightListView().environmentObject( logStore)
+        return WeightListView().environmentObject(logStore).environmentObject(UserSession())
     }
 }

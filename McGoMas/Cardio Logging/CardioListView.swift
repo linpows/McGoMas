@@ -26,7 +26,7 @@ struct CardioListView: View {
     var body: some View {
         List {
             ForEach(self.logStore.cardioLogs) { cardio in
-                CardioRow(displayedCardio: cardio)
+                CardioRow(displayedCardio: cardio).environmentObject(self.logStore)
             }.onDelete(perform: deleteCardio)
         }
         .onAppear() {
@@ -40,10 +40,11 @@ struct CardioListView: View {
         @State var displayedCardio: CardioModel
         
         var body: some View {
-            NavigationLink(destination: CardioDetail(displayedCardio: self.displayedCardio)) {
+            NavigationLink(destination: CardioDetail(displayedCardio: self.displayedCardio).environmentObject(self.logStore)) {
                 HStack() {
                     rowImage().resizable().aspectRatio(contentMode: .fit).frame(height: 50).padding(.trailing)
-                    Text(self.displayedCardio.cardio!.workoutType.stringRep + " " + formatDate(date: self.displayedCardio.cardio!.date))
+                    Text(self.displayedCardio.cardio!.workoutType.stringRep + " ").bold()
+                    Text(formatDate(date: self.displayedCardio.cardio!.date)).multilineTextAlignment(.center)
                 }
             }
         }
@@ -88,7 +89,7 @@ struct CardioListView: View {
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .multilineTextAlignment(.center)
-                Text(formatDate(date: self.displayedCardio.cardio!.date)).font(.largeTitle)
+                Text("\t" + formatDate(date: self.displayedCardio.cardio!.date) + "\t").font(.largeTitle).multilineTextAlignment(.center)
                 Divider()
                 
                 Text("Distance").font(.title)
@@ -152,10 +153,8 @@ struct CardioListView: View {
     
     func deleteCardio(at offsets: IndexSet) {
         for idx in offsets {//Remove from database
-            let ref = self.logStore.cardioLogs[idx]
-            user.removeCardio(cardio: ref)
+            user.removeCardio(idx: idx)
         }
-        self.logStore.cardioLogs.remove(atOffsets: offsets)
     }
 }
 
@@ -167,7 +166,7 @@ struct CardioListView_Previews: PreviewProvider {
         let logStore = UserLogList(cardioModels: [cardioWorkout], weightModels: [])
 
         let navWrapped = NavigationView {
-            CardioListView().environmentObject( logStore)
+            CardioListView().environmentObject(logStore).environmentObject(UserSession())
         }
         return navWrapped
     }

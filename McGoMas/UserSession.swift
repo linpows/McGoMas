@@ -21,16 +21,20 @@ class UserSession: ObservableObject {
     var stateHandler: AuthStateDidChangeListenerHandle?
     //Reference for our app's database
     var databaseRef: DatabaseReference?
+    @Published var logs: UserLogList = UserLogList(cardioModels: [], weightModels: [])
     
     func listen() { //Listen for authentications
         stateHandler = Auth.auth().addStateDidChangeListener { (auth, authUser) in
             if let authUser = authUser { //if user exists...
                 self.user = User(userID: authUser.uid, name: authUser.displayName, email: authUser.email!)
                 self.databaseRef = Database.database().reference().child("logs").child(authUser.uid)
+
+                self.databasePull() //Will pull initial values for logs
             }
             else { //No user signed in
                 self.user = nil
                 self.databaseRef = nil
+                self.logs = UserLogList(cardioModels: [], weightModels: [])
             }
             
         }
@@ -122,43 +126,108 @@ class UserSession: ObservableObject {
         }
     }
     
-    func removeCardio(cardio: CardioModel) {
+    func removeCardio(idx: Int) {
+        let cardio = self.logs.cardioLogs[idx]
         let identifier = cardio.id.uuidString
-        if let ref = databaseRef {
+        if let ref = databaseRef { //remove from database
             ref.child(identifier).removeValue { err, _ in
                 if let err = err {
                     print(err.localizedDescription)
                 }
             }
         }
+        //Remove locally
+        self.logs.cardioLogs.remove(at: idx)
     }
     
-    func removeWeight(weight: WeightModel) {
+    func removeWeight(idx: Int) {
+        let weight = self.logs.weightLogs[idx]
         let identifier = weight.id.uuidString
         if let ref = databaseRef {
+            //Remove from database
             ref.child(identifier).removeValue { err, _ in
                 if let err = err {
                     print(err.localizedDescription)
                 }
             }
         }
+        //Remove locally
+        self.logs.weightLogs.remove(at: idx)
     }
     
-    /*
-    Retrieves all of the user's workouts
-    */
-    func getWorkouts() -> [AnyObject] {
-        let workouts: [AnyObject] = []
-        // Fetch here
-        return workouts
+    func databasePull() {
+        if let ref = databaseRef {
+            //Have a reference, pull down initial values
+            ref.observeSingleEvent(of: .value, with: { snapshot in
+                //Snapshot represents all logged workouts
+                let nodes = snapshot.value as? [String : AnyObject] ?? [:]
+                
+                for node in nodes {
+                    //Separate fields (value) from key (workout ID)
+                    let workoutID = node.key
+                    let workout = node.value as? [String : AnyObject] ?? [:]
+                    
+                    //Parse Date
+                    let timeInterval = TimeInterval(integerLiteral: (workout["date"] as! Double))
+                    let date = Date(timeIntervalSince1970: timeInterval)
+                    
+                    if ((workout["workoutType"] as! String).lowercased() != "weights") { //Cardio
+                        //Find exact type
+                        let typeStr = (workout["workoutType"] as! String).lowercased()
+                        var type: WorkoutType = WorkoutType.run
+                        if typeStr == "swim" {
+                            type = WorkoutType.swim
+                        }
+                        else if typeStr == "bike" {
+                            type = WorkoutType.bike
+                        }
+                        
+                        //Parse distance
+                        let distance = workout["distance"] as! Double
+                        
+                        //Parse time
+                        let time = workout["time"] as! Double
+                        
+                        //Parse unit
+                        let unit = workout["unit"] as! String
+                        
+                        let cardio = CardioModel(withID: UUID(uuidString: workoutID)!)
+                        cardio.createCardio(withType: type, date: date, distance: distance, distanceUnit: unit, time: time)
+                        
+                        cardio.pushToDB = false //Fetched from database, does not need to be re-pushed
+                        self.logs.cardioLogs.append(cardio)
+                    }
+                    else {
+                        //Weight Workout
+                        let weight = WeightModel(withID: UUID(uuidString: workoutID)!)
+                        weight.createWeight()
+                        weight.changeDate(newDate: date)
+                        
+                        let setDecoder: JSONDecoder = JSONDecoder()
+                        let jsonData: Data = (workout["sets"] as! String).data(using: .utf8)!
+                        
+                        var setArr: [WeightSet] = []
+                        
+                        do {
+                            setArr = try setDecoder.decode([WeightSet].self, from: jsonData)
+                        }
+                        catch {
+                            print("Error in weight set decoding")
+                        }
+                        
+                        for set in setArr { //Add decoded sets to this workout
+                            weight.addSet(set: set)
+                        }
+                        
+                        weight.pushToDB = false //Fetched from database, does not need to be re-pushed
+                        self.logs.weightLogs.append(weight)
+                    }
+                    
+                }
+            })
+        }
     }
     
-    /*
-     Overrides the workout with the given identifier with the supplied workout
-     */
-    func updateWorkout(identifier: String, workout: String) {
-        
-    }
     
     func stopListening() { //Stop listening for authentication
         if let stateHandler = stateHandler {

@@ -7,47 +7,159 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "7A73CD0C-D5B4-4729-8FCF-05A353824636"
+            uuid = "FAB1665D-4375-4F4A-8FEE-6503BB3C154B"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "McGoMas/LoggingHomeView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "body"
             landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0A3D516C-6CDB-45E8-BEDB-0A5F9C19C626"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "McGoMas/UserSession.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
+            landmarkName = "databasePull()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "361121EC-E08D-4F14-8740-1826102AB070"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "McGoMas/LoggingHomeView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5CE62EAF-A345-4BAE-B9F1-471CA3A5F0B5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "McGoMas/UserSession.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "listen()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F2EC79A5-68C5-4AB2-9902-260CB72003C4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "McGoMas/UserSession.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
+            landmarkName = "databasePull()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8FFA4855-6B25-4EC7-ACA0-CB1BD5D86748"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "McGoMas/UserSession.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
+            landmarkName = "databasePull()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B92AA4FF-DF83-40DC-8344-7D22A34A99E5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "McGoMas/WeightListView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "deleteWeight(at:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E61C78CA-73FA-43C1-9DFD-6B6B6E22C065"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "McGoMas/Cardio Logging/CardioListView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "CardioRow"
+            landmarkType = "14">
             <Locations>
                <Location
-                  uuid = "7A73CD0C-D5B4-4729-8FCF-05A353824636 - 1e2d8056e18da8b3"
+                  uuid = "E61C78CA-73FA-43C1-9DFD-6B6B6E22C065 - 3d1a21ef201c5881"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; &lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.navigationBarItems&lt;A where A1: SwiftUI.View&gt;(trailing: A1) -&gt; some&gt;&gt;.0 in McGoMas.LoggingHomeView.body.getter : some"
+                  symbolName = "McGoMas.CardioListView.CardioRow.logStore.getter : McGoMas.UserLogList"
                   moduleName = "McGoMas"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mikaylarichardson/Desktop/McGoMas/McGoMas/LoggingHomeView.swift"
+                  urlString = "file:///Users/mikaylarichardson/Desktop/McGoMas/McGoMas/Cardio%20Logging/CardioListView.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "25"
-                  endingLineNumber = "25"
-                  offsetFromSymbolStart = "631">
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "104">
                </Location>
                <Location
-                  uuid = "7A73CD0C-D5B4-4729-8FCF-05A353824636 - d545e320e1b705e"
+                  uuid = "E61C78CA-73FA-43C1-9DFD-6B6B6E22C065 - c16b8fa5295865fc"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.NavigationLink&lt;SwiftUI.EmptyView, &lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.environmentObject&lt;A where A1: Combine.ObservableObject&gt;(A1) -&gt; some&gt;&gt;.0&gt;, &lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.pickerStyle&lt;A where A1: SwiftUI.PickerStyle&gt;(A1) -&gt; some&gt;&gt;.0, SwiftUI.Spacer, SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.environmentObject&lt;A where A1: Combine.ObservableObject&gt;(A1) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.environmentObject&lt;A where A1: Combine.ObservableObject&gt;(A1) -&gt; some&gt;&gt;.0&gt;, SwiftUI.Spacer)&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.navigationBarItems&lt;A where A1: SwiftUI.View&gt;(trailing: A1) -&gt; some&gt;&gt;.0 in McGoMas.LoggingHomeView.body.getter : some"
+                  symbolName = "McGoMas.CardioListView.CardioRow.$logStore.getter : SwiftUI.EnvironmentObject&lt;McGoMas.UserLogList&gt;.Wrapper"
                   moduleName = "McGoMas"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mikaylarichardson/Desktop/McGoMas/McGoMas/LoggingHomeView.swift"
+                  urlString = "file:///Users/mikaylarichardson/Desktop/McGoMas/McGoMas/Cardio%20Logging/CardioListView.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "26"
-                  endingLineNumber = "26"
-                  offsetFromSymbolStart = "780">
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "104">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -55,127 +167,107 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "516019D3-9FE6-4ECF-BF5E-D5E384705239"
+            uuid = "3385C3AD-B679-4083-9274-8AD8AA0282A1"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "McGoMas/UserSession.swift"
+            filePath = "McGoMas/Cardio Logging/CardioListView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
-            landmarkName = "uploadCardio(workout:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "E49065FF-DD94-4021-94DB-E1EA650D7E39"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "McGoMas/UserSession.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
-            landmarkName = "uploadWeight(workout:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "E3D91B6E-6813-4F84-904B-434B169F119E"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "McGoMas/LandingView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
-            landmarkName = "body"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "909E3270-AEEB-4D66-974E-170997365732"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "McGoMas/AddEntryView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
-            landmarkName = "body"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "3CD15292-2CD8-405F-8F86-DBF7C9336318"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "McGoMas/AddEntryView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
-            landmarkName = "body"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "87FE18C4-5CBB-453F-8FF8-5F696ED1153E"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "McGoMas/UserSession.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
-            landmarkName = "removeWeight(weight:)"
-            landmarkType = "7">
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "CardioDetail"
+            landmarkType = "14">
             <Locations>
                <Location
-                  uuid = "87FE18C4-5CBB-453F-8FF8-5F696ED1153E - da5b16e2925e3cba"
+                  uuid = "3385C3AD-B679-4083-9274-8AD8AA0282A1 - c7c8dc71ad67c4ad"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "McGoMas.UserSession.removeWeight(weight: McGoMas.WeightModel) -&gt; ()"
+                  symbolName = "property wrapper backing initializer of McGoMas.CardioListView.CardioDetail.displayedCardio : McGoMas.CardioModel"
                   moduleName = "McGoMas"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mikaylarichardson/Desktop/McGoMas/McGoMas/UserSession.swift"
+                  urlString = "file:///Users/mikaylarichardson/Desktop/McGoMas/McGoMas/Cardio%20Logging/CardioListView.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "139"
-                  endingLineNumber = "139"
-                  offsetFromSymbolStart = "374">
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
+                  offsetFromSymbolStart = "24">
                </Location>
                <Location
-                  uuid = "87FE18C4-5CBB-453F-8FF8-5F696ED1153E - eac8dff015f5505b"
+                  uuid = "3385C3AD-B679-4083-9274-8AD8AA0282A1 - d77a8efaf8655034"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Error&gt;, __C.FIRDatabaseReference) -&gt; () in McGoMas.UserSession.removeWeight(weight: McGoMas.WeightModel) -&gt; ()"
+                  symbolName = "McGoMas.CardioListView.CardioDetail.displayedCardio.getter : McGoMas.CardioModel"
                   moduleName = "McGoMas"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mikaylarichardson/Desktop/McGoMas/McGoMas/UserSession.swift"
+                  urlString = "file:///Users/mikaylarichardson/Desktop/McGoMas/McGoMas/Cardio%20Logging/CardioListView.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "140"
-                  endingLineNumber = "140"
-                  offsetFromSymbolStart = "75">
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
+                  offsetFromSymbolStart = "60">
+               </Location>
+               <Location
+                  uuid = "3385C3AD-B679-4083-9274-8AD8AA0282A1 - 957b631c6b1b8c28"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "McGoMas.CardioListView.CardioDetail.displayedCardio.setter : McGoMas.CardioModel"
+                  moduleName = "McGoMas"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mikaylarichardson/Desktop/McGoMas/McGoMas/Cardio%20Logging/CardioListView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
+                  offsetFromSymbolStart = "74">
+               </Location>
+               <Location
+                  uuid = "3385C3AD-B679-4083-9274-8AD8AA0282A1 - bbd53718d2001337"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "McGoMas.CardioListView.CardioDetail.displayedCardio.modify : McGoMas.CardioModel"
+                  moduleName = "McGoMas"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mikaylarichardson/Desktop/McGoMas/McGoMas/Cardio%20Logging/CardioListView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "14">
+               </Location>
+               <Location
+                  uuid = "3385C3AD-B679-4083-9274-8AD8AA0282A1 - d0b6ad34e5162b08"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "McGoMas.CardioListView.CardioDetail.displayedCardio.modify : McGoMas.CardioModel with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "McGoMas"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mikaylarichardson/Desktop/McGoMas/McGoMas/Cardio%20Logging/CardioListView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  uuid = "3385C3AD-B679-4083-9274-8AD8AA0282A1 - 511830cae00ccc68"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "McGoMas.CardioListView.CardioDetail.$displayedCardio.getter : SwiftUI.ObservedObject&lt;McGoMas.CardioModel&gt;.Wrapper"
+                  moduleName = "McGoMas"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mikaylarichardson/Desktop/McGoMas/McGoMas/Cardio%20Logging/CardioListView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
+                  offsetFromSymbolStart = "98">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -183,49 +275,33 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "BB16AD75-8425-4941-9ED1-EF92615D8ACE"
+            uuid = "D8E3A3EB-508C-4E52-AE86-FF19E2B413CE"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "McGoMas/UserSession.swift"
+            filePath = "McGoMas/Trends/GridCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
-            landmarkName = "removeCardio(cardio:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "BB16AD75-8425-4941-9ED1-EF92615D8ACE - 89c65a7c8c2e2e6c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "McGoMas.UserSession.removeCardio(cardio: McGoMas.CardioModel) -&gt; ()"
-                  moduleName = "McGoMas"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mikaylarichardson/Desktop/McGoMas/McGoMas/UserSession.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "128"
-                  endingLineNumber = "128"
-                  offsetFromSymbolStart = "374">
-               </Location>
-               <Location
-                  uuid = "BB16AD75-8425-4941-9ED1-EF92615D8ACE - e973c8452c66784f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Error&gt;, __C.FIRDatabaseReference) -&gt; () in McGoMas.UserSession.removeCardio(cardio: McGoMas.CardioModel) -&gt; ()"
-                  moduleName = "McGoMas"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mikaylarichardson/Desktop/McGoMas/McGoMas/UserSession.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "129"
-                  endingLineNumber = "129"
-                  offsetFromSymbolStart = "75">
-               </Location>
-            </Locations>
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E14E49B1-0479-4137-BEC8-E6DB97799562"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "McGoMas/Trends/Totals.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "body"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
