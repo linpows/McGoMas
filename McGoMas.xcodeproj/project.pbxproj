@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E551103244E6889002450E9 /* RKDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5510F5244E6889002450E9 /* RKDate.swift */; };
+		3E551104244E6889002450E9 /* RKMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5510F6244E6889002450E9 /* RKMonth.swift */; };
+		3E551105244E6889002450E9 /* RKColorSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5510F7244E6889002450E9 /* RKColorSettings.swift */; };
+		3E551106244E6889002450E9 /* RKWeekdayHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5510F8244E6889002450E9 /* RKWeekdayHeader.swift */; };
+		3E551107244E6889002450E9 /* RKCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5510F9244E6889002450E9 /* RKCell.swift */; };
+		3E551108244E6889002450E9 /* RKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5510FA244E6889002450E9 /* RKManager.swift */; };
+		3E551109244E6889002450E9 /* RKViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5510FB244E6889002450E9 /* RKViewController.swift */; };
 		800557CC2425579300FE11DA /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800557CB2425579300FE11DA /* AuthView.swift */; };
 		801F887C243A246B0080CEA2 /* WeightListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801F887B243A246B0080CEA2 /* WeightListView.swift */; };
 		801F887E243A24880080CEA2 /* CardioListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801F887D243A24880080CEA2 /* CardioListView.swift */; };
@@ -70,6 +77,13 @@
 /* Begin PBXFileReference section */
 		01A083C2BADE8E3BC719F6A3 /* Pods-McGoMasTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-McGoMasTests.release.xcconfig"; path = "Target Support Files/Pods-McGoMasTests/Pods-McGoMasTests.release.xcconfig"; sourceTree = "<group>"; };
 		0C0C1B0490042C16437727EE /* Pods_McGoMasTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_McGoMasTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E5510F5244E6889002450E9 /* RKDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RKDate.swift; path = RKCalendar/RKDate.swift; sourceTree = "<group>"; };
+		3E5510F6244E6889002450E9 /* RKMonth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RKMonth.swift; path = RKCalendar/RKMonth.swift; sourceTree = "<group>"; };
+		3E5510F7244E6889002450E9 /* RKColorSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RKColorSettings.swift; path = RKCalendar/RKColorSettings.swift; sourceTree = "<group>"; };
+		3E5510F8244E6889002450E9 /* RKWeekdayHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RKWeekdayHeader.swift; path = RKCalendar/RKWeekdayHeader.swift; sourceTree = "<group>"; };
+		3E5510F9244E6889002450E9 /* RKCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RKCell.swift; path = RKCalendar/RKCell.swift; sourceTree = "<group>"; };
+		3E5510FA244E6889002450E9 /* RKManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RKManager.swift; path = RKCalendar/RKManager.swift; sourceTree = "<group>"; };
+		3E5510FB244E6889002450E9 /* RKViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RKViewController.swift; path = RKCalendar/RKViewController.swift; sourceTree = "<group>"; };
 		532037967455B767F9F12BDD /* Pods_McGoMas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_McGoMas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		800557CB2425579300FE11DA /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		801F887B243A246B0080CEA2 /* WeightListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightListView.swift; sourceTree = "<group>"; };
@@ -145,6 +159,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E5510EC244E685D002450E9 /* RKCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				3E5510F9244E6889002450E9 /* RKCell.swift */,
+				3E5510F7244E6889002450E9 /* RKColorSettings.swift */,
+				3E5510F5244E6889002450E9 /* RKDate.swift */,
+				3E5510FA244E6889002450E9 /* RKManager.swift */,
+				3E5510F6244E6889002450E9 /* RKMonth.swift */,
+				3E5510FB244E6889002450E9 /* RKViewController.swift */,
+				3E5510F8244E6889002450E9 /* RKWeekdayHeader.swift */,
+			);
+			name = RKCalendar;
+			sourceTree = "<group>";
+		};
 		591204DE2D5EDA139CD65BBF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -219,6 +247,7 @@
 		804BC0EF2427A738004ED836 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				3E5510EC244E685D002450E9 /* RKCalendar */,
 				804BC0F02427A763004ED836 /* CalendarView.swift */,
 			);
 			name = Calendar;
@@ -515,19 +544,24 @@
 				80F7A1D924213B6400061ED0 /* AddEntryView.swift in Sources */,
 				804BC0F32427B89C004ED836 /* WorkoutModels.swift in Sources */,
 				801F887C243A246B0080CEA2 /* WeightListView.swift in Sources */,
+				3E551104244E6889002450E9 /* RKMonth.swift in Sources */,
 				80CDF0DF24351BF3009EE05B /* WeightEntry.swift in Sources */,
 				8027849C240EC76000AFD8E8 /* AppDelegate.swift in Sources */,
+				3E551107244E6889002450E9 /* RKCell.swift in Sources */,
 				80A7C9D2242507B900C21FC6 /* PredictionView.swift in Sources */,
 				800557CC2425579300FE11DA /* AuthView.swift in Sources */,
+				3E551108244E6889002450E9 /* RKManager.swift in Sources */,
 				80A7C9D42425095600C21FC6 /* LandingView.swift in Sources */,
 				80C4846D2411727700BD7EAE /* LogoutView.swift in Sources */,
 				8020C2B92410138A0097BD5E /* GradientButtonStyle.swift in Sources */,
 				808736482416A4E000DFE94E /* SignupView.swift in Sources */,
 				804BC0F12427A763004ED836 /* CalendarView.swift in Sources */,
 				805382C124415D5C00F989AB /* TutorialHome.swift in Sources */,
+				3E551103244E6889002450E9 /* RKDate.swift in Sources */,
 				80B67F6F244754D700650AEF /* LogGraphView.swift in Sources */,
 				80945FC32449F88000F55562 /* TutorialData.swift in Sources */,
 				80B5F5AF2443790D00EE0D3D /* TutorialModel.swift in Sources */,
+				3E551109244E6889002450E9 /* RKViewController.swift in Sources */,
 				80DEEC91244C9EBE00B72798 /* Weekly.swift in Sources */,
 				80945FC52449FECD00F55562 /* TutorialGifPlayer.swift in Sources */,
 				80EFF112244E11FC001A70E3 /* MinuteMilePicker.swift in Sources */,
@@ -538,10 +572,12 @@
 				80A7AEE4244B555D009D6BFF /* SearchBar.swift in Sources */,
 				8020C2BD241023C00097BD5E /* CustomTextEntry.swift in Sources */,
 				80D937F12433909400006E8B /* CardioEntry.swift in Sources */,
+				3E551105244E6889002450E9 /* RKColorSettings.swift in Sources */,
 				80DEEC8A244C901E00B72798 /* Totals.swift in Sources */,
 				8083E7CB2436239200837D3F /* SetEntry.swift in Sources */,
 				8058CE14241D27D600559552 /* SplashView.swift in Sources */,
 				8028D50D24315BAF00CF050B /* NumericTextField.swift in Sources */,
+				3E551106244E6889002450E9 /* RKWeekdayHeader.swift in Sources */,
 				807AD2AB24291FE200861B8C /* UserSession.swift in Sources */,
 				80DEEC8C244C91A600B72798 /* GridCell.swift in Sources */,
 			);
