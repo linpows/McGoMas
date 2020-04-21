@@ -12,6 +12,7 @@ struct Weekly: View {
     @EnvironmentObject var user: UserSession
     @State private var weeklyDistance: [Double] = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
     @State private var weeklyRatio: [Double] = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    @State private var dayAbbreviation: [String] = ["", "", "", "", "", "", ""]
     @State private var dayName: [String] = ["", "", "", "", "", "", ""]
     
     @State private var idxTapped = -1
@@ -21,7 +22,7 @@ struct Weekly: View {
         VStack() {
             //Bring this to the front only when a bar/rectangle is tapped
             if (self.isTapped) {
-                Text(String(format: "%.2f", self.weeklyDistance[self.idxTapped]) + " miles").font(.title).padding().multilineTextAlignment(.center)
+                Text(self.titleString(selectedIdx: self.idxTapped)).font(.title).padding().multilineTextAlignment(.center)
             }
             else {
                 Text("Click a bar to learn more.").font(.title).padding().multilineTextAlignment(.center)
@@ -54,7 +55,7 @@ struct Weekly: View {
                                     
                                 }
                                 .frame(width: geometry.size.width / 2.0, height: geometry.size.height * CGFloat(self.weeklyRatio[idx]), alignment: .bottom)
-                            Text(self.dayName[idx])
+                            Text(self.dayAbbreviation[idx])
                         }
                     }
                 }
@@ -63,6 +64,10 @@ struct Weekly: View {
                 }
             }
         }
+    }
+    
+    private func titleString(selectedIdx: Int) -> String {
+        return "Covered " + String(format: "%.2f", self.weeklyDistance[selectedIdx]) + " miles on " + self.dayName[selectedIdx]
     }
     
     private func compute() {
@@ -80,6 +85,8 @@ struct Weekly: View {
             
             //Fill in which data corresponds to which day of the week
             self.dayName[6 - day] = nameFinder.weekdaySymbols[Calendar.current.component(.weekday, from: prevDate) % 7]
+            
+            self.dayAbbreviation[6 - day] = String(self.dayName[6 - day].prefix(2))
         }
         
         //Compute ratio
