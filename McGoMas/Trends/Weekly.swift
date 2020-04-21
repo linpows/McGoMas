@@ -18,39 +18,49 @@ struct Weekly: View {
     @State private var isTapped = false
     
     var body: some View {
-        HStack(alignment: .bottom, spacing: 0.0) {
-            ForEach(0 ..< self.weeklyDistance.count) { idx in
-                GeometryReader { geometry in
-                    VStack (spacing: 0.0) {
-                        Spacer()
-                            .frame(minWidth: 0.0, maxWidth: .infinity, minHeight: 0.0, maxHeight: .infinity)
-                        Rectangle()
-                            .fill(burntOrange)
-                            .overlay(
-                                Rectangle()
-                                    .stroke(chicagoMaroon, lineWidth: self.idxTapped == idx ? 5 : 0)
-                                    .blur(radius: self.idxTapped == idx ? 2 : 0)
-                            )
-                            .onTapGesture {
-                                if (!self.isTapped || idx != self.idxTapped) {
-                                    //Bring to focus detail on this bar
-                                    self.idxTapped = idx
-                                    self.isTapped = true
+        VStack() {
+            //Bring this to the front only when a bar/rectangle is tapped
+            if (self.isTapped) {
+                Text(String(format: "%.2f", self.weeklyDistance[self.idxTapped]) + " miles").font(.title).padding().multilineTextAlignment(.center)
+            }
+            else {
+                Text("Click a bar to learn more.").font(.title).padding().multilineTextAlignment(.center)
+            }
+            
+            HStack(alignment: .bottom, spacing: 0.0) {
+                ForEach(0 ..< self.weeklyDistance.count) { idx in
+                    GeometryReader { geometry in
+                        VStack (spacing: 0.0) {
+                            Spacer()
+                                .frame(minWidth: 0.0, maxWidth: .infinity, minHeight: 0.0, maxHeight: .infinity)
+                            Rectangle()
+                                .fill(burntOrange)
+                                .overlay(
+                                    Rectangle()
+                                        .stroke(chicagoMaroon, lineWidth: self.idxTapped == idx ? 5 : 0)
+                                        .blur(radius: self.idxTapped == idx ? 2 : 0)
+                                )
+                                .onTapGesture {
+                                    if (!self.isTapped || idx != self.idxTapped) {
+                                        //Bring to focus detail on this bar
+                                        self.idxTapped = idx
+                                        self.isTapped = true
+                                    }
+                                    else {
+                                        //Else the user has re-tapped the same rectangle to dismiss
+                                        self.isTapped = false
+                                        self.idxTapped = -1
+                                    }
+                                    
                                 }
-                                else {
-                                    //Else the user has re-tapped the same rectangle to dismiss
-                                    self.isTapped = false
-                                    self.idxTapped = -1
-                                }
-                                
-                            }
-                            .frame(width: geometry.size.width / 2.0, height: geometry.size.height * CGFloat(self.weeklyRatio[idx]), alignment: .bottom)
-                        Text(self.dayName[idx]).padding()
+                                .frame(width: geometry.size.width / 2.0, height: geometry.size.height * CGFloat(self.weeklyRatio[idx]), alignment: .bottom)
+                            Text(self.dayName[idx])
+                        }
                     }
                 }
-            }
-            .onAppear {
-                self.compute()
+                .onAppear {
+                    self.compute()
+                }
             }
         }
     }
@@ -69,7 +79,7 @@ struct Weekly: View {
             self.weeklyDistance[6 - day] = allMiles(onDate: prevDate)
             
             //Fill in which data corresponds to which day of the week
-            self.dayName[6 - day] = nameFinder.veryShortWeekdaySymbols[Calendar.current.component(.weekday, from: prevDate) % 7]
+            self.dayName[6 - day] = nameFinder.weekdaySymbols[Calendar.current.component(.weekday, from: prevDate) % 7]
         }
         
         //Compute ratio
