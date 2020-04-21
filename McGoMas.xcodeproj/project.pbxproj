@@ -54,6 +54,7 @@
 		80B5F5AF2443790D00EE0D3D /* TutorialModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B5F5AE2443790D00EE0D3D /* TutorialModel.swift */; };
 		80B67F6F244754D700650AEF /* LogGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B67F6E244754D700650AEF /* LogGraphView.swift */; };
 		80C4846D2411727700BD7EAE /* LogoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C4846C2411727700BD7EAE /* LogoutView.swift */; };
+		80CCAFE8244FA9540028D1D6 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CCAFE7244FA9540028D1D6 /* Loading.swift */; };
 		80CDF0DF24351BF3009EE05B /* WeightEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CDF0DE24351BF3009EE05B /* WeightEntry.swift */; };
 		80D937F12433909400006E8B /* CardioEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D937F02433909400006E8B /* CardioEntry.swift */; };
 		80DEEC8A244C901E00B72798 /* Totals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DEEC89244C901E00B72798 /* Totals.swift */; };
@@ -130,6 +131,7 @@
 		80B5F5AE2443790D00EE0D3D /* TutorialModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialModel.swift; sourceTree = "<group>"; };
 		80B67F6E244754D700650AEF /* LogGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogGraphView.swift; sourceTree = "<group>"; };
 		80C4846C2411727700BD7EAE /* LogoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutView.swift; sourceTree = "<group>"; };
+		80CCAFE7244FA9540028D1D6 /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
 		80CDF0DE24351BF3009EE05B /* WeightEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightEntry.swift; sourceTree = "<group>"; };
 		80D937F02433909400006E8B /* CardioEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardioEntry.swift; sourceTree = "<group>"; };
 		80DEEC89244C901E00B72798 /* Totals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Totals.swift; sourceTree = "<group>"; };
@@ -354,6 +356,7 @@
 				805382C22441FEE200F989AB /* Weight Logging */,
 				80F7A1DA24213F5000061ED0 /* LoggingHomeView.swift */,
 				80F7A1D824213B6400061ED0 /* AddEntryView.swift */,
+				80CCAFE7244FA9540028D1D6 /* Loading.swift */,
 				804BC0F22427B89C004ED836 /* WorkoutModels.swift */,
 				80DEEC88244C8FFD00B72798 /* Trends */,
 			);
@@ -551,6 +554,7 @@
 				804BC0F32427B89C004ED836 /* WorkoutModels.swift in Sources */,
 				801F887C243A246B0080CEA2 /* WeightListView.swift in Sources */,
 				3E551104244E6889002450E9 /* RKMonth.swift in Sources */,
+				80CCAFE8244FA9540028D1D6 /* Loading.swift in Sources */,
 				80CDF0DF24351BF3009EE05B /* WeightEntry.swift in Sources */,
 				8027849C240EC76000AFD8E8 /* AppDelegate.swift in Sources */,
 				3E551107244E6889002450E9 /* RKCell.swift in Sources */,

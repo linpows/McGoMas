@@ -99,7 +99,7 @@ struct MainTabView: View {
                         Text("Home")
                     }
             }.tag(1)
-            LoggingHomeView()
+            LoggingHomeView(loading: (user.logs.cardioLogs.isEmpty && user.logs.weightLogs.isEmpty))
                 .environmentObject(user)
                 .environmentObject(user.logs)
                 .tabItem {

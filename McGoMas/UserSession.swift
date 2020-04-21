@@ -28,8 +28,6 @@ class UserSession: ObservableObject {
             if let authUser = authUser { //if user exists...
                 self.user = User(userID: authUser.uid, name: authUser.displayName, email: authUser.email!)
                 self.databaseRef = Database.database().reference().child("logs").child(authUser.uid)
-
-                self.databasePull() //Will pull initial values for logs
             }
             else { //No user signed in
                 self.user = nil
@@ -155,7 +153,7 @@ class UserSession: ObservableObject {
         self.logs.weightLogs.remove(at: idx)
     }
     
-    func databasePull() {
+    func databasePull(handler: @escaping (Bool) -> Void) {
         if let ref = databaseRef {
             //Have a reference, pull down initial values
             ref.observeSingleEvent(of: .value, with: { snapshot in
@@ -182,13 +180,9 @@ class UserSession: ObservableObject {
                             type = WorkoutType.bike
                         }
                         
-                        //Parse distance
+                        //Parse distance, time, unit
                         let distance = workout["distance"] as! Double
-                        
-                        //Parse time
                         let time = workout["time"] as! Double
-                        
-                        //Parse unit
                         let unit = workout["unit"] as! String
                         
                         let cardio = CardioModel(withID: UUID(uuidString: workoutID)!)
@@ -222,10 +216,13 @@ class UserSession: ObservableObject {
                         weight.pushToDB = false //Fetched from database, does not need to be re-pushed
                         self.logs.weightLogs.append(weight)
                     }
-                    
                 }
+                //Successfully pulled data
+                handler(true)
             })
         }
+        //No existing reference
+        handler(false)
     }
     
     
