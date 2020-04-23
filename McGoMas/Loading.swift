@@ -17,7 +17,8 @@ struct Loading: View {
     
     var body: some View {
         VStack () {
-            LottieView(closure: $closure, filename: "dumbell", loopMode: .autoReverse).frame(width:200, height: 200)
+            Text("Loading Logs...").font(.largeTitle)
+            LottieView(filename: "dumbell", closure: $closure, loopMode: .autoReverse).frame(width:200, height: 200)
         }
         .onAppear() {
             self.userSession.databasePull { success in

@@ -16,6 +16,16 @@ struct LottieView: UIViewRepresentable {
         }
     }
     
+    init(filename: String, closure: Binding<((Bool) -> Void)?> = Binding.constant(nil), loopMode: LottieLoopMode = .playOnce, speed: Double = 1.0, playSubsection: Bool = false, startFrame: Int = 0, endFrame: Int = 0) {
+        self._closure = closure
+        self.filename = filename
+        self.loopMode = loopMode
+        self.speed = CGFloat(speed)
+        self.playSubsection = playSubsection
+        self.startFrame = startFrame
+        self.endFrame = endFrame
+    }
+    
     @Binding var closure: ((Bool) -> Void)?
     
     var filename: String
