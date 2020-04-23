@@ -15,6 +15,8 @@ target 'McGoMas' do
   # Pod for using gifs
   source 'https://github.com/CocoaPods/Specs.git'
   pod 'SwiftyGif'
+  # Pod for Animated gifts
+  pod 'lottie-ios'
 
   target 'McGoMasTests' do
     inherit! :search_paths

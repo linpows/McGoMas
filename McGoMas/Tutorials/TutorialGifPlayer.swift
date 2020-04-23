@@ -30,7 +30,7 @@ struct TutorialGifPlayer: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<TutorialGifPlayer>) {
-        //Used to adjust to orientation changes
+        //Used to adjust to state changes
     }
 }
 

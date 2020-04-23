@@ -67,17 +67,7 @@ struct LoggingHomeView: View {
                 Alert(title: Text("Success"), message: Text("Changes saved successfully."), dismissButton: .default(Text("Ok")))
             }
             .sheet(isPresented: $loading) {
-                //Dismissed with databasePull's callback
-                Loading()
-            }
-            .onAppear() {
-                if self.loading {
-                    self.userSession.databasePull { success in
-                        if success {
-                            self.loading = false
-                        }
-                    }
-                }
+                Loading(isPresented: self.$loading).environmentObject(self.userSession)
             }
             .navigationBarTitle("Your Log")
             .navigationBarItems( leading:

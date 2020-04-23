@@ -7,15 +7,35 @@
 //
 
 import SwiftUI
+import Lottie
 
 struct Loading: View {
+    @Binding var isPresented: Bool
+    @State var closure: ((Bool) -> Void)? = nil
+    
+    @EnvironmentObject var userSession: UserSession
+    
     var body: some View {
-        Text("Loading your logs...")
+        VStack () {
+            LottieView(closure: $closure, filename: "dumbell", loopMode: .autoReverse).frame(width:200, height: 200)
+        }
+        .onAppear() {
+            self.userSession.databasePull { success in
+                if (success) { //We are ready to dismiss.
+                    //Wrap up the animation nicely
+                    self.closure = self.dismissWhenDone(done:)
+                }
+            }
+        }
+    }
+    
+    func dismissWhenDone(done: Bool) {
+        self.isPresented = false
     }
 }
 
 struct Loading_Previews: PreviewProvider {
     static var previews: some View {
-        Loading()
+        Loading(isPresented: Binding.constant(true))
     }
 }
