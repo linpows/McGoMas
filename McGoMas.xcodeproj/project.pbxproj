@@ -53,6 +53,8 @@
 		80A7C9D42425095600C21FC6 /* LandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A7C9D32425095600C21FC6 /* LandingView.swift */; };
 		80B5F5AF2443790D00EE0D3D /* TutorialModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B5F5AE2443790D00EE0D3D /* TutorialModel.swift */; };
 		80B67F6F244754D700650AEF /* LogGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B67F6E244754D700650AEF /* LogGraphView.swift */; };
+		80C287D124524B8C00F05C96 /* LottieViewTester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C287D024524B8C00F05C96 /* LottieViewTester.swift */; };
+		80C287D324524BF700F05C96 /* load_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 80C287D224524BF700F05C96 /* load_animation.json */; };
 		80C4846D2411727700BD7EAE /* LogoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C4846C2411727700BD7EAE /* LogoutView.swift */; };
 		80CCAFE8244FA9540028D1D6 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CCAFE7244FA9540028D1D6 /* Loading.swift */; };
 		80CDF0DF24351BF3009EE05B /* WeightEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CDF0DE24351BF3009EE05B /* WeightEntry.swift */; };
@@ -132,6 +134,8 @@
 		80A7C9D32425095600C21FC6 /* LandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingView.swift; sourceTree = "<group>"; };
 		80B5F5AE2443790D00EE0D3D /* TutorialModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialModel.swift; sourceTree = "<group>"; };
 		80B67F6E244754D700650AEF /* LogGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogGraphView.swift; sourceTree = "<group>"; };
+		80C287D024524B8C00F05C96 /* LottieViewTester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieViewTester.swift; sourceTree = "<group>"; };
+		80C287D224524BF700F05C96 /* load_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = load_animation.json; sourceTree = "<group>"; };
 		80C4846C2411727700BD7EAE /* LogoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutView.swift; sourceTree = "<group>"; };
 		80CCAFE7244FA9540028D1D6 /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
 		80CDF0DE24351BF3009EE05B /* WeightEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightEntry.swift; sourceTree = "<group>"; };
@@ -304,6 +308,7 @@
 				8020C2B82410138A0097BD5E /* GradientButtonStyle.swift */,
 				8028D50C24315BAF00CF050B /* NumericTextField.swift */,
 				80E76F8424520A3E009052A9 /* LottieView.swift */,
+				80ABF23924526E57008AEA9E /* Testing */,
 			);
 			name = Styling;
 			sourceTree = "<group>";
@@ -340,6 +345,15 @@
 				80A7C9D1242507B900C21FC6 /* PredictionView.swift */,
 			);
 			name = "Traffic Prediction";
+			sourceTree = "<group>";
+		};
+		80ABF23924526E57008AEA9E /* Testing */ = {
+			isa = PBXGroup;
+			children = (
+				80C287D224524BF700F05C96 /* load_animation.json */,
+				80C287D024524B8C00F05C96 /* LottieViewTester.swift */,
+			);
+			path = Testing;
 			sourceTree = "<group>";
 		};
 		80DEEC88244C8FFD00B72798 /* Trends */ = {
@@ -470,6 +484,7 @@
 				80A7AED6244B51B9009D6BFF /* leg_extension.gif in Resources */,
 				802784A5240EC76500AFD8E8 /* Preview Assets.xcassets in Resources */,
 				80A7AEE2244B5438009D6BFF /* tricep_cable_press.gif in Resources */,
+				80C287D324524BF700F05C96 /* load_animation.json in Resources */,
 				802784A2240EC76500AFD8E8 /* Assets.xcassets in Resources */,
 				80A7AED8244B521F009D6BFF /* deadlift.gif in Resources */,
 				80E76F8724520D72009052A9 /* dumbell.json in Resources */,
@@ -577,6 +592,7 @@
 				3E551103244E6889002450E9 /* RKDate.swift in Sources */,
 				80B67F6F244754D700650AEF /* LogGraphView.swift in Sources */,
 				80945FC32449F88000F55562 /* TutorialData.swift in Sources */,
+				80C287D124524B8C00F05C96 /* LottieViewTester.swift in Sources */,
 				80B5F5AF2443790D00EE0D3D /* TutorialModel.swift in Sources */,
 				3E551109244E6889002450E9 /* RKViewController.swift in Sources */,
 				80DEEC91244C9EBE00B72798 /* Weekly.swift in Sources */,

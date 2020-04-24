@@ -13,18 +13,12 @@ import FirebaseAuth
 
 struct LoggingHomeView: View {
     //Show the loading screen while we pull from database
-    @State public var loading: Bool
-    
+    @State private var loading: Bool = true
     
     //Present view for adding a workout
     @State private var showAdd: Bool = false
     //Present view for data visualization
     @State private var showStats: Bool = false
-    //Alert user to an error
-    @State private var showError: Bool = false
-    //Save user changes in the database
-    @State private var save: Bool = false
-    
     
     @EnvironmentObject var userSession: UserSession
     
@@ -56,85 +50,108 @@ struct LoggingHomeView: View {
                     WeightListView().environmentObject(self.userSession).environmentObject(self.userSession.logs)
                 }
                 
+                
                 Spacer()
                 
-                SaveButton(saveSignal: $save)
-            }
-            .alert(isPresented: $showError) {
-                Alert(title: Text("Oops"), message: Text("Sign in to access this functionality"), dismissButton: .default(Text("Ok")))
-            }
-            .alert(isPresented: $save) {
-                Alert(title: Text("Success"), message: Text("Changes saved successfully."), dismissButton: .default(Text("Ok")))
+                SaveButton()
             }
             .sheet(isPresented: $loading) {
                 Loading(isPresented: self.$loading).environmentObject(self.userSession)
             }
             .navigationBarTitle("Your Log")
-            .navigationBarItems( leading:
-                Button( action: {
-                    if (self.userSession.user == nil) {
-                        self.showError = true;
-                    }
-                    else {
-                        self.showStats = true;
-                    }
-                }, label: {
-                    Image(systemName: "chart.pie.fill")
-                    .font(.largeTitle)
-                    .padding(.top, 20)
-                    .foregroundColor(burntOrange)
-                } ), trailing: Button(
-                    action: {
-                        if (self.userSession.user == nil) {
-                            self.showError = true;
-                        }
-                        else {
-                            self.showAdd = true;
-                        }
-                    }, label: {
-                        Image(systemName: "plus.square.fill")
-                            .font(.largeTitle)
-                            .padding(.top, 20)
-                            .foregroundColor(chicagoMaroon)
-                        
-                    }
-                )
-            )
+            .navigationBarItems(leading: GraphButton(success: $showStats),
+                                 trailing: AddButton(success: $showAdd))
+        }
+        .onAppear() {
+            self.loading = self.userSession.logs.cardioLogs.isEmpty && self.userSession.logs.weightLogs.isEmpty
+        }
+    }
+    
+    private struct AddButton: View {
+        @EnvironmentObject var userSession: UserSession
+        @State var errSignal: Bool = false
+        @Binding var success: Bool
+        
+        var body: some View {
+            Button( action: {
+                (self.userSession.user == nil) ? (self.errSignal = true) : (self.success = true)
+            }, label: {
+                Image(systemName: "plus.square.fill")
+                .font(.largeTitle)
+                .padding(.top, 20)
+                .foregroundColor(chicagoMaroon)
+            })
+            .alert(isPresented: $errSignal) {
+                Alert(title: Text("Oops"), message: Text("Sign in to access this functionality"), dismissButton: .default(Text("Ok")))
+            }
+        }
+    }
+    
+    private struct GraphButton: View {
+        @EnvironmentObject var userSession: UserSession
+        @State var errSignal: Bool = false
+        @Binding var success: Bool
+        
+        var body: some View {
+            Button( action: {
+                (self.userSession.user == nil) ? (self.errSignal = true) : (self.success = true)
+            }, label: {
+                Image(systemName: "chart.pie.fill")
+                .font(.largeTitle)
+                .padding(.top, 20)
+                .foregroundColor(burntOrange)
+            })
+            .alert(isPresented: $errSignal) {
+                Alert(title: Text("Oops"), message: Text("Sign in to access this functionality"), dismissButton: .default(Text("Ok")))
+            }
         }
     }
     
     private struct SaveButton: View {
         @EnvironmentObject var userSession: UserSession
-        @Binding var saveSignal: Bool
+        @State var saveSignal: Bool = false
+        @State var errSignal: Bool = false
         
         var body: some View {
             Button (
                 action: {
-                    let cardioSave = self.userSession.logs.cardioLogs.filter({ cardio in
-                        cardio.pushToDB //Push only the ones that need adding/updating
-                    })
-                    
-                    for cardio in cardioSave {
-                        self.userSession.uploadCardio(workout: cardio)
-                        cardio.pushToDB = false //updated
+                    if self.userSession.user != nil {
+                        let cardioSave = self.userSession.logs.cardioLogs.filter({ cardio in
+                            cardio.pushToDB //Push only the ones that need adding/updating
+                        })
+                        
+                        for cardio in cardioSave {
+                            self.userSession.uploadCardio(workout: cardio)
+                            cardio.pushToDB = false //updated
+                        }
+                        
+                        
+                        let weightSave = self.userSession.logs.weightLogs.filter({ weight in
+                            weight.pushToDB
+                        })
+                        
+                        for weight in weightSave {
+                            self.userSession.uploadWeight(workout: weight)
+                            weight.pushToDB = false //updated
+                        }
+                        self.saveSignal = true
+                        
                     }
-                    
-                    
-                    let weightSave = self.userSession.logs.weightLogs.filter({ weight in
-                        weight.pushToDB
-                    })
-                    
-                    for weight in weightSave {
-                        self.userSession.uploadWeight(workout: weight)
-                        weight.pushToDB = false //updated
+                    else {
+                        self.errSignal = true
                     }
-                    self.saveSignal = true
                 },
                 label: {
                     Text("Save Changes").font(.title)
                     .fontWeight(.bold)
                 }
             )
+            .alert(isPresented: $saveSignal) {
+                Alert(title: Text("Success"), message: Text("Changes saved successfully."), dismissButton: .default(Text("Ok")))
+            }
+            .alert(isPresented: $errSignal) {
+                Alert(title: Text("Oops"), message: Text("Sign in to access this functionality"), dismissButton: .default(Text("Ok")))
+            }
             .buttonStyle(GradientButtonStyle())
             .padding()
         }
@@ -144,6 +161,6 @@ struct LoggingHomeView: View {
 
 struct LoggingHomeView_Previews: PreviewProvider {
     static var previews: some View {
-        return LoggingHomeView(loading: false).environmentObject(UserSession())
+        return LoggingHomeView().environmentObject(UserSession())
     }
 }

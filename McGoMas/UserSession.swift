@@ -155,6 +155,9 @@ class UserSession: ObservableObject {
     
     func databasePull(handler: @escaping (Bool) -> Void) {
         if let ref = databaseRef {
+            //Clean out existing logs
+            logs.cardioLogs.removeAll()
+            logs.weightLogs.removeAll()
             //Have a reference, pull down initial values
             ref.observeSingleEvent(of: .value, with: { snapshot in
                 //Snapshot represents all logged workouts
@@ -163,6 +166,7 @@ class UserSession: ObservableObject {
                 for node in nodes {
                     //Separate fields (value) from key (workout ID)
                     let workoutID = node.key
+                    let myID = UUID(uuidString: workoutID)!
                     let workout = node.value as? [String : AnyObject] ?? [:]
                     
                     //Parse Date
@@ -170,6 +174,7 @@ class UserSession: ObservableObject {
                     let date = Date(timeIntervalSince1970: timeInterval)
                     
                     if ((workout["workoutType"] as! String).lowercased() != "weights") { //Cardio
+                        
                         //Find exact type
                         let typeStr = (workout["workoutType"] as! String).lowercased()
                         var type: WorkoutType = WorkoutType.run
@@ -185,7 +190,7 @@ class UserSession: ObservableObject {
                         let time = workout["time"] as! Double
                         let unit = workout["unit"] as! String
                         
-                        let cardio = CardioModel(withID: UUID(uuidString: workoutID)!)
+                        let cardio = CardioModel(withID: myID)
                         cardio.createCardio(withType: type, date: date, distance: distance, distanceUnit: unit, time: time)
                         
                         cardio.pushToDB = false //Fetched from database, does not need to be re-pushed

@@ -24,7 +24,9 @@ struct LogGraphView: View {
             }
         }
         .onAppear() {
-            self.tiles = GridCell.allCells(withUserSession: self.user).chunked(into: 2)
+            withAnimation(Animation.easeIn(duration: 1.0)) {
+                self.tiles = GridCell.allCells(withUserSession: self.user).chunked(into: 2)
+            }
         }
     }
 }

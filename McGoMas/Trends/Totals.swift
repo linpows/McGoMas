@@ -71,7 +71,9 @@ struct Totals: View {
                 }
             }
             .onAppear {
-                self.ratio(unitSelection: 0)
+                withAnimation(Animation.spring()) {
+                    self.ratio(unitSelection: 0)
+                }
             }
         }
     }

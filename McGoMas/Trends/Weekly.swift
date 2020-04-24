@@ -10,13 +10,15 @@ import SwiftUI
 
 struct Weekly: View {
     @EnvironmentObject var user: UserSession
-    @State private var weeklyDistance: [Double] = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    @State private var weeklyTotals: [Double] = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
     @State private var weeklyRatio: [Double] = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
     @State private var dayAbbreviation: [String] = ["", "", "", "", "", "", ""]
     @State private var dayName: [String] = ["", "", "", "", "", "", ""]
     
     @State private var idxTapped = -1
     @State private var isTapped = false
+    
+    @State private var pickerSelection = 0
     
     var body: some View {
         VStack() {
@@ -28,8 +30,14 @@ struct Weekly: View {
                 Text("Click a bar to learn more.").font(.title).padding().multilineTextAlignment(.center)
             }
             
+            MinuteMilePicker(selection: $pickerSelection.onChange({ index in
+                return withAnimation(Animation.spring()) {
+                    self.compute(unitSelection: index)
+                }
+            }))
+            
             HStack(alignment: .bottom, spacing: 0.0) {
-                ForEach(0 ..< self.weeklyDistance.count) { idx in
+                ForEach(0 ..< self.weeklyTotals.count) { idx in
                     GeometryReader { geometry in
                         VStack (spacing: 0.0) {
                             Spacer()
@@ -60,20 +68,23 @@ struct Weekly: View {
                     }
                 }
                 .onAppear {
-                    self.compute()
+                    withAnimation(Animation.spring()) {
+                        self.compute(unitSelection: self.pickerSelection)
+                    }
                 }
             }
         }
     }
     
     private func titleString(selectedIdx: Int) -> String {
-        return "Covered " + String(format: "%.2f", self.weeklyDistance[selectedIdx]) + " miles on " + self.dayName[selectedIdx]
+        let type = self.pickerSelection == 0 ? "miles" : "minutes"
+        return String(format: "%.2f", self.weeklyTotals[selectedIdx]) + " \(type) on " + self.dayName[selectedIdx]
     }
     
-    private func compute() {
+    private func compute(unitSelection: Int) {
         let currDay = Date()
         let nameFinder = DateFormatter()
-        
+
         for day in 0...6 {
             //Find a reference date for 0, 1, 2, ..., 6 days previous
             var component = DateComponents()
@@ -81,7 +92,7 @@ struct Weekly: View {
             let prevDate = Calendar.current.date(byAdding: component, to: currDay)!
             
             //Fill in most recent day in the last slot and work backwards
-            self.weeklyDistance[6 - day] = allMiles(onDate: prevDate)
+            self.weeklyTotals[6 - day] = (unitSelection == 0) ? allMiles(onDate: prevDate) : allMins(onDate: prevDate)
             
             //Fill in which data corresponds to which day of the week
             self.dayName[6 - day] = nameFinder.weekdaySymbols[Calendar.current.component(.weekday, from: prevDate) % 7]
@@ -90,12 +101,25 @@ struct Weekly: View {
         }
         
         //Compute ratio
-        let totalWeek = self.weeklyDistance.reduce(0.0, {$0 + $1})
+        let totalWeek = self.weeklyTotals.reduce(0.0, {$0 + $1})
         if (totalWeek > 0.0) { //Guard against divide by zero
             for idx in 0...6 { //Find ratio of single day's distance : week distance
-                self.weeklyRatio[idx] = self.weeklyDistance[idx] / totalWeek
+                self.weeklyRatio[idx] = self.weeklyTotals[idx] / totalWeek
             }
         }
+    }
+    
+    //Calculate all the miles occuring on the day
+    private func allMins(onDate: Date) -> Double {
+        //Find all non-nil, same day cardio (compared to "onDate")
+        let sameDayCardio = self.user.logs.cardioLogs.filter { cardio in
+            cardio.cardio != nil &&
+                Calendar.current.isDate(onDate, equalTo: cardio.cardio!.date, toGranularity: .day)
+        }
+    
+        
+        //Sum and return
+        return sameDayCardio.reduce(0.0, {$0 + ($1.cardio!.time ?? 0.0) })
     }
     
     //Calculate all the miles occuring on the day
@@ -112,7 +136,7 @@ struct Weekly: View {
                 return (entry.cardio!.distance ?? 0.0) / 1600.9 //1600.9 meters to the mile
             }
             if (entry.cardio!.distanceUnit == "km") {
-                return (entry.cardio!.distance ?? 0.0) / 16.009 //16.009 kilometers to the mile
+                return (entry.cardio!.distance ?? 0.0) / 1.6009 //1.6009 kilometers to the mile
             }
             //Else in miles
             return (entry.cardio!.distance ?? 0.0)

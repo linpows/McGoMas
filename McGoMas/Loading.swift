@@ -12,19 +12,26 @@ import Lottie
 struct Loading: View {
     @Binding var isPresented: Bool
     @State var closure: ((Bool) -> Void)? = nil
+    @State var loopMode: LottieLoopMode = .autoReverse
     
     @EnvironmentObject var userSession: UserSession
     
     var body: some View {
         VStack () {
             Text("Loading Logs...").font(.largeTitle)
-            LottieView(filename: "dumbell", closure: $closure, loopMode: .autoReverse).frame(width:200, height: 200)
+            LottieView(closure: $closure, loopMode: $loopMode, filename: "dumbell").frame(width:200, height: 200)
         }
         .onAppear() {
-            self.userSession.databasePull { success in
-                if (success) { //We are ready to dismiss.
-                    //Wrap up the animation nicely
-                    self.closure = self.dismissWhenDone(done:)
+            if (self.userSession.user == nil) { //No user to pull logs for
+                self.isPresented = false
+            }
+            else {
+                self.userSession.databasePull { success in
+                    if (success) { //We are ready to dismiss.
+                        //Wrap up the animation nicely
+                        self.loopMode = .playOnce
+                        self.closure = self.dismissWhenDone(done:)
+                    }
                 }
             }
         }
