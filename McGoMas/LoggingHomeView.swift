@@ -7,8 +7,7 @@
 //
 
 import SwiftUI
-import FirebaseDatabase
-import FirebaseAuth
+import Firebase
 
 
 struct LoggingHomeView: View {

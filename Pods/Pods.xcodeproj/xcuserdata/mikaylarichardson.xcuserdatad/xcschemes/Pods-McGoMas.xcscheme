@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1100"
+   LastUpgradeVersion = "1140"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5D850A694A0B63C9E542806C4FF66362"
-               BuildableName = "Pods_McGoMas.framework"
+               BuildableName = "libPods-McGoMas.a"
                BlueprintName = "Pods-McGoMas"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>

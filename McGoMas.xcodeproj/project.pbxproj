@@ -16,6 +16,7 @@
 		3E551109244E6889002450E9 /* RKViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5510FB244E6889002450E9 /* RKViewController.swift */; };
 		3E55110C244E6990002450E9 /* CalendarModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E55110A244E6990002450E9 /* CalendarModels.swift */; };
 		3E55110D244E6990002450E9 /* CalendarDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E55110B244E6990002450E9 /* CalendarDayView.swift */; };
+		54D8AFD28B113DF2FAFF59FC /* libPods-McGoMasTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D31C75C3520140CF8211379 /* libPods-McGoMasTests.a */; };
 		800557CC2425579300FE11DA /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800557CB2425579300FE11DA /* AuthView.swift */; };
 		801F887C243A246B0080CEA2 /* WeightListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801F887B243A246B0080CEA2 /* WeightListView.swift */; };
 		801F887E243A24880080CEA2 /* CardioListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801F887D243A24880080CEA2 /* CardioListView.swift */; };
@@ -67,8 +68,7 @@
 		80EFF112244E11FC001A70E3 /* MinuteMilePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EFF111244E11FC001A70E3 /* MinuteMilePicker.swift */; };
 		80F7A1D924213B6400061ED0 /* AddEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F7A1D824213B6400061ED0 /* AddEntryView.swift */; };
 		80F7A1DB24213F5000061ED0 /* LoggingHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F7A1DA24213F5000061ED0 /* LoggingHomeView.swift */; };
-		BB33E4D1186D10D817E09DC1 /* Pods_McGoMas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 532037967455B767F9F12BDD /* Pods_McGoMas.framework */; };
-		CF37F6789CCE5C871F4AE5DC /* Pods_McGoMasTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C0C1B0490042C16437727EE /* Pods_McGoMasTests.framework */; };
+		A7D925FA5F0C880AB8F80530 /* libPods-McGoMas.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB21385ED197CE1377D6FD7F /* libPods-McGoMas.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,8 +82,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		01A083C2BADE8E3BC719F6A3 /* Pods-McGoMasTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-McGoMasTests.release.xcconfig"; path = "Target Support Files/Pods-McGoMasTests/Pods-McGoMasTests.release.xcconfig"; sourceTree = "<group>"; };
-		0C0C1B0490042C16437727EE /* Pods_McGoMasTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_McGoMasTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D31C75C3520140CF8211379 /* libPods-McGoMasTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-McGoMasTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F019F15C6767B5E2997E499 /* Pods-McGoMas.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-McGoMas.debug.xcconfig"; path = "Target Support Files/Pods-McGoMas/Pods-McGoMas.debug.xcconfig"; sourceTree = "<group>"; };
 		3E5510F5244E6889002450E9 /* RKDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RKDate.swift; path = RKCalendar/RKDate.swift; sourceTree = "<group>"; };
 		3E5510F6244E6889002450E9 /* RKMonth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RKMonth.swift; path = RKCalendar/RKMonth.swift; sourceTree = "<group>"; };
 		3E5510F7244E6889002450E9 /* RKColorSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RKColorSettings.swift; path = RKCalendar/RKColorSettings.swift; sourceTree = "<group>"; };
@@ -93,7 +93,6 @@
 		3E5510FB244E6889002450E9 /* RKViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RKViewController.swift; path = RKCalendar/RKViewController.swift; sourceTree = "<group>"; };
 		3E55110A244E6990002450E9 /* CalendarModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarModels.swift; sourceTree = "<group>"; };
 		3E55110B244E6990002450E9 /* CalendarDayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarDayView.swift; sourceTree = "<group>"; };
-		532037967455B767F9F12BDD /* Pods_McGoMas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_McGoMas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		800557CB2425579300FE11DA /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		801F887B243A246B0080CEA2 /* WeightListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightListView.swift; sourceTree = "<group>"; };
 		801F887D243A24880080CEA2 /* CardioListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardioListView.swift; sourceTree = "<group>"; };
@@ -148,9 +147,10 @@
 		80EFF111244E11FC001A70E3 /* MinuteMilePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinuteMilePicker.swift; sourceTree = "<group>"; };
 		80F7A1D824213B6400061ED0 /* AddEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEntryView.swift; sourceTree = "<group>"; };
 		80F7A1DA24213F5000061ED0 /* LoggingHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingHomeView.swift; sourceTree = "<group>"; };
-		9EC3563F716A47E3524DA60F /* Pods-McGoMasTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-McGoMasTests.debug.xcconfig"; path = "Target Support Files/Pods-McGoMasTests/Pods-McGoMasTests.debug.xcconfig"; sourceTree = "<group>"; };
-		C1325CC57C7D801103A10A01 /* Pods-McGoMas.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-McGoMas.release.xcconfig"; path = "Target Support Files/Pods-McGoMas/Pods-McGoMas.release.xcconfig"; sourceTree = "<group>"; };
-		C51FE35065A89619E58039E7 /* Pods-McGoMas.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-McGoMas.debug.xcconfig"; path = "Target Support Files/Pods-McGoMas/Pods-McGoMas.debug.xcconfig"; sourceTree = "<group>"; };
+		877F52B397EBBC911D27422B /* Pods-McGoMasTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-McGoMasTests.debug.xcconfig"; path = "Target Support Files/Pods-McGoMasTests/Pods-McGoMasTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B7FFB1F9BC288D28CC0ED896 /* Pods-McGoMasTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-McGoMasTests.release.xcconfig"; path = "Target Support Files/Pods-McGoMasTests/Pods-McGoMasTests.release.xcconfig"; sourceTree = "<group>"; };
+		DB21385ED197CE1377D6FD7F /* libPods-McGoMas.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-McGoMas.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4297244A20D28E58E1DE2AF /* Pods-McGoMas.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-McGoMas.release.xcconfig"; path = "Target Support Files/Pods-McGoMas/Pods-McGoMas.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,7 +158,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB33E4D1186D10D817E09DC1 /* Pods_McGoMas.framework in Frameworks */,
+				A7D925FA5F0C880AB8F80530 /* libPods-McGoMas.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,7 +166,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF37F6789CCE5C871F4AE5DC /* Pods_McGoMasTests.framework in Frameworks */,
+				54D8AFD28B113DF2FAFF59FC /* libPods-McGoMasTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,12 +190,21 @@
 		591204DE2D5EDA139CD65BBF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C51FE35065A89619E58039E7 /* Pods-McGoMas.debug.xcconfig */,
-				C1325CC57C7D801103A10A01 /* Pods-McGoMas.release.xcconfig */,
-				9EC3563F716A47E3524DA60F /* Pods-McGoMasTests.debug.xcconfig */,
-				01A083C2BADE8E3BC719F6A3 /* Pods-McGoMasTests.release.xcconfig */,
+				2F019F15C6767B5E2997E499 /* Pods-McGoMas.debug.xcconfig */,
+				F4297244A20D28E58E1DE2AF /* Pods-McGoMas.release.xcconfig */,
+				877F52B397EBBC911D27422B /* Pods-McGoMasTests.debug.xcconfig */,
+				B7FFB1F9BC288D28CC0ED896 /* Pods-McGoMasTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		5B28864D0407B11B08233554 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DB21385ED197CE1377D6FD7F /* libPods-McGoMas.a */,
+				0D31C75C3520140CF8211379 /* libPods-McGoMasTests.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		8027848F240EC76000AFD8E8 = {
@@ -205,7 +214,7 @@
 				802784B1240EC76500AFD8E8 /* McGoMasTests */,
 				80278499240EC76000AFD8E8 /* Products */,
 				591204DE2D5EDA139CD65BBF /* Pods */,
-				E9D14026EF59732B083CD920 /* Frameworks */,
+				5B28864D0407B11B08233554 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -383,15 +392,6 @@
 			name = Logging;
 			sourceTree = "<group>";
 		};
-		E9D14026EF59732B083CD920 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				532037967455B767F9F12BDD /* Pods_McGoMas.framework */,
-				0C0C1B0490042C16437727EE /* Pods_McGoMasTests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -399,11 +399,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 802784B7240EC76500AFD8E8 /* Build configuration list for PBXNativeTarget "McGoMas" */;
 			buildPhases = (
-				B0D0FA3D31B88046B846765C /* [CP] Check Pods Manifest.lock */,
+				E61EFAC9C83A0715B4F7D6CB /* [CP] Check Pods Manifest.lock */,
 				80278494240EC76000AFD8E8 /* Sources */,
 				80278495240EC76000AFD8E8 /* Frameworks */,
 				80278496240EC76000AFD8E8 /* Resources */,
-				DFBB26962E2DF55A23BB977C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -418,7 +417,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 802784BA240EC76500AFD8E8 /* Build configuration list for PBXNativeTarget "McGoMasTests" */;
 			buildPhases = (
-				C48D15AC2BCDAE9D3E46C3CD /* [CP] Check Pods Manifest.lock */,
+				EAC2E364F934199FCE89B2B6 /* [CP] Check Pods Manifest.lock */,
 				802784AA240EC76500AFD8E8 /* Sources */,
 				802784AB240EC76500AFD8E8 /* Frameworks */,
 				802784AC240EC76500AFD8E8 /* Resources */,
@@ -504,7 +503,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		B0D0FA3D31B88046B846765C /* [CP] Check Pods Manifest.lock */ = {
+		E61EFAC9C83A0715B4F7D6CB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -526,7 +525,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C48D15AC2BCDAE9D3E46C3CD /* [CP] Check Pods Manifest.lock */ = {
+		EAC2E364F934199FCE89B2B6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -546,23 +545,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DFBB26962E2DF55A23BB977C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-McGoMas/Pods-McGoMas-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-McGoMas/Pods-McGoMas-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-McGoMas/Pods-McGoMas-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -765,7 +747,7 @@
 		};
 		802784B8240EC76500AFD8E8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C51FE35065A89619E58039E7 /* Pods-McGoMas.debug.xcconfig */;
+			baseConfigurationReference = 2F019F15C6767B5E2997E499 /* Pods-McGoMas.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -788,7 +770,7 @@
 		};
 		802784B9240EC76500AFD8E8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C1325CC57C7D801103A10A01 /* Pods-McGoMas.release.xcconfig */;
+			baseConfigurationReference = F4297244A20D28E58E1DE2AF /* Pods-McGoMas.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -811,7 +793,7 @@
 		};
 		802784BB240EC76500AFD8E8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9EC3563F716A47E3524DA60F /* Pods-McGoMasTests.debug.xcconfig */;
+			baseConfigurationReference = 877F52B397EBBC911D27422B /* Pods-McGoMasTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -833,7 +815,7 @@
 		};
 		802784BC240EC76500AFD8E8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 01A083C2BADE8E3BC719F6A3 /* Pods-McGoMasTests.release.xcconfig */;
+			baseConfigurationReference = B7FFB1F9BC288D28CC0ED896 /* Pods-McGoMasTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

@@ -1,4 +1,4 @@
-framework module Pods_McGoMas {
+module Pods_McGoMas {
   umbrella header "Pods-McGoMas-umbrella.h"
 
   export *

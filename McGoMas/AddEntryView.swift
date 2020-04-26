@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-import FirebaseDatabase
+import Firebase
 
 
 struct AddEntryView: View {
