@@ -9,34 +9,27 @@
 import SwiftUI
 import Foundation
 
-struct PredictionView: View {
-    @State private var dateToDisplay = minPredictionDate
+// uses RK Calendar from CalendarView
+struct PredictionView : View {
     
-    func getPredictionBar(pred: Prediction, currentDate: Date) -> some View {
-        return AnyView(HStack {
-            if (Calendar.current.isDate(pred.dateTime, inSameDayAs:currentDate) == true) {
-                Text("\(predictionTimeFormatter.string(from: pred.dateTime))")
-                Rectangle().fill(Color.blue).frame(width: CGFloat(pred.prediction) / 3, height: 10)
-                Text(" \(pred.prediction)")
-            }
-        })
-    }
+    @State var presented = true
+    @State var showDate = false
+    
+    var manager = RKManager(calendar: Calendar.current, minimumDate: minPredictionDate, maximumDate: minPredictionDate.addingTimeInterval(60*60*24*365), mode: 0) // display year out from minPredictionDate
     
     var body: some View {
-        ScrollView {
-            VStack (alignment: .leading) {
-                DatePicker(selection: $dateToDisplay, in:minPredictionDate...maxPredictionDate, displayedComponents: .date) {
-                    Text("")
-                }
-                
-                Text("Predicted occupancy on \(dateToDisplay, formatter: predictionDateFormatter)")
-                ForEach(predictions, id: \.self) { pred in
-                    self.getPredictionBar(pred: pred, currentDate: self.dateToDisplay)
-                }
-            }.padding(.leading, 10)
+        VStack (spacing: 25) {
+            RKViewController(showDate: self.$showDate, rkManager: self.manager)
+        }.sheet(isPresented: self.$showDate, onDismiss: self.onDismiss) {
+            PredictionDayView(date: self.manager.selectedDate)
         }
     }
+    
+    func onDismiss() {
+        self.manager.selectedDate = nil
+    }
 }
+
 struct PredictionView_Previews: PreviewProvider {
     static var previews: some View {
         PredictionView()
