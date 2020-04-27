@@ -54,12 +54,12 @@ struct LoggingHomeView: View {
                 
                 SaveButton()
             }
-            .sheet(isPresented: $loading) {
-                Loading(isPresented: self.$loading).environmentObject(self.userSession)
-            }
             .navigationBarTitle("Your Log")
             .navigationBarItems(leading: GraphButton(success: $showStats),
                                  trailing: AddButton(success: $showAdd))
+        }
+        .sheet(isPresented: $loading) {
+            Loading(isPresented: self.$loading).environmentObject(self.userSession)
         }
         .onAppear() {
             self.loading = self.userSession.logs.cardioLogs.isEmpty && self.userSession.logs.weightLogs.isEmpty
