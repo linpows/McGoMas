@@ -129,7 +129,7 @@ struct CardioListView: View {
                         action: {
                             self.presentationMode.wrappedValue.dismiss()
                         },
-                        label: {Text("Done")}
+                        label: {Text("Done").font(.title)}
                     ).buttonStyle(GradientButtonStyle())
                     Spacer()
                 }

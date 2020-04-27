@@ -24,6 +24,12 @@ struct SearchBar: UIViewRepresentable {
             query = searchQuery
         }
         
+        func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
+        { //Dismiss keyboard when search button pressed
+            searchBar.endEditing(true)
+            searchBar.resignFirstResponder()
+        }
+        
     }
     
     //Make the delegate/coordinator for this search bar
@@ -43,4 +49,11 @@ struct SearchBar: UIViewRepresentable {
     func updateUIView(_ uiView: UISearchBar, context: UIViewRepresentableContext<SearchBar>) {
         uiView.text = query
     }
+}
+
+extension  UITextField{
+    @objc func doneButtonTapped(button:UIBarButtonItem) -> Void {
+       self.resignFirstResponder()
+    }
+
 }

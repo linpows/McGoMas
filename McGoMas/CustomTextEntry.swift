@@ -27,12 +27,18 @@ struct CustomTextEntry: View {
                 
             HStack() {
                 if self.isSecure {
-                    SecureField(self.entryPrompt, text: $enteredText)
+                    SecureField(self.entryPrompt, text: $enteredText) {
+                        //Resign keyboard on "enter"
+                            UIApplication.shared.endEditing()
+                    }
                         .textFieldStyle(TextEntryStyle())
 
                 }
                 else {
-                    TextField(self.entryPrompt, text: $enteredText)
+                    TextField(self.entryPrompt, text: $enteredText){
+                        //Resign keyboard on "enter"
+                            UIApplication.shared.endEditing()
+                    }
                         .textFieldStyle(TextEntryStyle())
                 }
 
@@ -40,10 +46,13 @@ struct CustomTextEntry: View {
             
         }.padding(.horizontal, 15)
     }
-    
-    
 }
 
+extension UIApplication {
+    func endEditing() {
+        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
 
 struct TextEntryStyle: TextFieldStyle {
     public func _body(configuration: TextField<Self._Label>) -> some View {

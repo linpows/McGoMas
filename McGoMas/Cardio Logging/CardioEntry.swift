@@ -74,6 +74,12 @@ struct CardioEntry: View {
                     }
                 }
             }
+            .gesture( //dismiss keyboard on tap outside of textfield
+                TapGesture()
+                    .onEnded { _ in
+                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                }
+            )
             .onAppear() { //If editing, will fill fields in
                 if let instance = self.logs.editingCardioInstance {
                     

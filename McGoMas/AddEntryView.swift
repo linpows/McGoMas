@@ -28,7 +28,7 @@ struct AddEntryView: View {
                 .frame(minWidth:0, maxWidth: .infinity)
                 .background(hokieStone)
                 .cornerRadius(5.0)
-                .padding()
+                .padding(.horizontal)
                 
             Picker("Type", selection: $selectedType) {
                 ForEach(0 ..< workoutTypes.count) {
@@ -36,7 +36,7 @@ struct AddEntryView: View {
                 }
             }
             .pickerStyle(SegmentedPickerStyle())
-            .padding()
+            .padding(.horizontal)
             .labelsHidden()
             
             
@@ -45,13 +45,12 @@ struct AddEntryView: View {
             .frame(minWidth:0, maxWidth: .infinity)
             .background(hokieStone)
             .cornerRadius(5.0)
-            .padding()
+            .padding(.horizontal)
             
             DatePicker("Date", selection: $date)
             .padding()
             .labelsHidden()
             
-            Spacer()
             
             Button(
                 action: {
@@ -92,6 +91,7 @@ struct AddEntryView: View {
                 //Unable to sign user in, alert to issue
                 Alert(title: Text("Error!"), message: Text("Please select a workout type."), dismissButton: .default(Text("Ok")))
             }
+            Spacer()
         }
         .sheet(isPresented: $show) {
             return EntryForm(formType: self.$type).environmentObject(self.user)

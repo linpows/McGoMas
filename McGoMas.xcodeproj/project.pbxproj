@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -32,6 +32,7 @@
 		802784BF240ED0F200AFD8E8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 802784BD240ED0F200AFD8E8 /* GoogleService-Info.plist */; };
 		802784C1240EE1F200AFD8E8 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802784C0240EE1F200AFD8E8 /* LoginView.swift */; };
 		8028D50D24315BAF00CF050B /* NumericTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8028D50C24315BAF00CF050B /* NumericTextField.swift */; };
+		80423DA224575A2D004CE733 /* EditSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80423DA124575A2D004CE733 /* EditSet.swift */; };
 		804BC0F12427A763004ED836 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804BC0F02427A763004ED836 /* CalendarView.swift */; };
 		804BC0F32427B89C004ED836 /* WorkoutModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804BC0F22427B89C004ED836 /* WorkoutModels.swift */; };
 		805382C124415D5C00F989AB /* TutorialHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805382C024415D5C00F989AB /* TutorialHome.swift */; };
@@ -111,6 +112,7 @@
 		802784BD240ED0F200AFD8E8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		802784C0240EE1F200AFD8E8 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		8028D50C24315BAF00CF050B /* NumericTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericTextField.swift; sourceTree = "<group>"; };
+		80423DA124575A2D004CE733 /* EditSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSet.swift; sourceTree = "<group>"; };
 		804BC0F02427A763004ED836 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		804BC0F22427B89C004ED836 /* WorkoutModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutModels.swift; sourceTree = "<group>"; };
 		805382C024415D5C00F989AB /* TutorialHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialHome.swift; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 				801F887B243A246B0080CEA2 /* WeightListView.swift */,
 				80CDF0DE24351BF3009EE05B /* WeightEntry.swift */,
 				8083E7CA2436239200837D3F /* SetEntry.swift */,
+				80423DA124575A2D004CE733 /* EditSet.swift */,
 			);
 			name = "Weight Logging";
 			sourceTree = "<group>";
@@ -586,6 +589,7 @@
 				801F887E243A24880080CEA2 /* CardioListView.swift in Sources */,
 				3E55110D244E6990002450E9 /* CalendarDayView.swift in Sources */,
 				80A7AEE4244B555D009D6BFF /* SearchBar.swift in Sources */,
+				80423DA224575A2D004CE733 /* EditSet.swift in Sources */,
 				8020C2BD241023C00097BD5E /* CustomTextEntry.swift in Sources */,
 				80D937F12433909400006E8B /* CardioEntry.swift in Sources */,
 				3E551105244E6889002450E9 /* RKColorSettings.swift in Sources */,

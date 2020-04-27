@@ -82,7 +82,7 @@ struct SetList: View {
     
     var body: some View {
         List {
-            ForEach (self.mySets.sets) { logSet in
+            ForEach (self.forModel.weight!.sets.sets) { logSet in
                 NavigationLink(destination: SetDetail(forModel: self.forModel, displayedSet: logSet).environmentObject(self.logs)) {
                     Text(logSet.weightName)
                 }

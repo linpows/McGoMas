@@ -14,7 +14,7 @@ struct WeightEntry: View {
     
     var body: some View {
         VStack() {
-            SetEntry(saveWillDismiss: false).environmentObject(models)
+            SetEntry(prepopulatedFields: nil, saveWillDismiss: false).environmentObject(models)
             Divider()
             SetList(mySets: self.models.editingWeightInstance!.weight?.sets ?? SetArray(fromSets: []), forModel: self.models.editingWeightInstance!).padding(.top, 0)
         }

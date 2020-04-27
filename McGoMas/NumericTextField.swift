@@ -17,7 +17,7 @@ struct NumericTextField: View {
     
     var body: some View {
         TextField(label, text: $enteredText)
-            .keyboardType(.numberPad)
+            .keyboardType(.decimalPad)
             .onReceive(Just(enteredText)) { typedValue in
                 //Filter out any non-valid characters
                 let sanitized = typedValue.filter { self.validChars.contains($0) }

@@ -19,6 +19,9 @@ struct LoggingHomeView: View {
     //Present view for data visualization
     @State private var showStats: Bool = false
     
+    @State private var saveSuccess: Bool = false
+    @State private var saveErr: Bool = false
+    
     @EnvironmentObject var userSession: UserSession
     
     @State private var selection: Int = 0
@@ -52,11 +55,17 @@ struct LoggingHomeView: View {
                 
                 Spacer()
                 
-                SaveButton()
+                SaveButton(saveSignal: $saveSuccess, errSignal: $saveErr)
             }
             .navigationBarTitle("Your Log")
             .navigationBarItems(leading: GraphButton(success: $showStats),
                                  trailing: AddButton(success: $showAdd))
+        }
+        .alert(isPresented: $saveSuccess) {
+            Alert(title: Text("Success"), message: Text("Changes saved successfully."), dismissButton: .default(Text("Ok")))
+        }
+        .alert(isPresented: $saveErr) {
+            Alert(title: Text("Oops"), message: Text("Sign in to access this functionality"), dismissButton: .default(Text("Ok")))
         }
         .sheet(isPresented: $loading) {
             Loading(isPresented: self.$loading).environmentObject(self.userSession)
@@ -80,6 +89,7 @@ struct LoggingHomeView: View {
                 .padding(.top, 20)
                 .foregroundColor(chicagoMaroon)
             })
+            .padding()
             .alert(isPresented: $errSignal) {
                 Alert(title: Text("Oops"), message: Text("Sign in to access this functionality"), dismissButton: .default(Text("Ok")))
             }
@@ -100,6 +110,7 @@ struct LoggingHomeView: View {
                 .padding(.top, 20)
                 .foregroundColor(burntOrange)
             })
+            .padding()
             .alert(isPresented: $errSignal) {
                 Alert(title: Text("Oops"), message: Text("Sign in to access this functionality"), dismissButton: .default(Text("Ok")))
             }
@@ -108,8 +119,8 @@ struct LoggingHomeView: View {
     
     private struct SaveButton: View {
         @EnvironmentObject var userSession: UserSession
-        @State var saveSignal: Bool = false
-        @State var errSignal: Bool = false
+        @Binding var saveSignal: Bool
+        @Binding var errSignal: Bool
         
         var body: some View {
             Button (
@@ -145,12 +156,6 @@ struct LoggingHomeView: View {
                     .fontWeight(.bold)
                 }
             )
-            .alert(isPresented: $saveSignal) {
-                Alert(title: Text("Success"), message: Text("Changes saved successfully."), dismissButton: .default(Text("Ok")))
-            }
-            .alert(isPresented: $errSignal) {
-                Alert(title: Text("Oops"), message: Text("Sign in to access this functionality"), dismissButton: .default(Text("Ok")))
-            }
             .buttonStyle(GradientButtonStyle())
             .padding()
         }
