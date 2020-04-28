@@ -40,14 +40,17 @@ struct PredictionView: View {
             Divider()
             
             DatePicker("", selection: $dateToDisplay, in:minPredictionDate...maxPredictionDate, displayedComponents: .date)
+                .labelsHidden()
             
             Divider()
             
             Spacer()
             
-            HStack(alignment: .bottom) {
-                ForEach(predictions, id: \.self) { pred in
-                    self.getPredictionBar(pred: pred, currentDate: self.dateToDisplay)
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(alignment: .bottom) {
+                    ForEach(predictions, id: \.self) { pred in
+                        self.getPredictionBar(pred: pred, currentDate: self.dateToDisplay)
+                    }
                 }
             }
             

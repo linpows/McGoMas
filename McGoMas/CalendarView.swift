@@ -19,7 +19,8 @@ struct CalendarView : View {
     
     var body: some View {
         VStack (spacing: 25) {
-            RKViewController(showDate: self.$showDate, rkManager: self.manager).onAppear(perform: loadData)
+            RKViewController(showDate: self.$showDate, rkManager: self.manager)
+                .onAppear(perform: loadData)
         }.sheet(isPresented: self.$showDate, onDismiss: self.onDismiss) {
             CalendarDayView(date: self.manager.selectedDate, events: self.events)
         }
