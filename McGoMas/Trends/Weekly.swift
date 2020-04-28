@@ -95,7 +95,7 @@ struct Weekly: View {
             self.weeklyTotals[6 - day] = (unitSelection == 0) ? allMiles(onDate: prevDate) : allMins(onDate: prevDate)
             
             //Fill in which data corresponds to which day of the week
-            self.dayName[6 - day] = nameFinder.weekdaySymbols[Calendar.current.component(.weekday, from: prevDate) % 7]
+            self.dayName[6 - day] = nameFinder.weekdaySymbols[Calendar.current.component(.weekday, from: prevDate) % 6]
             
             self.dayAbbreviation[6 - day] = String(self.dayName[6 - day].prefix(2))
         }

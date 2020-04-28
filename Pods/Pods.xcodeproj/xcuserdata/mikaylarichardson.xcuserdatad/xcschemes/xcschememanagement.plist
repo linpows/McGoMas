@@ -74,6 +74,11 @@
 			<key>orderHint</key>
 			<integer>13</integer>
 		</dict>
+		<key>GoogleAPIClient.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>21</integer>
+		</dict>
 		<key>GoogleAppMeasurement.xcscheme</key>
 		<dict>
 			<key>isShown</key>
