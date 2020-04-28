@@ -19,7 +19,7 @@ var predictionDateFormatter: DateFormatter {
 
 var predictionTimeFormatter: DateFormatter {
     let formatter = DateFormatter()
-    formatter.dateFormat = "HH:mm:ss"
+    formatter.dateFormat = "HH:mm"
     return formatter
 }
 
@@ -827,3 +827,37 @@ struct Prediction: Hashable, Codable, Identifiable {
 var predictions: [Prediction] = rawPredictions.map {
     return Prediction(id: UUID(), dateTime: predictionDateTimeFormatter.date(from: $0.date) ?? Date(), prediction: $0.prediction >= 0 ? Int($0.prediction) : 0)
 }
+
+var dayAverage: [(date: String, prediction: Double)] = [
+(date: "2020-02-29 05:00:00", prediction: 126.2381164),
+(date: "2020-02-29 06:00:00", prediction: 154.6053543),
+(date: "2020-02-29 07:00:00", prediction: 160.1590512),
+(date: "2020-02-29 08:00:00", prediction: 164.5307729),
+(date: "2020-02-29 09:00:00", prediction: 181.4425867),
+(date: "2020-02-29 10:00:00", prediction: 205.1624864),
+(date: "2020-02-29 11:00:00", prediction: 220.0744614),
+(date: "2020-02-29 12:00:00", prediction: 219.8283567),
+(date: "2020-02-29 13:00:00", prediction: 215.6555274),
+(date: "2020-02-29 14:00:00", prediction: 225.2905336),
+(date: "2020-02-29 15:00:00", prediction: 254.0641786),
+(date: "2020-02-29 16:00:00", prediction: 289.1740537),
+(date: "2020-02-29 17:00:00", prediction: 305.6846659),
+(date: "2020-02-29 18:00:00", prediction: 294.7357976),
+(date: "2020-02-29 19:00:00", prediction: 264.5643878),
+(date: "2020-02-29 20:00:00", prediction: 230.5529927),
+(date: "2020-02-29 21:00:00", prediction: 197.8259815),
+(date: "2020-02-29 22:00:00", prediction: 156.8558517),
+(date: "2020-02-29 23:00:00", prediction: 97.49276902)]
+
+var averagePredictions: [Prediction] = dayAverage.map {
+    return Prediction(id: UUID(), dateTime: predictionDateTimeFormatter.date(from: $0.date) ?? Date(), prediction: $0.prediction >= 0 ? Int($0.prediction) : 0)
+}
+
+var weekAverage: [Double] = [
+223.1725027,
+256.8764704,
+235.0314747,
+239.8627488,
+217.2773595,
+168.3298252,
+112.7143473]

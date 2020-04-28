@@ -1,5 +1,5 @@
 //
-//  CalendarDayView.swift
+//  PredictionDayView.swift
 //  McGoMas
 //
 //  Created by Swopnil Joshi on 4/25/20.
@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct PredictionDayView: View {
-    var date: Date // date to predict
+    private var date: Date // date to predict
     
     init(date: Date) {
         self.date = date
