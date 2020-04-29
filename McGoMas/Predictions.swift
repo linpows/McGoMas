@@ -1,10 +1,7 @@
-
-
 //
 //  Predictions.swift
 //  McGoMas
 //
-
 import Foundation
 
 var predictionDateTimeFormatter: DateFormatter {
@@ -39,6 +36,39 @@ var predictions: [Prediction] = rawPredictions.map {
     return Prediction(id: UUID(), dateTime: predictionDateTimeFormatter.date(from: $0.date) ?? Date(), prediction: $0.prediction >= 0 ? Int($0.prediction) : 0)
 }
 
+var dayAverage: [(date: String, prediction: Double)] = [
+(date: "2/29/2020  5:00", prediction: 193.74050225169785),
+(date: "2/29/2020  6:00", prediction: 222.12367388641738),
+(date: "2/29/2020  7:00", prediction: 227.69048635194247),
+(date: "2/29/2020  8:00", prediction: 232.07234223401426),
+(date: "2/29/2020  9:00", prediction: 248.99112973460421),
+(date: "2/29/2020  10:00", prediction: 272.7147209116545),
+(date: "2/29/2020  11:00", prediction: 287.6269989090645),
+(date: "2/29/2020  12:00", prediction: 287.3777057890648),
+(date: "2/29/2020  13:00", prediction: 283.1981668032375),
+(date: "2/29/2020  14:00", prediction: 292.8229092737411),
+(date: "2/29/2020  15:00", prediction: 321.5827255196403),
+(date: "2/29/2020  16:00", prediction: 355.1960402100719),
+(date: "2/29/2020  17:00", prediction: 371.75642270791377),
+(date: "2/29/2020  18:00", prediction: 360.86538988273406),
+(date: "2/29/2020  19:00", prediction: 330.75960043309374),
+(date: "2/29/2020  20:00", prediction: 296.8212680493526),
+(date: "2/29/2020  21:00", prediction: 264.1743460297123),
+(date: "2/29/2020  22:00", prediction: 223.29085795942459),
+(date: "2/29/2020  23:00", prediction: 164.0204413124532)]
+
+var averagePredictions: [Prediction] = dayAverage.map {
+    return Prediction(id: UUID(), dateTime: predictionDateTimeFormatter.date(from: $0.date) ?? Date(), prediction: $0.prediction >= 0 ? Int($0.prediction) : 0)
+}
+
+var weekAverage: [Double] = [
+290.9197294479467,
+324.62369628597406,
+302.7786994596308,
+307.609971715211,
+285.02458589723744,
+236.07704922427968,
+177.41262619174782]
 
 var rawPredictions: [(date: String, prediction: Double)] = [
 (date: "2/3/2020 5:00", prediction: 26.1789619),

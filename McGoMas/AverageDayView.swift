@@ -5,7 +5,6 @@
 //  Created by Swopnil Joshi on 4/27/20.
 //  Copyright © 2020 Capstone. All rights reserved.
 //
-
 import SwiftUI
 
 struct AverageDayView: View {
@@ -21,21 +20,29 @@ struct AverageDayView: View {
         default:
             color = Color.red
         }
-        return AnyView(HStack {
-            Text("\(predictionTimeFormatter.string(from: pred.dateTime))")
-                .frame(width: 50) // frame ensures bars start evenly
-            
-            Rectangle().fill(color).frame(width: CGFloat(pred.prediction) / 1.5 + 2, height: 10) // +2 so <=0 predictions aren't empty
-            //Text(" \(pred.prediction)") //don't need to know exact prediction
+        return AnyView(VStack(alignment: .center) {
+            ZStack {
+                Rectangle().fill(color).frame(width: 13, height: CGFloat(pred.prediction))
+                if pred.prediction > 30 {
+                    Text("\(pred.prediction)").font(.system(size: 7)).rotationEffect(.degrees(90)).foregroundColor(.black).fixedSize(horizontal: true, vertical: false)
+                }
+            }
+            Text("\(predictionTimeFormatter.string(from: pred.dateTime))").font(.system(size: 7)).rotationEffect(.degrees(90)).fixedSize(horizontal: true, vertical: false)
         })
     }
     
     var body: some View {
         NavigationView { // check if date is in range
-            List {
-                ForEach(averagePredictions, id: \.id) { pred in //render predictions
-                    self.getPredictionBar(pred: pred)
+            VStack {
+                HStack (alignment: .bottom) {
+                    ForEach(averagePredictions, id: \.id) { pred in //render predictions
+                        self.getPredictionBar(pred: pred)
+                    }
                 }
+                
+                Divider()
+                
+                Text("Time of Day").padding(.bottom, 30)
             }
             .navigationBarTitle(Text("Average Day"))
         }

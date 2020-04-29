@@ -5,8 +5,9 @@
 //  Created by Swopnil Joshi on 4/27/20.
 //  Copyright © 2020 Capstone. All rights reserved.
 //
-
 import SwiftUI
+
+private let days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 
 private func getColor(pred: Double) -> Color {
     switch pred { // color based on prediction
@@ -21,69 +22,32 @@ private func getColor(pred: Double) -> Color {
     }
 }
 
+private func getPredictionBar(pred: Double, day: Int) -> some View {
+    return AnyView(VStack(alignment: .center) {
+        ZStack {
+            Rectangle().fill(getColor(pred: weekAverage[day])).frame(width: 30, height: CGFloat(weekAverage[day]))
+            if weekAverage[day] > 30 {
+                Text("\(Int(weekAverage[day]))").font(.system(size: 15)).rotationEffect(.degrees(90)).foregroundColor(.black).fixedSize(horizontal: true, vertical: false)
+            }
+        }
+        Text("\(days[day])").font(.system(size: 9)).frame(width:52, height: 15)
+    })
+}
+
 struct AverageWeekView: View {
     var body: some View {
         NavigationView { // check if date is in range
-            List {
-                HStack {
-                    Text("Monday")
-                        .frame(width: 100) // frame ensures bars start evenly
-                    
-                    Rectangle().fill(getColor(pred: weekAverage[0])).frame(width: CGFloat(weekAverage[0]) / 1.5 + 2, height: 10) // +2 so <=0 predictions aren't empty
-                    //Text(" \(weekAverage[0])") //don't need to know exact prediction
+            VStack {
+                HStack (alignment: .bottom) {
+                    ForEach(0..<days.count) { i in
+                        getPredictionBar(pred: weekAverage[i], day: i)
+                    }
                 }
-                HStack {
-                    Text("Tuesday")
-                        .frame(width: 100) // frame ensures bars start evenly
+                Divider()
                     
-                    Rectangle().fill(getColor(pred: weekAverage[1])).frame(width: CGFloat(weekAverage[1]) / 1.5 + 2, height: 10) // +2 so <=0 predictions aren't empty
-                    //Text(" \(weekAverage[1])") //don't need to know exact prediction
-                }
-                HStack {
-                    Text("Wednesday")
-                        .frame(width: 100) // frame ensures bars start evenly
-                    
-                    Rectangle().fill(getColor(pred: weekAverage[2])).frame(width: CGFloat(weekAverage[2]) / 1.5 + 2, height: 10) // +2 so <=0 predictions aren't empty
-                    //Text(" \(weekAverage[2])") //don't need to know exact prediction
-                }
-                HStack {
-                    Text("Thursday")
-                        .frame(width: 100) // frame ensures bars start evenly
-                    
-                    Rectangle().fill(getColor(pred: weekAverage[3])).frame(width: CGFloat(weekAverage[3]) / 1.5 + 2, height: 10) // +2 so <=0 predictions aren't empty
-                    //Text(" \(weekAverage[3])") //don't need to know exact prediction
-                }
-                HStack {
-                    Text("Friday")
-                        .frame(width: 100) // frame ensures bars start evenly
-                    
-                    Rectangle().fill(getColor(pred: weekAverage[4])).frame(width: CGFloat(weekAverage[4]) / 1.5 + 2, height: 10) // +2 so <=0 predictions aren't empty
-                    //Text(" \(weekAverage[4])") //don't need to know exact prediction
-                }
-                WeekendView()
+                Text("Day of the Week").padding(.bottom, 30)
             }
             .navigationBarTitle(Text("Average Week"))
-        }
-    }
-}
-
-// weird bug with too many HStacks? this is a workaround
-struct WeekendView: View {
-    @ViewBuilder
-    var body: some View {
-        HStack {
-            Text("Saturday")
-                .frame(width: 100) // frame ensures bars start evenly
-            
-            Rectangle().fill(getColor(pred: weekAverage[5])).frame(width: CGFloat(weekAverage[5]) / 1.5 + 2, height: 10) // +2 so <=0 predictions aren't empty
-            //Text(" \(weekAverage[5])") //don't need to know exact prediction
-        }
-        HStack {
-            Text("Sunday")
-                .frame(width: 100) // frame ensures bars start evenly
-            
-            Rectangle().fill(getColor(pred: weekAverage[6])).frame(width: CGFloat(weekAverage[6]) / 1.5 + 2, height: 10) // +2 so <=0 predictions aren't empty
-            //Text(" \(weekAverage[6])") //don't need to know exact prediction
         }
     }
 }
