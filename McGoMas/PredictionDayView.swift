@@ -1,10 +1,10 @@
 //
+//  PredictionDayView.swift
 //  McGoMas
 //
 //  Created by Swopnil Joshi on 4/25/20.
 //  Copyright © 2020 Capstone. All rights reserved.
 //
-
 import SwiftUI
 
 struct PredictionDayView: View {
@@ -26,13 +26,15 @@ struct PredictionDayView: View {
         default:
             color = Color.red
         }
-        return AnyView(HStack {
+        return AnyView(VStack(alignment: .center) {
             if (Calendar.current.isDate(pred.dateTime, inSameDayAs:currentDate) == true) {
-                Text("\(predictionTimeFormatter.string(from: pred.dateTime))")
-                    .frame(width: 50) // frame ensures bars start evenly
-                
-                Rectangle().fill(color).frame(width: CGFloat(pred.prediction) / 1.5 + 2, height: 10) // +2 so <=0 predictions aren't empty
-                //Text(" \(pred.prediction)") //don't need to know exact prediction
+                ZStack {
+                    Rectangle().fill(color).frame(width: 12, height: CGFloat(pred.prediction) + 2)
+                    if pred.prediction > 30 {
+                        Text("\(pred.prediction)").font(.system(size: 6)).rotationEffect(.degrees(90)).foregroundColor(.black).fixedSize(horizontal: true, vertical: false)
+                    }
+                }
+                Text("\(predictionTimeFormatter.string(from: pred.dateTime))").font(.system(size: 9)).rotationEffect(.degrees(90)).fixedSize(horizontal: true, vertical: false)
             }
         })
     }
@@ -40,10 +42,16 @@ struct PredictionDayView: View {
     var body: some View {
         NavigationView {
             if (self.date <= maxPredictionDate && self.date >= minPredictionDate) { // check if date is in range
-                List {
-                    ForEach(predictions.drop {$0.dateTime < self.date}.prefix(19), id: \.id) { pred in //render predictions
-                        self.getPredictionBar(pred: pred, currentDate: self.date)
+                VStack {
+                    HStack (alignment: .bottom) {
+                        ForEach(predictions.drop {$0.dateTime < self.date}.prefix(19), id: \.id) { pred in //render predictions
+                            self.getPredictionBar(pred: pred, currentDate: self.date)
+                        }
                     }
+                    
+                    Divider()
+                    
+                    Text("Time of Day").padding(.bottom, 30)
                 }
                 .navigationBarTitle(getTextFromDate(date: self.date))
             }

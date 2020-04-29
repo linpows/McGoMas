@@ -25,7 +25,7 @@ struct Totals: View {
         VStack() {
             //Bring this to the front only when a bar/rectangle is hovered over
             if (self.isTapped) {
-                Text(String(format: "%.2f", self.totals[self.idxTapped]) + (self.pickerSelection == 0 ? " miles " : " minutes ") + "completed.").font(.title).padding().multilineTextAlignment(.center)
+                Text(String(format: "%.2f", self.totals[self.idxTapped]) + (self.pickerSelection == 0 ? " miles " : " minutes ") + "completed in total.").font(.title).padding().multilineTextAlignment(.center)
             }
             else {
                 Text("Click a bar to learn more.").font(.title).padding().multilineTextAlignment(.center)

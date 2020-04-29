@@ -5,7 +5,6 @@
 //  Created by Mikayla Richardson on 3/20/20.
 //  Copyright © 2020 Capstone. All rights reserved.
 //
-
 import SwiftUI
 import Foundation
 
@@ -27,7 +26,7 @@ struct PredictionView : View {
                 Button (action: {
                     self.showDay.toggle()
                 }) {
-                    Text("Avg Day")
+                    Text("Average Day")
                 }/* // alternative button style
                 .frame(width:150, height:30)
                 .foregroundColor(.white)
@@ -42,7 +41,8 @@ struct PredictionView : View {
                 Button (action: {
                     self.showWeek.toggle()
                 }) {
-                    Text("Avg Week")
+                    Text("Average Week")
+                    .font(.system(size: 15))
                 }/* // alternative button style
                 .frame(width:150, height:30)
                 .foregroundColor(.white)
