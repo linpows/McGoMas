@@ -42,6 +42,7 @@ struct PredictionView : View {
                     self.showWeek.toggle()
                 }) {
                     Text("Average Week")
+                    .font(.system(size: 15))
                 }/* // alternative button style
                 .frame(width:150, height:30)
                 .foregroundColor(.white)

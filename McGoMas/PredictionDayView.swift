@@ -29,12 +29,12 @@ struct PredictionDayView: View {
         return AnyView(VStack(alignment: .center) {
             if (Calendar.current.isDate(pred.dateTime, inSameDayAs:currentDate) == true) {
                 ZStack {
-                    Rectangle().fill(color).frame(width: 13, height: CGFloat(pred.prediction) + 2)
+                    Rectangle().fill(color).frame(width: 12, height: CGFloat(pred.prediction) + 2)
                     if pred.prediction > 30 {
-                        Text("\(pred.prediction)").font(.system(size: 7)).rotationEffect(.degrees(90)).foregroundColor(.black).fixedSize(horizontal: true, vertical: false)
+                        Text("\(pred.prediction)").font(.system(size: 6)).rotationEffect(.degrees(90)).foregroundColor(.black).fixedSize(horizontal: true, vertical: false)
                     }
                 }
-                Text("\(predictionTimeFormatter.string(from: pred.dateTime))").font(.system(size: 7)).rotationEffect(.degrees(90)).fixedSize(horizontal: true, vertical: false)
+                Text("\(predictionTimeFormatter.string(from: pred.dateTime))").font(.system(size: 9)).rotationEffect(.degrees(90)).fixedSize(horizontal: true, vertical: false)
             }
         })
     }

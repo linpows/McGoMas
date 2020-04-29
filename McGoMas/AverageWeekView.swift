@@ -30,7 +30,7 @@ private func getPredictionBar(pred: Double, day: Int) -> some View {
                 Text("\(Int(weekAverage[day]))").font(.system(size: 15)).rotationEffect(.degrees(90)).foregroundColor(.black).fixedSize(horizontal: true, vertical: false)
             }
         }
-        Text("\(days[day])").font(.system(size: 9)).frame(width:52, height: 15)
+        Text("\(days[day])").font(.system(size: 10)).frame(width:48, height: 15)
     })
 }
 
