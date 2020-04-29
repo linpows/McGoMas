@@ -18,6 +18,19 @@ let tutorials: [TutorialModel] = [
     TutorialModel(id: "Leg Extension", gifName: "leg_extension.gif", isFavorite: false),
     TutorialModel(id: "Leg Press", gifName: "leg_press.gif", isFavorite: false),
     TutorialModel(id: "Tricep Cable Press", gifName: "tricep_cable_press.gif", isFavorite: false)
+    TutorialModel(id: "Barbell Hip Thrust", gifName: "Barbell hip thrust.gif", isFavorite: false)
+    TutorialModel(id: "Bench Press", gifName: "Bench Press.gif", isFavorite: false)
+    TutorialModel(id: "Bicep Cable Curl", gifName: "Bicep Cable Curl.gif", isFavorite: false)
+    TutorialModel(id: "Deadbug", gifName: "Deadbug.gif", isFavorite: false),
+    TutorialModel(id: "Dumbbell Lunge", gifName: "dumbbell lunge.gif", isFavorite: false),
+    TutorialModel(id: "Floor Press", gifName: "Floor Press.gif", isFavorite: false),
+    TutorialModel(id: "Goblet Squad", gifName: "Goblet Squad.gif", isFavorite: false),
+    TutorialModel(id: "Pushup", gifName: "Pushup.gif", isFavorite: false),
+    TutorialModel(id: "Renegade Row", gifName: "renegade row.gif", isFavorite: false),
+    TutorialModel(id: "Romanian Deadlift", gifName: "romanian deadlift.gif", isFavorite: false),
+    TutorialModel(id: "Rowing Machine", gifName: "Rowing Machine.gif", isFavorite: false)
+    TutorialModel(id: "Squats With Bar", gifName: "Squats With Bar.gif", isFavorite: false)
+    
 ]
 
 enum WeightTags: Int {
