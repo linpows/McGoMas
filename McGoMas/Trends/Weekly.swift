@@ -86,7 +86,7 @@ struct Weekly: View {
     
     private func titleString(selectedIdx: Int) -> String {
         let unit = self.unitSelection == 0 ? "miles" : "minutes"
-        var type = WorkoutType.init(rawValue: self.typeSelection)?.stringRep.lowercased() ?? "all"
+        let type = WorkoutType.init(rawValue: self.typeSelection)?.stringRep.lowercased() ?? "all"
         
         return String(format: "%.2f", self.weeklyTotals[selectedIdx]) + " \(unit) done from \(type) activities on " + self.dayName[selectedIdx]
     }
