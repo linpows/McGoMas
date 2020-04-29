@@ -1,9 +1,4 @@
 //
-<<<<<<< HEAD
-//  CalendarDayView.swift
-=======
-//  PredictionDayView.swift
->>>>>>> 62ef60f6c54ecb7d1cf07004362c7cd0e470cece
 //  McGoMas
 //
 //  Created by Swopnil Joshi on 4/25/20.

@@ -41,11 +41,12 @@
 		808736482416A4E000DFE94E /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808736472416A4E000DFE94E /* SignupView.swift */; };
 		80945FC32449F88000F55562 /* TutorialData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80945FC22449F88000F55562 /* TutorialData.swift */; };
 		80945FC52449FECD00F55562 /* TutorialGifPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80945FC42449FECD00F55562 /* TutorialGifPlayer.swift */; };
-		80A082142458FE8600330AA0 /* PredictionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A0820F2458FE8500330AA0 /* PredictionView.swift */; };
-		80A082152458FE8600330AA0 /* Predictions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A082102458FE8600330AA0 /* Predictions.swift */; };
-		80A082162458FE8600330AA0 /* AverageWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A082112458FE8600330AA0 /* AverageWeekView.swift */; };
-		80A082172458FE8600330AA0 /* PredictionDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A082122458FE8600330AA0 /* PredictionDayView.swift */; };
-		80A082182458FE8600330AA0 /* AverageDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A082132458FE8600330AA0 /* AverageDayView.swift */; };
+		80A0821E245A047400330AA0 /* PredictionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A08219245A047300330AA0 /* PredictionView.swift */; };
+		80A0821F245A047400330AA0 /* AverageDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A0821A245A047400330AA0 /* AverageDayView.swift */; };
+		80A08220245A047400330AA0 /* PredictionDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A0821B245A047400330AA0 /* PredictionDayView.swift */; };
+		80A08221245A047400330AA0 /* AverageWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A0821C245A047400330AA0 /* AverageWeekView.swift */; };
+		80A08222245A047400330AA0 /* Predictions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A0821D245A047400330AA0 /* Predictions.swift */; };
+		80A08224245A089A00330AA0 /* TypePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A08223245A089A00330AA0 /* TypePicker.swift */; };
 		80A7AED4244B4C48009D6BFF /* leg_curl.gif in Resources */ = {isa = PBXBuildFile; fileRef = 80A7AED3244B4C48009D6BFF /* leg_curl.gif */; };
 		80A7AED6244B51B9009D6BFF /* leg_extension.gif in Resources */ = {isa = PBXBuildFile; fileRef = 80A7AED5244B51B9009D6BFF /* leg_extension.gif */; };
 		80A7AED8244B521F009D6BFF /* deadlift.gif in Resources */ = {isa = PBXBuildFile; fileRef = 80A7AED7244B521F009D6BFF /* deadlift.gif */; };
@@ -124,11 +125,12 @@
 		808736472416A4E000DFE94E /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		80945FC22449F88000F55562 /* TutorialData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialData.swift; sourceTree = "<group>"; };
 		80945FC42449FECD00F55562 /* TutorialGifPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialGifPlayer.swift; sourceTree = "<group>"; };
-		80A0820F2458FE8500330AA0 /* PredictionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PredictionView.swift; path = ../../PredictionView.swift; sourceTree = "<group>"; };
-		80A082102458FE8600330AA0 /* Predictions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Predictions.swift; path = ../../Predictions.swift; sourceTree = "<group>"; };
-		80A082112458FE8600330AA0 /* AverageWeekView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AverageWeekView.swift; path = ../../AverageWeekView.swift; sourceTree = "<group>"; };
-		80A082122458FE8600330AA0 /* PredictionDayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PredictionDayView.swift; path = ../../PredictionDayView.swift; sourceTree = "<group>"; };
-		80A082132458FE8600330AA0 /* AverageDayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AverageDayView.swift; path = ../../AverageDayView.swift; sourceTree = "<group>"; };
+		80A08219245A047300330AA0 /* PredictionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionView.swift; sourceTree = "<group>"; };
+		80A0821A245A047400330AA0 /* AverageDayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AverageDayView.swift; sourceTree = "<group>"; };
+		80A0821B245A047400330AA0 /* PredictionDayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionDayView.swift; sourceTree = "<group>"; };
+		80A0821C245A047400330AA0 /* AverageWeekView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AverageWeekView.swift; sourceTree = "<group>"; };
+		80A0821D245A047400330AA0 /* Predictions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Predictions.swift; sourceTree = "<group>"; };
+		80A08223245A089A00330AA0 /* TypePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypePicker.swift; sourceTree = "<group>"; };
 		80A7AED3244B4C48009D6BFF /* leg_curl.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = leg_curl.gif; sourceTree = "<group>"; };
 		80A7AED5244B51B9009D6BFF /* leg_extension.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = leg_extension.gif; sourceTree = "<group>"; };
 		80A7AED7244B521F009D6BFF /* deadlift.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = deadlift.gif; sourceTree = "<group>"; };
@@ -359,11 +361,11 @@
 		80A7C9D02425079500C21FC6 /* Traffic Prediction */ = {
 			isa = PBXGroup;
 			children = (
-				80A082132458FE8600330AA0 /* AverageDayView.swift */,
-				80A082112458FE8600330AA0 /* AverageWeekView.swift */,
-				80A082122458FE8600330AA0 /* PredictionDayView.swift */,
-				80A082102458FE8600330AA0 /* Predictions.swift */,
-				80A0820F2458FE8500330AA0 /* PredictionView.swift */,
+				80A0821A245A047400330AA0 /* AverageDayView.swift */,
+				80A0821C245A047400330AA0 /* AverageWeekView.swift */,
+				80A0821B245A047400330AA0 /* PredictionDayView.swift */,
+				80A0821D245A047400330AA0 /* Predictions.swift */,
+				80A08219245A047300330AA0 /* PredictionView.swift */,
 			);
 			name = "Traffic Prediction";
 			sourceTree = "<group>";
@@ -382,6 +384,7 @@
 			children = (
 				80B67F6E244754D700650AEF /* LogGraphView.swift */,
 				80DEEC90244C9EBE00B72798 /* Weekly.swift */,
+				80A08223245A089A00330AA0 /* TypePicker.swift */,
 				80DEEC8B244C91A600B72798 /* GridCell.swift */,
 				80DEEC89244C901E00B72798 /* Totals.swift */,
 				80EFF111244E11FC001A70E3 /* MinuteMilePicker.swift */,
@@ -569,6 +572,7 @@
 				80F7A1D924213B6400061ED0 /* AddEntryView.swift in Sources */,
 				804BC0F32427B89C004ED836 /* WorkoutModels.swift in Sources */,
 				801F887C243A246B0080CEA2 /* WeightListView.swift in Sources */,
+				80A0821F245A047400330AA0 /* AverageDayView.swift in Sources */,
 				3E551104244E6889002450E9 /* RKMonth.swift in Sources */,
 				80CCAFE8244FA9540028D1D6 /* Loading.swift in Sources */,
 				80CDF0DF24351BF3009EE05B /* WeightEntry.swift in Sources */,
@@ -577,31 +581,32 @@
 				800557CC2425579300FE11DA /* AuthView.swift in Sources */,
 				3E551108244E6889002450E9 /* RKManager.swift in Sources */,
 				80A7C9D42425095600C21FC6 /* LandingView.swift in Sources */,
+				80A08220245A047400330AA0 /* PredictionDayView.swift in Sources */,
 				80C4846D2411727700BD7EAE /* LogoutView.swift in Sources */,
 				8020C2B92410138A0097BD5E /* GradientButtonStyle.swift in Sources */,
 				808736482416A4E000DFE94E /* SignupView.swift in Sources */,
+				80A08222245A047400330AA0 /* Predictions.swift in Sources */,
 				804BC0F12427A763004ED836 /* CalendarView.swift in Sources */,
+				80A0821E245A047400330AA0 /* PredictionView.swift in Sources */,
 				805382C124415D5C00F989AB /* TutorialHome.swift in Sources */,
 				3E551103244E6889002450E9 /* RKDate.swift in Sources */,
 				80B67F6F244754D700650AEF /* LogGraphView.swift in Sources */,
-				80A082152458FE8600330AA0 /* Predictions.swift in Sources */,
 				80945FC32449F88000F55562 /* TutorialData.swift in Sources */,
 				80C287D124524B8C00F05C96 /* LottieViewTester.swift in Sources */,
 				80B5F5AF2443790D00EE0D3D /* TutorialModel.swift in Sources */,
+				80A08221245A047400330AA0 /* AverageWeekView.swift in Sources */,
 				3E551109244E6889002450E9 /* RKViewController.swift in Sources */,
 				80DEEC91244C9EBE00B72798 /* Weekly.swift in Sources */,
-				80A082162458FE8600330AA0 /* AverageWeekView.swift in Sources */,
 				80945FC52449FECD00F55562 /* TutorialGifPlayer.swift in Sources */,
 				80EFF112244E11FC001A70E3 /* MinuteMilePicker.swift in Sources */,
 				80F7A1DB24213F5000061ED0 /* LoggingHomeView.swift in Sources */,
-				80A082172458FE8600330AA0 /* PredictionDayView.swift in Sources */,
 				8027849E240EC76000AFD8E8 /* SceneDelegate.swift in Sources */,
 				802784C1240EE1F200AFD8E8 /* LoginView.swift in Sources */,
 				801F887E243A24880080CEA2 /* CardioListView.swift in Sources */,
 				3E55110D244E6990002450E9 /* CalendarDayView.swift in Sources */,
-				80A082142458FE8600330AA0 /* PredictionView.swift in Sources */,
 				80A7AEE4244B555D009D6BFF /* SearchBar.swift in Sources */,
 				8020C2BD241023C00097BD5E /* CustomTextEntry.swift in Sources */,
+				80A08224245A089A00330AA0 /* TypePicker.swift in Sources */,
 				80D937F12433909400006E8B /* CardioEntry.swift in Sources */,
 				3E551105244E6889002450E9 /* RKColorSettings.swift in Sources */,
 				80E76F8524520A3E009052A9 /* LottieView.swift in Sources */,
@@ -611,7 +616,6 @@
 				8028D50D24315BAF00CF050B /* NumericTextField.swift in Sources */,
 				3E551106244E6889002450E9 /* RKWeekdayHeader.swift in Sources */,
 				3E55110C244E6990002450E9 /* CalendarModels.swift in Sources */,
-				80A082182458FE8600330AA0 /* AverageDayView.swift in Sources */,
 				807AD2AB24291FE200861B8C /* UserSession.swift in Sources */,
 				80DEEC8C244C91A600B72798 /* GridCell.swift in Sources */,
 			);

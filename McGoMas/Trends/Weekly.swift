@@ -18,7 +18,9 @@ struct Weekly: View {
     @State private var idxTapped = -1
     @State private var isTapped = false
     
-    @State private var pickerSelection = 0
+    @State private var unitSelection = 0
+    @State private var typeSelection = 0
+    
     
     var body: some View {
         VStack() {
@@ -30,11 +32,17 @@ struct Weekly: View {
                 Text("Click a bar to learn more.").font(.title).padding().multilineTextAlignment(.center)
             }
             
-            MinuteMilePicker(selection: $pickerSelection.onChange({ index in
+            MinuteMilePicker(selection: $unitSelection.onChange({ index in
                 return withAnimation(Animation.spring()) {
-                    self.compute(unitSelection: index)
+                    self.compute(unitSelection: index, typeSelection: self.typeSelection)
                 }
             }))
+            TypePicker(typeSelection: $typeSelection.onChange( { index in
+                    return withAnimation(Animation.spring()) {
+                        self.compute(unitSelection: index, typeSelection: self.typeSelection)
+                    }
+                }
+            ))
             
             HStack(alignment: .bottom, spacing: 0.0) {
                 ForEach(0 ..< self.weeklyTotals.count) { idx in
@@ -69,7 +77,7 @@ struct Weekly: View {
                 }
                 .onAppear {
                     withAnimation(Animation.spring()) {
-                        self.compute(unitSelection: self.pickerSelection)
+                        self.compute(unitSelection: self.unitSelection, typeSelection: self.typeSelection)
                     }
                 }
             }
@@ -77,11 +85,13 @@ struct Weekly: View {
     }
     
     private func titleString(selectedIdx: Int) -> String {
-        let type = self.pickerSelection == 0 ? "miles" : "minutes"
-        return String(format: "%.2f", self.weeklyTotals[selectedIdx]) + " \(type) on " + self.dayName[selectedIdx]
+        let unit = self.unitSelection == 0 ? "miles" : "minutes"
+        var type = WorkoutType.init(rawValue: self.typeSelection)?.stringRep.lowercased() ?? "all"
+        
+        return String(format: "%.2f", self.weeklyTotals[selectedIdx]) + " \(unit) done from \(type) activities on " + self.dayName[selectedIdx]
     }
     
-    private func compute(unitSelection: Int) {
+    private func compute(unitSelection: Int, typeSelection: Int) {
         let currDay = Date()
         let nameFinder = DateFormatter()
 
@@ -92,7 +102,7 @@ struct Weekly: View {
             let prevDate = Calendar.current.date(byAdding: component, to: currDay)!
             
             //Fill in most recent day in the last slot and work backwards
-            self.weeklyTotals[6 - day] = (unitSelection == 0) ? allMiles(onDate: prevDate) : allMins(onDate: prevDate)
+            self.weeklyTotals[6 - day] = (unitSelection == 0) ? allMiles(onDate: prevDate, type: typeSelection) : allMins(onDate: prevDate, type: typeSelection)
             
             //Fill in which data corresponds to which day of the week
             self.dayName[6 - day] = nameFinder.weekdaySymbols[Calendar.current.component(.weekday, from: prevDate) % 6]
@@ -110,11 +120,18 @@ struct Weekly: View {
     }
     
     //Calculate all the miles occuring on the day
-    private func allMins(onDate: Date) -> Double {
+    private func allMins(onDate: Date, type: Int) -> Double {
+        
         //Find all non-nil, same day cardio (compared to "onDate")
-        let sameDayCardio = self.user.logs.cardioLogs.filter { cardio in
+        var sameDayCardio = self.user.logs.cardioLogs.filter { cardio in
             cardio.cardio != nil &&
                 Calendar.current.isDate(onDate, equalTo: cardio.cardio!.date, toGranularity: .day)
+        }
+        
+        if type != 0 { //Then also filter by workout type
+            sameDayCardio = sameDayCardio.filter { cardio in
+                cardio.cardio!.workoutType == WorkoutType.init(rawValue: type)!
+            }
         }
     
         
@@ -123,11 +140,17 @@ struct Weekly: View {
     }
     
     //Calculate all the miles occuring on the day
-    private func allMiles(onDate: Date) -> Double {
+    private func allMiles(onDate: Date, type: Int) -> Double {
         //Find all non-nil, same day cardio (compared to "onDate")
-        let sameDayCardio = self.user.logs.cardioLogs.filter { cardio in
+        var sameDayCardio = self.user.logs.cardioLogs.filter { cardio in
             cardio.cardio != nil &&
                 Calendar.current.isDate(onDate, equalTo: cardio.cardio!.date, toGranularity: .day)
+        }
+        
+        if type != 0 { //Then also filter by workout type
+            sameDayCardio = sameDayCardio.filter { cardio in
+                cardio.cardio!.workoutType == WorkoutType.init(rawValue: type)!
+            }
         }
         
         //Convert model distances to an array of MILE distances
