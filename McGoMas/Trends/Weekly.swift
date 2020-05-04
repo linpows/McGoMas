@@ -105,7 +105,7 @@ struct Weekly: View {
             self.weeklyTotals[6 - day] = (unitSelection == 0) ? allMiles(onDate: prevDate, type: typeSelection) : allMins(onDate: prevDate, type: typeSelection)
             
             //Fill in which data corresponds to which day of the week
-            self.dayName[6 - day] = nameFinder.weekdaySymbols[Calendar.current.component(.weekday, from: prevDate) % 6]
+            self.dayName[6 - day] = nameFinder.weekdaySymbols[Calendar.current.component(.weekday, from: prevDate) - 1 % 7]
             
             self.dayAbbreviation[6 - day] = String(self.dayName[6 - day].prefix(2))
         }
@@ -115,6 +115,11 @@ struct Weekly: View {
         if (totalWeek > 0.0) { //Guard against divide by zero
             for idx in 0...6 { //Find ratio of single day's distance : week distance
                 self.weeklyRatio[idx] = self.weeklyTotals[idx] / totalWeek
+            }
+        }
+        else {
+            for idx in 0...6 {
+                self.weeklyRatio[idx] = 0
             }
         }
     }

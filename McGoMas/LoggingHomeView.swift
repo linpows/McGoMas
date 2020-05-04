@@ -55,17 +55,51 @@ struct LoggingHomeView: View {
                 
                 Spacer()
                 
-                SaveButton(saveSignal: $saveSuccess, errSignal: $saveErr)
+                Button (
+                    action: {
+                        if self.userSession.user != nil {
+                            let cardioSave = self.userSession.logs.cardioLogs.filter({ cardio in
+                                cardio.pushToDB //Push only the ones that need adding/updating
+                            })
+                            
+                            for cardio in cardioSave {
+                                self.userSession.uploadCardio(workout: cardio)
+                                cardio.pushToDB = false //updated
+                            }
+                            
+                            
+                            let weightSave = self.userSession.logs.weightLogs.filter({ weight in
+                                weight.pushToDB
+                            })
+                            
+                            for weight in weightSave {
+                                self.userSession.uploadWeight(workout: weight)
+                                weight.pushToDB = false //updated
+                            }
+                            self.saveSuccess = true
+                            
+                        }
+                        else {
+                            self.saveErr = true
+                        }
+                    },
+                    label: {
+                        Text("Save Changes").font(.title)
+                        .fontWeight(.bold)
+                    }
+                )
+                .buttonStyle(GradientButtonStyle())
+                .padding()
+                .alert(isPresented: $saveSuccess) {
+                    Alert(title: Text("Success"), message: Text("Changes saved successfully."), dismissButton: .default(Text("oK")))
+                }
+                .alert(isPresented: $saveErr) {
+                    Alert(title: Text("Oops"), message: Text("Sign in to access this functionality"), dismissButton: .default(Text("Ok")))
+                }
             }
             .navigationBarTitle("Your Log")
             .navigationBarItems(leading: GraphButton(success: $showStats),
                                  trailing: AddButton(success: $showAdd))
-        }
-        .alert(isPresented: $saveSuccess) {
-            Alert(title: Text("Success"), message: Text("Changes saved successfully."), dismissButton: .default(Text("Ok")))
-        }
-        .alert(isPresented: $saveErr) {
-            Alert(title: Text("Oops"), message: Text("Sign in to access this functionality"), dismissButton: .default(Text("Ok")))
         }
         .sheet(isPresented: $loading) {
             Loading(isPresented: self.$loading).environmentObject(self.userSession)
@@ -117,49 +151,6 @@ struct LoggingHomeView: View {
         }
     }
     
-    private struct SaveButton: View {
-        @EnvironmentObject var userSession: UserSession
-        @Binding var saveSignal: Bool
-        @Binding var errSignal: Bool
-        
-        var body: some View {
-            Button (
-                action: {
-                    if self.userSession.user != nil {
-                        let cardioSave = self.userSession.logs.cardioLogs.filter({ cardio in
-                            cardio.pushToDB //Push only the ones that need adding/updating
-                        })
-                        
-                        for cardio in cardioSave {
-                            self.userSession.uploadCardio(workout: cardio)
-                            cardio.pushToDB = false //updated
-                        }
-                        
-                        
-                        let weightSave = self.userSession.logs.weightLogs.filter({ weight in
-                            weight.pushToDB
-                        })
-                        
-                        for weight in weightSave {
-                            self.userSession.uploadWeight(workout: weight)
-                            weight.pushToDB = false //updated
-                        }
-                        self.saveSignal = true
-                        
-                    }
-                    else {
-                        self.errSignal = true
-                    }
-                },
-                label: {
-                    Text("Save Changes").font(.title)
-                    .fontWeight(.bold)
-                }
-            )
-            .buttonStyle(GradientButtonStyle())
-            .padding()
-        }
-    }
 }
 
 
